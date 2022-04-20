@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56394288280FACCE00FF7BAC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56394287280FACCD00FF7BAC /* MainView.swift */; };
+		5639428A280FAF0400FF7BAC /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56394289280FAF0300FF7BAC /* SearchView.swift */; };
+		56930CE72810B0870007FC08 /* PortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56930CE62810B0870007FC08 /* PortfolioView.swift */; };
+		56930CEA2810BB0A0007FC08 /* PortfolioItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56930CE92810BB0A0007FC08 /* PortfolioItemView.swift */; };
+		56930CEE2810BB690007FC08 /* PortfolioItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56930CED2810BB690007FC08 /* PortfolioItem.swift */; };
 		56F60FF3280F768100D5BDA1 /* slava_stock_watchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F60FF2280F768100D5BDA1 /* slava_stock_watchApp.swift */; };
 		56F60FF5280F768100D5BDA1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F60FF4280F768100D5BDA1 /* ContentView.swift */; };
 		56F60FF7280F768600D5BDA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56F60FF6280F768600D5BDA1 /* Assets.xcassets */; };
@@ -33,6 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		56394287280FACCD00FF7BAC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		56394289280FAF0300FF7BAC /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		56930CE62810B0870007FC08 /* PortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioView.swift; sourceTree = "<group>"; };
+		56930CE92810BB0A0007FC08 /* PortfolioItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioItemView.swift; sourceTree = "<group>"; };
+		56930CED2810BB690007FC08 /* PortfolioItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioItem.swift; sourceTree = "<group>"; };
 		56F60FEF280F768100D5BDA1 /* slava-stock-watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "slava-stock-watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56F60FF2280F768100D5BDA1 /* slava_stock_watchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = slava_stock_watchApp.swift; sourceTree = "<group>"; };
 		56F60FF4280F768100D5BDA1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -72,6 +82,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		56394285280FACA800FF7BAC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				56930CE82810BAE20007FC08 /* Main */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		56394286280FACB100FF7BAC /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		56930CE82810BAE20007FC08 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				56394289280FAF0300FF7BAC /* SearchView.swift */,
+				56394287280FACCD00FF7BAC /* MainView.swift */,
+				56930CE62810B0870007FC08 /* PortfolioView.swift */,
+				56930CE92810BB0A0007FC08 /* PortfolioItemView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		56930CEB2810BB410007FC08 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				56930CEC2810BB460007FC08 /* DataContainers */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		56930CEC2810BB460007FC08 /* DataContainers */ = {
+			isa = PBXGroup;
+			children = (
+				56930CED2810BB690007FC08 /* PortfolioItem.swift */,
+			);
+			path = DataContainers;
+			sourceTree = "<group>";
+		};
 		56F60FE6280F768100D5BDA1 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +147,9 @@
 		56F60FF1280F768100D5BDA1 /* slava-stock-watch */ = {
 			isa = PBXGroup;
 			children = (
+				56930CEB2810BB410007FC08 /* Models */,
+				56394286280FACB100FF7BAC /* ViewModels */,
+				56394285280FACA800FF7BAC /* Views */,
 				56F60FF2280F768100D5BDA1 /* slava_stock_watchApp.swift */,
 				56F60FF4280F768100D5BDA1 /* ContentView.swift */,
 				56F60FF6280F768600D5BDA1 /* Assets.xcassets */,
@@ -259,7 +314,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5639428A280FAF0400FF7BAC /* SearchView.swift in Sources */,
+				56930CE72810B0870007FC08 /* PortfolioView.swift in Sources */,
+				56930CEA2810BB0A0007FC08 /* PortfolioItemView.swift in Sources */,
 				56F60FF5280F768100D5BDA1 /* ContentView.swift in Sources */,
+				56394288280FACCE00FF7BAC /* MainView.swift in Sources */,
+				56930CEE2810BB690007FC08 /* PortfolioItem.swift in Sources */,
 				56F60FF3280F768100D5BDA1 /* slava_stock_watchApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
