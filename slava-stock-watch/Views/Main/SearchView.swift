@@ -14,19 +14,18 @@ struct SearchView: View {
     
     var body: some View {
         List(vm.searchList, id: \.self){item in
-            /*NavigationLink(destination: StockMainView()){*/
+            NavigationLink(destination: StockMainView()){
                 Text("\(item)")
-                 .onTapGesture {
-                     self.OnClick(item)
-                 }
+                .onTapGesture {
+                    self.OnClick(item)
                 }
-                .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
-                .onChange(of: searchText,
-                          perform: { _ in
-                    self.vm.OnTextChanged(searchText)
-                })
-            /*}*/
-            
+            }
+        }
+        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+        .onChange(of: searchText,
+                  perform: { _ in
+            self.vm.OnTextChanged(searchText)
+        })
         .navigationTitle("Ticker")
     }
 }
