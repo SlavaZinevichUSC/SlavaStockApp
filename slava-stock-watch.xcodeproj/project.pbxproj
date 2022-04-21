@@ -21,6 +21,7 @@
 		56930CE72810B0870007FC08 /* PortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56930CE62810B0870007FC08 /* PortfolioView.swift */; };
 		56930CEA2810BB0A0007FC08 /* PortfolioItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56930CE92810BB0A0007FC08 /* PortfolioItemView.swift */; };
 		56930CEE2810BB690007FC08 /* PortfolioItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56930CED2810BB690007FC08 /* PortfolioItem.swift */; };
+		56CD78D62812269800DC050E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56CD78D52812269800DC050E /* RxSwift */; };
 		56F60FF3280F768100D5BDA1 /* slava_stock_watchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F60FF2280F768100D5BDA1 /* slava_stock_watchApp.swift */; };
 		56F60FF5280F768100D5BDA1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F60FF4280F768100D5BDA1 /* ContentView.swift */; };
 		56F60FF7280F768600D5BDA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56F60FF6280F768600D5BDA1 /* Assets.xcassets */; };
@@ -79,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56CD78D62812269800DC050E /* RxSwift in Frameworks */,
 				562C36B628113554004C2E21 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +263,7 @@
 			name = "slava-stock-watch";
 			packageProductDependencies = (
 				562C36B528113554004C2E21 /* Alamofire */,
+				56CD78D52812269800DC050E /* RxSwift */,
 			);
 			productName = "slava-stock-watch";
 			productReference = 56F60FEF280F768100D5BDA1 /* slava-stock-watch.app */;
@@ -335,6 +338,7 @@
 			mainGroup = 56F60FE6280F768100D5BDA1;
 			packageReferences = (
 				562C36B428113554004C2E21 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				56CD78D42812269800DC050E /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 56F60FF0280F768100D5BDA1 /* Products */;
 			projectDirPath = "";
@@ -716,6 +720,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		56CD78D42812269800DC050E /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -723,6 +735,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 562C36B428113554004C2E21 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		56CD78D52812269800DC050E /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56CD78D42812269800DC050E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
