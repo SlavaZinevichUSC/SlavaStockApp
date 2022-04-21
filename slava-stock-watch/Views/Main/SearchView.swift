@@ -14,7 +14,7 @@ struct SearchView: View {
     
     var body: some View {
         List(vm.searchList, id: \.self){item in
-            NavigationLink(destination: StockMainView()){
+            NavigationLink(destination: StockMainView(item)){
                 Text("\(item)")
                 .onTapGesture {
                     self.OnClick(item)

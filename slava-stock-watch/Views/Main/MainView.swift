@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
+    @StateObject private var serviceFactory = ServiceFactory()
     var body: some View {
         NavigationView{
             Group{
@@ -17,6 +18,7 @@ struct MainView: View {
             }
             .navigationTitle("Slava`s stock watch")
         }
+        .environmentObject(serviceFactory)
     }
 }
 
