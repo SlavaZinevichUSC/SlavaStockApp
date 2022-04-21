@@ -7,15 +7,20 @@
 import Alamofire
 
 final class HttpService : IHttpService{
+    private static let Map = [ApiGetType.Profile : "profile"]
     private let url = "https://geogre-tiredbiter.wl.r.appspot.com/"
     
-    func GetProfile(_ id: String) -> ApiProfile{
-        let req = AF.request("\(url)/price/\(id)")
-        var profile = ApiProfile.Default()
-        req.responseDecodable(of: ApiProfile.self){ (response) in
-            guard let resProfile = response.value else { return }
-            profile = resProfile
+    func Get<T : ApiCallable>(id : String) -> T{
+        let callType = T.GetHttpName()
+        let req = AF.request("\(url)/\(callType)/\(id)")
+        var obj : T = T.Default()
+        req.responseDecodable(of: T.self){ (response) in
+            guard let resObj = response.value else {return}
+            obj = resObj
         }
-        return profile
+        return obj
     }
+    
+    
+    
 }

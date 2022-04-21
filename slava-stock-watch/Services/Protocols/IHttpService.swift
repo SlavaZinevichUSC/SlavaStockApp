@@ -6,6 +6,6 @@
 //
 
 
-protocol IHttpService{
-    
+protocol IHttpService{    
+    func Get<T : ApiCallable>(id : String) -> T
 }
