@@ -10,9 +10,10 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         NavigationView{
-            Form{
-                SearchView()
-                PortfolioView()
+            Group{
+                Section{
+                    SearchView()
+                }
             }
             .navigationTitle("Slava`s stock watch")
         }

@@ -10,7 +10,15 @@ import SwiftUI
 struct PortfolioItemView: View {
     private let item : PortfolioItem
     var body: some View {
-        Text("\(self.item.name)")
+        HStack{
+            Group{
+                Text("\(self.item.name)")
+            }
+            Group{
+                Text("\(self.item.id)")
+            }
+        }
+        
     }
     
     init(_ item : PortfolioItem){
@@ -20,6 +28,6 @@ struct PortfolioItemView: View {
 
 struct PortfolioItemView_Previews: PreviewProvider {
     static var previews: some View {
-        PortfolioItemView()
+        PortfolioItemView(PortfolioItem(id: "AAPL", name: "Apple"))
     }
 }

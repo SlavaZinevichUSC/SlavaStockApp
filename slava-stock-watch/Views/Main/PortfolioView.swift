@@ -10,17 +10,9 @@ import SwiftUI
 struct PortfolioView: View {
     @ObservedObject private var vm = ViewModel()
     var body: some View {
-        NavigationView{
-            HStack{
-                /*Group{
-                    VStack{
-                        Text("Net Worth:")
-                        Text("Cash Balance:")
-                    }
-                }*/
-                List(vm.items) { item in
-                    PortfolioItemView(item)
-                }
+        HStack{
+            List(vm.items) { item in
+                PortfolioItemView(item)
             }
         }
     }
@@ -30,7 +22,9 @@ extension PortfolioView{
     class ViewModel : ObservableObject {
         let items : [PortfolioItem]
         init(){
-            self.items = [PortfolioItem(id: "AAPL", name: "Apple")]
+            self.items = [
+                PortfolioItem(id: "AAPL", name: "Apple"),
+                PortfolioItem(id: "TSLA", name: "Tesla")]
         }
     }
 }

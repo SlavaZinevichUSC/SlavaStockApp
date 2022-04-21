@@ -13,9 +13,27 @@ struct SearchView: View {
     
     
     var body: some View {
-        HStack{
-            TextField("enter ticker",text: $searchText)
-        }
+        List(vm.searchList, id: \.self){item in
+            /*NavigationLink(destination: StockMainView()){*/
+                Text("\(item)")
+                 .onTapGesture {
+                     self.OnClick(item)
+                 }
+                }
+                .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+                .onChange(of: searchText,
+                          perform: { _ in
+                    self.vm.OnTextChanged(searchText)
+                })
+            /*}*/
+            
+        .navigationTitle("Ticker")
+    }
+}
+
+extension SearchView{
+    func OnClick(_ item : String){
+        self.searchText = item
     }
 }
 
@@ -24,7 +42,11 @@ extension SearchView{
         @Published var searchList = [String]()
         
         init() {
-            searchList = ["TSLA", "AAPL"]
+            self.searchList = []
+        }
+        
+        func OnTextChanged(_ text : String) -> Void{
+            self.searchList = ["TSLA", "AAPL"]
         }
     }
 }
