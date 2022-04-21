@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct StockMainView: View {
-    @EnvironmentObject var factory : ServiceFactory
     private let id : String
     var body: some View {
         NavigationView{
