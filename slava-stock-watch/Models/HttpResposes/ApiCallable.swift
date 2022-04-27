@@ -7,7 +7,8 @@
 import Foundation
 
 protocol ApiCallable : Decodable{
-    var HttpName : String { get }
     static func GetHttpName() -> String
     static func Default() -> Self
 }
+
+

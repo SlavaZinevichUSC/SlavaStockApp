@@ -9,9 +9,17 @@ import SwiftUI
 
 struct StockMainView: View {
     private let id : String
+    @EnvironmentObject var factory : ServiceFactory
     var body: some View {
         NavigationView{
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            List{
+                Section(){
+                    StockSummaryView(id, factory: factory)
+                }
+                Section(){
+                    StockStatsView(id, factory).navigationTitle("Stats")
+                }
+            }
         }
         .navigationTitle("Stock main")
     }
@@ -20,6 +28,8 @@ struct StockMainView: View {
         self.id = id
     }
 }
+
+
 
 struct StockMainView_Previews: PreviewProvider {
     static var previews: some View {

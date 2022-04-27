@@ -18,10 +18,16 @@
 		562C36C22811452A004C2E21 /* ApiCallable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562C36C12811452A004C2E21 /* ApiCallable.swift */; };
 		56394288280FACCE00FF7BAC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56394287280FACCD00FF7BAC /* MainView.swift */; };
 		5639428A280FAF0400FF7BAC /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56394289280FAF0300FF7BAC /* SearchView.swift */; };
+		569018942819E67600C76956 /* StockStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569018932819E67600C76956 /* StockStatsView.swift */; };
+		569018962819E7CB00C76956 /* ApiStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569018952819E7CB00C76956 /* ApiStats.swift */; };
+		56901899281A074C00C76956 /* DoubleExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56901898281A074C00C76956 /* DoubleExt.swift */; };
+		5690189B281A077900C76956 /* StringFormatExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5690189A281A077900C76956 /* StringFormatExt.swift */; };
+		5690189D281A0C0800C76956 /* StockAboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5690189C281A0C0800C76956 /* StockAboutView.swift */; };
 		56930CE72810B0870007FC08 /* PortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56930CE62810B0870007FC08 /* PortfolioView.swift */; };
 		56930CEA2810BB0A0007FC08 /* PortfolioItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56930CE92810BB0A0007FC08 /* PortfolioItemView.swift */; };
 		56930CEE2810BB690007FC08 /* PortfolioItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56930CED2810BB690007FC08 /* PortfolioItem.swift */; };
 		56CD78D62812269800DC050E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56CD78D52812269800DC050E /* RxSwift */; };
+		56CD78DA2812272900DC050E /* IServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CD78D92812272900DC050E /* IServiceFactory.swift */; };
 		56F60FF3280F768100D5BDA1 /* slava_stock_watchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F60FF2280F768100D5BDA1 /* slava_stock_watchApp.swift */; };
 		56F60FF5280F768100D5BDA1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F60FF4280F768100D5BDA1 /* ContentView.swift */; };
 		56F60FF7280F768600D5BDA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56F60FF6280F768600D5BDA1 /* Assets.xcassets */; };
@@ -58,9 +64,15 @@
 		562C36C12811452A004C2E21 /* ApiCallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCallable.swift; sourceTree = "<group>"; };
 		56394287280FACCD00FF7BAC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		56394289280FAF0300FF7BAC /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		569018932819E67600C76956 /* StockStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockStatsView.swift; sourceTree = "<group>"; };
+		569018952819E7CB00C76956 /* ApiStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiStats.swift; sourceTree = "<group>"; };
+		56901898281A074C00C76956 /* DoubleExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExt.swift; sourceTree = "<group>"; };
+		5690189A281A077900C76956 /* StringFormatExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringFormatExt.swift; sourceTree = "<group>"; };
+		5690189C281A0C0800C76956 /* StockAboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAboutView.swift; sourceTree = "<group>"; };
 		56930CE62810B0870007FC08 /* PortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioView.swift; sourceTree = "<group>"; };
 		56930CE92810BB0A0007FC08 /* PortfolioItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioItemView.swift; sourceTree = "<group>"; };
 		56930CED2810BB690007FC08 /* PortfolioItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioItem.swift; sourceTree = "<group>"; };
+		56CD78D92812272900DC050E /* IServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IServiceFactory.swift; sourceTree = "<group>"; };
 		56F60FEF280F768100D5BDA1 /* slava-stock-watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "slava-stock-watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56F60FF2280F768100D5BDA1 /* slava_stock_watchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = slava_stock_watchApp.swift; sourceTree = "<group>"; };
 		56F60FF4280F768100D5BDA1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -107,6 +119,8 @@
 			children = (
 				562C36A8281128A9004C2E21 /* StockMainView.swift */,
 				562C36BB28113C15004C2E21 /* StockSummaryView.swift */,
+				569018932819E67600C76956 /* StockStatsView.swift */,
+				5690189C281A0C0800C76956 /* StockAboutView.swift */,
 			);
 			path = StockInfo;
 			sourceTree = "<group>";
@@ -125,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				562C36B228112F06004C2E21 /* IHttpService.swift */,
+				56CD78D92812272900DC050E /* IServiceFactory.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -135,6 +150,7 @@
 				562C36B928113707004C2E21 /* ApiProfile.swift */,
 				562C36BF281141C8004C2E21 /* ApiGetTypes.swift */,
 				562C36C12811452A004C2E21 /* ApiCallable.swift */,
+				569018952819E7CB00C76956 /* ApiStats.swift */,
 			);
 			path = HttpResposes;
 			sourceTree = "<group>";
@@ -153,6 +169,15 @@
 			children = (
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		56901897281A073D00C76956 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				56901898281A074C00C76956 /* DoubleExt.swift */,
+				5690189A281A077900C76956 /* StringFormatExt.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		56930CE82810BAE20007FC08 /* Main */ = {
@@ -206,6 +231,7 @@
 		56F60FF1280F768100D5BDA1 /* slava-stock-watch */ = {
 			isa = PBXGroup;
 			children = (
+				56901897281A073D00C76956 /* Extensions */,
 				562C36AA28112DB5004C2E21 /* Services */,
 				56930CEB2810BB410007FC08 /* Models */,
 				56394286280FACB100FF7BAC /* ViewModels */,
@@ -385,12 +411,18 @@
 				5639428A280FAF0400FF7BAC /* SearchView.swift in Sources */,
 				562C36C0281141C8004C2E21 /* ApiGetTypes.swift in Sources */,
 				562C36B128112EEE004C2E21 /* HttpService.swift in Sources */,
+				56CD78DA2812272900DC050E /* IServiceFactory.swift in Sources */,
 				56930CE72810B0870007FC08 /* PortfolioView.swift in Sources */,
+				5690189B281A077900C76956 /* StringFormatExt.swift in Sources */,
 				562C36A9281128A9004C2E21 /* StockMainView.swift in Sources */,
 				56930CEA2810BB0A0007FC08 /* PortfolioItemView.swift in Sources */,
 				562C36C22811452A004C2E21 /* ApiCallable.swift in Sources */,
+				569018962819E7CB00C76956 /* ApiStats.swift in Sources */,
+				569018942819E67600C76956 /* StockStatsView.swift in Sources */,
 				56F60FF5280F768100D5BDA1 /* ContentView.swift in Sources */,
+				56901899281A074C00C76956 /* DoubleExt.swift in Sources */,
 				56394288280FACCE00FF7BAC /* MainView.swift in Sources */,
+				5690189D281A0C0800C76956 /* StockAboutView.swift in Sources */,
 				56930CEE2810BB690007FC08 /* PortfolioItem.swift in Sources */,
 				562C36BC28113C15004C2E21 /* StockSummaryView.swift in Sources */,
 				56F60FF3280F768100D5BDA1 /* slava_stock_watchApp.swift in Sources */,

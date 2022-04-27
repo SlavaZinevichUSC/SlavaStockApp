@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct StockSummaryView: View {
-    private let vm : ViewModel
+    @ObservedObject private var vm : ViewModel
     private let id : String
-    @EnvironmentObject var factory : ServiceFactory
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Section{
+            HStack(){
+                VStack(alignment: .trailing){
+                    Text("\(vm.profile.name)")
+                    Text("\(vm.profile.id)")
+                }
+                Spacer()
+                AsyncImage(url: URL(string: vm.profile.imgUrl))
+                    .frame(maxWidth:40, maxHeight: 40)
+            }
+        }.frame(minHeight: 100)
     }
        
 
@@ -26,14 +35,44 @@ struct StockSummaryView: View {
 }
 
 extension StockSummaryView{
-    class ViewModel{
+    class ViewModel : ObservableObject{
         private let id : String
         private var http : IHttpService
+        @Published var profile : ApiProfile
         init(id: String, http : IHttpService){
             self.id = id
             self.http = http
+            self.profile = ApiProfile.Default()
+            http.Get(id: id, completion: { data in
+                self.OnCompletion(profile: data)
+            })
         }
         
+        func OnCompletion(profile : ApiProfile){
+            self.profile = profile
+        }
+        
+    }
+    
+}
+
+extension UIImageView {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
+    
+    func load(url: String){
+        if let url = URL(string: url){
+            return load(url: url)
+        }
     }
 }
 

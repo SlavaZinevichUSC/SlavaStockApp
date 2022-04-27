@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class ServiceFactory : ObservableObject{
+class ServiceFactory : IServiceFactory{
     private let factory = ProdServiceFactory()
     func GetHttpService() -> IHttpService {
         return factory.GetHttpService()

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "4867819D-955B-4B0E-A11A-E87E1602586A"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "304D006F-4609-4E66-8A92-BA905EC2AF3C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "slava-stock-watch/Views/StockInfo/StockSummaryView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "init(id:http:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EB8CD733-1C89-4AB1-9997-D53C0A4E3FF9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "slava-stock-watch/Services/HttpService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "Get(id:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EB8CD733-1C89-4AB1-9997-D53C0A4E3FF9 - 60a408ed343678dc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;&#x3c4;_0_0, Alamofire.AFError&gt;) -&gt; () in slava_stock_watch.HttpService.Get&lt;&#x3c4;_0_0 where &#x3c4;_0_0: slava_stock_watch.ApiCallable&gt;(id: Swift.String) -&gt; &#x3c4;_0_0"
+                  moduleName = "slava-stock-watch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/slavazinevich/Documents/USC/Spring-2022/CSCI571_webTech/Assignment9/slava-stock-watch/slava-stock-watch/Services/HttpService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "350">
+               </Location>
+               <Location
+                  uuid = "EB8CD733-1C89-4AB1-9997-D53C0A4E3FF9 - 60a408ed343678dc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;&#x3c4;_0_0, Alamofire.AFError&gt;) -&gt; () in slava_stock_watch.HttpService.Get&lt;&#x3c4;_0_0 where &#x3c4;_0_0: slava_stock_watch.ApiCallable&gt;(id: Swift.String) -&gt; &#x3c4;_0_0"
+                  moduleName = "slava-stock-watch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/slavazinevich/Documents/USC/Spring-2022/CSCI571_webTech/Assignment9/slava-stock-watch/slava-stock-watch/Services/HttpService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "495">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
