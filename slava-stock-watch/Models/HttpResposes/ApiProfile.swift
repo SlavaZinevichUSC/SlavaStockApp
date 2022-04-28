@@ -6,17 +6,13 @@
 //
 
 struct ApiProfile : ApiCallable{
-    mutating func Update(with: ApiProfile) {
-        self.name = with.name
-    }
-    
     
     static func GetHttpName() -> String {
         return "profile"
     }
-    var id : String
-    var name : String
-    var imgUrl : String
+    let id : String
+    let name : String
+    let imgUrl : String
     
     enum CodingKeys : String, CodingKey {
         case profile
@@ -26,6 +22,7 @@ struct ApiProfile : ApiCallable{
         case id = "ticker"
         case name 
         case imgUrl = "logo"
+        case ipo
     }
     
     init(from decoder: Decoder) throws {
@@ -36,13 +33,13 @@ struct ApiProfile : ApiCallable{
         imgUrl = try profile.decode(String.self, forKey: .imgUrl)
     }
     
-    init(name: String, id: String, imgUrl: String){
+    init(_ name: String,_ id: String, _ imgUrl: String){
         self.name = name
         self.id = id
         self.imgUrl = imgUrl
     }
     static func Default() -> ApiProfile{
-        return ApiProfile(name: "", id: "", imgUrl: "")
+        return ApiProfile("", "", "")
     }
     
     

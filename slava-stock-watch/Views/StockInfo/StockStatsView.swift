@@ -11,7 +11,7 @@ struct StockStatsView: View {
     @ObservedObject var vm : ViewModel
     private let id : String
     var body: some View {
-        HStack{
+        /*HStack{
             VStack(alignment: .leading){
                 AsText("High Price:", vm.stats.high).padding(.bottom)
                 AsText("Low Price:", vm.stats.low).padding(.bottom)
@@ -20,6 +20,12 @@ struct StockStatsView: View {
                 AsText("Open Price:", vm.stats.open).padding(.bottom)
                 AsText("Prev. Close:", vm.stats.prevClose).padding(.bottom)
             }
+        }*/
+        LazyVGrid(columns: [GridItem(), GridItem()], alignment: .leading, spacing: 10){
+            AsText("High Price:", vm.stats.high)
+            AsText("Low Price:", vm.stats.low)
+            AsText("Open Price:", vm.stats.open)
+            AsText("Prev. Close:", vm.stats.prevClose)
         }
     }
     
@@ -29,12 +35,7 @@ struct StockStatsView: View {
     }
     
     func AsText(_ text : String, _ value : Double) -> Text{
-        let result = NSMutableAttributedString()
-            .bold(text)
-            .space()
-            .normal(value.Format())
-            .string
-        return Text(result)
+        return Text.Bold(text + " ").Double(value).AsInfo()
     }
     
     

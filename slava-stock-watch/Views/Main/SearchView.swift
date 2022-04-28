@@ -41,7 +41,7 @@ extension SearchView{
         @Published var searchList = [String]()
         
         init() {
-            self.searchList = []
+            self.searchList = ["TSLA", "AAPL"]
         }
         
         func OnTextChanged(_ text : String) -> Void{

@@ -32,7 +32,11 @@ final class HttpService : IHttpService{
         let req = AF.request(url, method: .get)
         req
         .responseDecodable(of: T.self) { response in
-            guard let res = response.value else { return}
+            guard let res = response.value else {
+                print(response.debugDescription)
+                return
+                
+            }
             completion(res)
         }
     }

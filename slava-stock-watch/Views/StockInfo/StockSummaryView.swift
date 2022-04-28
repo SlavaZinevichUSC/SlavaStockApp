@@ -19,7 +19,7 @@ struct StockSummaryView: View {
                 }
                 Spacer()
                 AsyncImage(url: URL(string: vm.profile.imgUrl))
-                    .frame(maxWidth:40, maxHeight: 40)
+                    .frame(width: 50, height: 50, alignment: .leading)
             }
         }.frame(minHeight: 100)
     }
