@@ -13,31 +13,51 @@ struct StockMainView: View {
     @EnvironmentObject var factory : ServiceFactory
     var body: some View {
         NavigationView{
-            List{
-                Section(header: "Summary".AsText()){
-                    StockSummaryView(id, factory: factory)
-                }
-                Section(header: "Stats".AsText()){
-                    StockStatsView(id, factory)
-                }
-                Section(header: "About".AsText()){
-                    StockAboutView(id, factory)
-                }
-                Section(header: "Insights".AsText()){
-                    StockInsightsView(id, factory)
-
+            ScrollView{
+                LazyVStack(alignment: .leading, spacing: 10){
+                    Section(){
+                        Header(vm.profile.name)
+                        StockSummaryMainView(id)
+                        Spacer()
+                    }
+                    AsSection("Stats", StockStatsView(id, factory))
+                    
+                    Section(){
+                        Header("About")
+                        StockAboutView(id, factory)
+                    }
+                    Section(){
+                        Header("Insights")
+                        StockInsightsView(id, factory)
+                    }
+                    Section{
+                        Header("News")
+                        StockNewsView(id, factory)
+                    }
                 }
             }
-            .navigationTitle(vm.profile.name)
-            .onAppear(perform: {
-                vm.OnAppear(id, factory.GetHttpService())
-            })
-        }
+        }.onAppear(perform: {
+            vm.OnAppear(id, factory.GetHttpService())
+        })
     }
-        
+    
     
     init(_ id: String){
         self.id = id
+    }
+}
+
+extension StockMainView{
+    func Header(_ text : String) -> some View{
+        return Text.Header(text).padding()
+    }
+    
+    func AsSection<T : View>(_ text : String, _ item : T) -> some View{
+        return Group{
+            Header(text)
+            item
+            Spacer()
+        }
     }
 }
 

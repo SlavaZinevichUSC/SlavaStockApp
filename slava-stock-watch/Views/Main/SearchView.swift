@@ -26,7 +26,7 @@ struct SearchView: View {
                   perform: { _ in
             self.vm.OnTextChanged(searchText)
         })
-        .navigationTitle("Ticker")
+        .navigationTitle("Stocks")
     }
 }
 

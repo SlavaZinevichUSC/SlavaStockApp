@@ -12,7 +12,7 @@ struct StockAboutView: View {
     private let id : String
     private let columns = [GridItem(), GridItem()]
     var body: some View {
-        LazyVGrid(columns: columns, alignment: .leading){
+        LazyVGrid(columns: columns, alignment: .leading, spacing: 15){
             Text.Bold("IPO Start Date: ").AsInfo()
             AsText(vm.profile.ipo)
             Text.Bold("Industry:").AsInfo()

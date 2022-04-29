@@ -9,8 +9,25 @@ import Foundation
 
 
 struct ApiNews : ApiCallable {
+   
+    let newsItems : [ApiNewsItem]
+    
+    enum CodingKeys : String, CodingKey {
+        case news
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        newsItems = try container.decode([ApiNewsItem].self, forKey: .news)
+    }
+    
+    init(_ items : [ApiNewsItem]){
+        newsItems = items
+    }
+    
     static func Default() -> ApiNews {
-        return ApiNews(newsItems: [])
+        let items : [ApiNewsItem] = [ApiNewsItem.Default()]
+        return ApiNews(items)
     }
     
     static func GetHttpName() -> String {
@@ -18,26 +35,27 @@ struct ApiNews : ApiCallable {
     }
     
     
-    let newsItems : [ApiNewsItem]
-    
-    enum CodingKeys : String, CodingKey {
-        case news
-    }
-    enum EmbedCodingKeys : String, CodingKeys{
-        case 
-    }
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        newsItems = container.decode([ApiNewsItem].self, .newsItems)
-
-    }
 }
-struct ApiNewsItem : Decodable{
+struct ApiNewsItem : Decodable, Identifiable{
+    var id = UUID()
+    
     let imgUrl : String
     let url : String
     let title : String
     let source : String
-    let publishDate : String
+    let publishDate : Int
     let summary : String
+    
+    enum CodingKeys : String, CodingKey{
+        case imgUrl = "image"
+        case title = "headline"
+        case publishDate = "datetime"
+        case url
+        case source
+        case summary
+    }
         
+    static func Default() -> ApiNewsItem{
+        return ApiNewsItem(imgUrl: "", url: "", title: "", source: "", publishDate: 0, summary: "")
+    }
 }

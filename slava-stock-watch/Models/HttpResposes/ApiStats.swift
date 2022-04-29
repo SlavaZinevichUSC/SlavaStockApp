@@ -16,6 +16,8 @@ struct ApiStats : ApiCallable{
     let low : Double
     let prevClose : Double
     let open : Double
+    let change : Double
+    let current : Double
     
     enum CodingKeys : String, CodingKey {
         case price
@@ -26,6 +28,8 @@ struct ApiStats : ApiCallable{
         case low = "l"
         case prevClose = "pc"
         case open = "o"
+        case change = "dp"
+        case current = "c"
     }
     
     init(from decoder : Decoder) throws{
@@ -35,16 +39,21 @@ struct ApiStats : ApiCallable{
         low = try profile.decode(Double.self, forKey: .low)
         prevClose = try profile.decode(Double.self, forKey: .prevClose)
         open = try profile.decode(Double.self, forKey: .open)
+        change = try profile.decode(Double.self, forKey: .change)
+        current = try profile.decode(Double.self, forKey: .current)
     }
-    init(_ h : Double, _ l : Double, _ p : Double, _ o : Double){
+    
+    init(_ h : Double, _ l : Double, _ p : Double, _ o : Double, _ c : Double, _ t : Double){
         high = h
         low = l
         prevClose = p
         open = o
+        change = c
+        current = t
     }
     
     static func Default() -> ApiStats {
-        return ApiStats(420, 0, 100, 69)
+        return ApiStats(420, 0, 100, 69, 0.69, 210)
     }
     
 }

@@ -21,7 +21,7 @@ struct StockStatsView: View {
                 AsText("Prev. Close:", vm.stats.prevClose).padding(.bottom)
             }
         }*/
-        LazyVGrid(columns: [GridItem(), GridItem()], alignment: .leading, spacing: 10){
+        LazyVGrid(columns: [GridItem(), GridItem()], alignment: .leading, spacing: 15){
             AsText("High Price:", vm.stats.high)
             AsText("Low Price:", vm.stats.low)
             AsText("Open Price:", vm.stats.open)

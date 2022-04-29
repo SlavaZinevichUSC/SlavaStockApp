@@ -11,27 +11,33 @@ struct StockSummaryView: View {
     @ObservedObject private var vm : ViewModel
     private let id : String
     var body: some View {
-        Section{
-            HStack(){
-                VStack(alignment: .trailing){
-                    Text("\(vm.profile.name)")
-                    Text("\(vm.profile.id)")
-                }
-                Spacer()
-                AsyncImage(url: URL(string: vm.profile.imgUrl))
-                    .frame(width: 50, height: 50, alignment: .leading)
-            }
-        }.frame(minHeight: 100)
+        HStack(){
+            Text("\(vm.profile.id)").font(.footnote).foregroundColor(Color.gray)
+            Spacer()
+            Image(vm.profile.imgUrl)
+        }
+        .frame(minHeight: 100)
     }
        
 
     
     
-    init(_ id: String, factory : ServiceFactory){
+    init(_ id: String, _ factory : ServiceFactory){
         self.id = id
         self.vm = ViewModel(id: id, http: factory.GetHttpService())
     }
     
+}
+
+extension StockSummaryView{
+    func Image(_ url : String) -> some View{
+        AsyncImage(url: URL(string: vm.profile.imgUrl)){image in
+            image.resizable().aspectRatio(contentMode: .fill)
+        } placeholder: {
+            Color.gray
+        }
+            .frame(width: 50, height: 50, alignment: .leading)
+    }
 }
 
 extension StockSummaryView{
@@ -51,33 +57,11 @@ extension StockSummaryView{
         func OnCompletion(profile : ApiProfile){
             self.profile = profile
         }
-        
-    }
-    
-}
-
-extension UIImageView {
-    func load(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
-    }
-    
-    func load(url: String){
-        if let url = URL(string: url){
-            return load(url: url)
-        }
     }
 }
 
 struct StockSummaryView_Previews: PreviewProvider {
     static var previews: some View {
-        StockSummaryView("TSLA", factory: ServiceFactory())
+        StockSummaryView("TSLA", ServiceFactory())
     }
 }

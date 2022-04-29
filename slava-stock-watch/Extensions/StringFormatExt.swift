@@ -26,23 +26,42 @@ extension Text{
     }
     
     func Double(_ value:Double) -> Text{
-        return self + Text(Text.FormatDouble(value))
+        return self + Text.FormatDouble(value)
+    }
+    
+    
+    func Link(_ value : String, _ url : String) -> Text{
+        let link = "[\(value)](\(url))"
+        return self + Text(.init(link))
+    }
+    
+    func Link(_ value : String) -> Text{
+        let link = "[\(value)](\(value))"
+        return self + Text(.init(link))
     }
     
     func AsInfo() -> Text{
-        return self.font(.caption)
+        return self.font(.body)
     }
     
     func Space() -> Text{
         return self + Text(" ")
     }
     
-    private static func FormatDouble(_ value : Double) -> String{
-        return String(format: "%.2f", value)
-    }
-    
     static func Bold(_ value:String) -> Text{
         return Text(value).bold()
+    }
+    
+    static func Header(_ value : String) -> Text{
+        return Text.Bold(value).font(.title)
+    }
+    
+    static func ToDate(_ value : Int) -> Text{
+        return Text(Date.FromTimestamp(value))
+    }
+    
+    static func FormatDouble(_ value : Double) -> Text{
+        return Text(String(format: "%.2f", value))
     }
 }
 
