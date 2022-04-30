@@ -7,35 +7,72 @@
 
 import SwiftUI
 
-class ServiceContainer : IServiceFactory{
-    private let factory : ProdServiceContainer
+
+//Okay this Separation is TERRIBLE for Debug/Release abstraction but 
+class ServiceContainer : ObservableObject {
+    private let container : ProdServiceContainer
     
     init(_ portfolioManager : IPortfolioManager){
-        factory = ProdServiceContainer(portfolioManager)
+        container = ProdServiceContainer(portfolioManager)
     }
     func GetHttpService() -> IHttpService {
-        return factory.GetHttpService()
+        return container.httpService
     }
+    
+    func GetPortfolioService() -> IPortfolioService{
+        return container.portfolioService
+    }
+}
+
+protocol IContainerComponent{
+    var httpService : IHttpService {get}
+    var portfolioService : IPortfolioService {get}
 }
 
 extension ServiceContainer{
     
-    class ProdServiceContainer{
-        private let httpService : IHttpService = HttpService()
-        private let portfolioService : IPortfolioService
+    class CustomContainerComponent : IContainerComponent{
+        let httpService: IHttpService
+        let portfolioService: IPortfolioService
+        
+        init(httpService : IHttpService, portfolioService : IPortfolioService){
+            self.httpService = httpService
+            self.portfolioService = portfolioService
+        }
+    }
+}
+extension ServiceContainer{
+    
+    class ProdServiceContainer : IContainerComponent{
+        let httpService : IHttpService = HttpService()
+        let portfolioService : IPortfolioService
         
         init(_ portfolioManager : IPortfolioManager){
             portfolioService = PortfolioService(portfolioManager)
         }
-
-        func GetHttpService() -> IHttpService{
-            return httpService
+        
+    }
+}
+extension ServiceContainer{
+    
+    class DebugServiceContainer : IContainerComponent{
+        let httpService: IHttpService
+        let portfolioService: IPortfolioService
+        
+        init(_ portfolioManager : IPortfolioManager){
+            httpService = HttpService()
+            portfolioService = PortfolioService(portfolioManager)
         }
     }
 }
 
+
 extension ServiceContainer{
-    static func Default() -> ServiceContainer{
+    static func Production() -> ServiceContainer{
+        return ServiceContainer(PortfolioManager())
+    }
+    
+    static func Preview() -> ServiceContainer{
         return ServiceContainer(PortfolioManager())
     }
 }

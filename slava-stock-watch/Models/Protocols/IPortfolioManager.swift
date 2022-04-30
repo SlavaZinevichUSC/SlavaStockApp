@@ -10,4 +10,6 @@ import Foundation
 protocol IPortfolioManager{
     func SavePortfolioFile(id : String, name : String, value : Double)
     func GetPortfolioFiles() -> [PortfolioFile]
+    func GetPortfolioCash() -> PortfolioCashFile?
+    func CreatePortfolioCash(initValue : Double) 
 }

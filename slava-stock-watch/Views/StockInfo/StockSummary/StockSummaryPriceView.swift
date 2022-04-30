@@ -48,6 +48,6 @@ extension StockSummaryPriceView{
 
 struct StockSummaryPriceView_Previews: PreviewProvider {
     static var previews: some View {
-        StockSummaryPriceView("AAPL", ServiceContainer.Default())
+        StockSummaryPriceView("AAPL", ServiceContainer.Production())
     }
 }

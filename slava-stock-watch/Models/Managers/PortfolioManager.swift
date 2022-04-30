@@ -38,6 +38,27 @@ class PortfolioManager : IPortfolioManager{
         }
     }
     
+    func GetPortfolioCash() -> PortfolioCashFile? {
+        let req : NSFetchRequest<PortfolioCashFile> = PortfolioCashFile.fetchRequest()
+        do{
+            let cashOpt = try container.viewContext.fetch(req).first
+            guard let cash = cashOpt else {
+                return nil
+            }
+            return cash
+        } catch {
+            return nil
+        }
+    }
+    
+    func CreatePortfolioCash(initValue : Double) {
+        //SO DUMB that we have to create this
+        //BUT no easy way to initialize a DataModel locally
+        let cash = PortfolioCashFile(context: container.viewContext)
+        cash.cash = initValue
+        TrySave()
+    }
+    
     
     private func TrySave(){
         do{

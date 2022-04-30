@@ -11,4 +11,7 @@ protocol IPortfolioService{
     func SavePorfolioFile(id : String, name : String, value : Double)
     func SavePortfolioFile(_ item: PortfolioItem)
     func GetPorfolioFiles() -> [PortfolioItem]
+    func GetPortfolioFile(_ id : String) -> PortfolioItem?
+    
+    func GetCash() -> CashItem
 }
