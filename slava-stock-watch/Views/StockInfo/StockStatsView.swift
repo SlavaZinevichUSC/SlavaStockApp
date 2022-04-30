@@ -29,9 +29,9 @@ struct StockStatsView: View {
         }
     }
     
-    init(_ id : String, _ factory : ServiceFactory){
+    init(_ id : String, _ container : ServiceContainer){
         self.id = id
-        self.vm = ViewModel(id, factory.GetHttpService())
+        self.vm = ViewModel(id, container.GetHttpService())
     }
     
     func AsText(_ text : String, _ value : Double) -> Text{
@@ -60,6 +60,6 @@ extension StockStatsView{
 }
 struct StockStatsView_Previews: PreviewProvider {
     static var previews: some View {
-        StockStatsView("AAPL", ServiceFactory.Default())
+        StockStatsView("AAPL", ServiceContainer.Default())
     }
 }

@@ -23,9 +23,9 @@ struct StockAboutView: View {
         
     }
     
-    init(_ id : String, _ factory : ServiceFactory){
+    init(_ id : String, _ container : ServiceContainer){
         self.id = id
-        self.vm = ViewModel(id, factory.GetHttpService())
+        self.vm = ViewModel(id, container.GetHttpService())
     }
     
     
@@ -58,6 +58,6 @@ extension StockAboutView{
 
 struct StockAboutView_Previews: PreviewProvider {
     static var previews: some View {
-        StockAboutView("AAPL", ServiceFactory.Default())
+        StockAboutView("AAPL", ServiceContainer.Default())
     }
 }

@@ -31,8 +31,8 @@ struct StockNewsView: View {
         }
     }
     
-    init(_ id : String, _ factory : ServiceFactory){
-        vm = ViewModel(id, factory.GetHttpService())
+    init(_ id : String, _ container : ServiceContainer){
+        vm = ViewModel(id, container.GetHttpService())
     }
 }
 
@@ -50,6 +50,6 @@ extension StockNewsView{
 
 struct StockNewsView_Previews: PreviewProvider {
     static var previews: some View {
-        StockNewsView("TSLA", ServiceFactory.Default())
+        StockNewsView("TSLA", ServiceContainer.Default())
     }
 }

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		562C36A9281128A9004C2E21 /* StockMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562C36A8281128A9004C2E21 /* StockMainView.swift */; };
-		562C36AC28112E02004C2E21 /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562C36AB28112E02004C2E21 /* ServiceFactory.swift */; };
+		562C36AC28112E02004C2E21 /* ServiceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562C36AB28112E02004C2E21 /* ServiceContainer.swift */; };
 		562C36B128112EEE004C2E21 /* HttpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562C36B028112EEE004C2E21 /* HttpService.swift */; };
 		562C36B328112F06004C2E21 /* IHttpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562C36B228112F06004C2E21 /* IHttpService.swift */; };
 		562C36B628113554004C2E21 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 562C36B528113554004C2E21 /* Alamofire */; };
@@ -69,7 +69,7 @@
 
 /* Begin PBXFileReference section */
 		562C36A8281128A9004C2E21 /* StockMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockMainView.swift; sourceTree = "<group>"; };
-		562C36AB28112E02004C2E21 /* ServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFactory.swift; sourceTree = "<group>"; };
+		562C36AB28112E02004C2E21 /* ServiceContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceContainer.swift; sourceTree = "<group>"; };
 		562C36B028112EEE004C2E21 /* HttpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpService.swift; sourceTree = "<group>"; };
 		562C36B228112F06004C2E21 /* IHttpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IHttpService.swift; sourceTree = "<group>"; };
 		562C36B928113707004C2E21 /* ApiProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiProfile.swift; sourceTree = "<group>"; };
@@ -159,7 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				562C36AD28112E4A004C2E21 /* Protocols */,
-				562C36AB28112E02004C2E21 /* ServiceFactory.swift */,
+				562C36AB28112E02004C2E21 /* ServiceContainer.swift */,
 				562C36B028112EEE004C2E21 /* HttpService.swift */,
 				56C6F527281DBFFA00BB15E5 /* PortfolioService.swift */,
 			);
@@ -522,7 +522,7 @@
 				56C6F51F281DBDC600BB15E5 /* IPortfolioService.swift in Sources */,
 				56F60FF3280F768100D5BDA1 /* slava_stock_watchApp.swift in Sources */,
 				569018AF281B43CD00C76956 /* StockNewsItemView.swift in Sources */,
-				562C36AC28112E02004C2E21 /* ServiceFactory.swift in Sources */,
+				562C36AC28112E02004C2E21 /* ServiceContainer.swift in Sources */,
 				562C36BA28113707004C2E21 /* ApiProfile.swift in Sources */,
 				562C36B328112F06004C2E21 /* IHttpService.swift in Sources */,
 			);

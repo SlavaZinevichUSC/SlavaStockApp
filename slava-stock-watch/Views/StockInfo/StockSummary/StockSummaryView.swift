@@ -22,9 +22,9 @@ struct StockSummaryView: View {
 
     
     
-    init(_ id: String, _ factory : ServiceFactory){
+    init(_ id: String, _ container : ServiceContainer){
         self.id = id
-        self.vm = ViewModel(id: id, http: factory.GetHttpService())
+        self.vm = ViewModel(id: id, http: container.GetHttpService())
     }
     
 }
@@ -62,6 +62,6 @@ extension StockSummaryView{
 
 struct StockSummaryView_Previews: PreviewProvider {
     static var previews: some View {
-        StockSummaryView("TSLA", ServiceFactory.Default())
+        StockSummaryView("TSLA", ServiceContainer.Default())
     }
 }

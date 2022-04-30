@@ -10,7 +10,7 @@ import SwiftUI
 struct StockMainView: View {
     private let id : String
     @ObservedObject private var vm = ViewModel()
-    @EnvironmentObject var factory : ServiceFactory
+    @EnvironmentObject var container : ServiceContainer
     var body: some View {
         NavigationView{
             ScrollView{
@@ -20,24 +20,24 @@ struct StockMainView: View {
                         StockSummaryMainView(id)
                         Spacer()
                     }
-                    AsSection("Stats", StockStatsView(id, factory))
+                    AsSection("Stats", StockStatsView(id, container))
                     
                     Section(){
                         Header("About")
-                        StockAboutView(id, factory)
+                        StockAboutView(id, container)
                     }
                     Section(){
                         Header("Insights")
-                        StockInsightsView(id, factory)
+                        StockInsightsView(id, container)
                     }
                     Section{
                         Header("News")
-                        StockNewsView(id, factory)
+                        StockNewsView(id, container)
                     }
                 }
             }
         }.onAppear(perform: {
-            vm.OnAppear(id, factory.GetHttpService())
+            vm.OnAppear(id, container.GetHttpService())
         })
     }
     

@@ -32,8 +32,8 @@ struct StockInsightsView: View {
     }
     
     
-    init(_ id: String, _ factory : ServiceFactory){
-        vm = ViewModel(id, factory.GetHttpService())
+    init(_ id: String, _ container : ServiceContainer){
+        vm = ViewModel(id, container.GetHttpService())
     }
     
     private func AsLabel(_ text: String) -> Text{
@@ -58,6 +58,6 @@ extension StockInsightsView{
 }
 struct StockInsightsView_Previews: PreviewProvider {
     static var previews: some View {
-        StockInsightsView("AAPL", ServiceFactory.Default())
+        StockInsightsView("AAPL", ServiceContainer.Default())
     }
 }

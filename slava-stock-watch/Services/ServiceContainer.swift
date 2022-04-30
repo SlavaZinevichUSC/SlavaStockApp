@@ -7,20 +7,20 @@
 
 import SwiftUI
 
-class ServiceFactory : IServiceFactory{
-    private let factory : ProdServiceFactory
+class ServiceContainer : IServiceFactory{
+    private let factory : ProdServiceContainer
     
     init(_ portfolioManager : IPortfolioManager){
-        factory = ProdServiceFactory(portfolioManager)
+        factory = ProdServiceContainer(portfolioManager)
     }
     func GetHttpService() -> IHttpService {
         return factory.GetHttpService()
     }
 }
 
-extension ServiceFactory{
+extension ServiceContainer{
     
-    class ProdServiceFactory{
+    class ProdServiceContainer{
         private let httpService : IHttpService = HttpService()
         private let portfolioService : IPortfolioService
         
@@ -34,8 +34,8 @@ extension ServiceFactory{
     }
 }
 
-extension ServiceFactory{
-    static func Default() -> ServiceFactory{
-        return ServiceFactory(PortfolioManager())
+extension ServiceContainer{
+    static func Default() -> ServiceContainer{
+        return ServiceContainer(PortfolioManager())
     }
 }

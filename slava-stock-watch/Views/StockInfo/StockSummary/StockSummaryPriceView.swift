@@ -17,8 +17,8 @@ struct StockSummaryPriceView: View {
         }
     }
     
-    init(_ id : String, _ factory : ServiceFactory){
-        vm = ViewModel(id, factory.GetHttpService())
+    init(_ id : String, _ container : ServiceContainer){
+        vm = ViewModel(id, container.GetHttpService())
     }
 }
 
@@ -48,6 +48,6 @@ extension StockSummaryPriceView{
 
 struct StockSummaryPriceView_Previews: PreviewProvider {
     static var previews: some View {
-        StockSummaryPriceView("AAPL", ServiceFactory.Default())
+        StockSummaryPriceView("AAPL", ServiceContainer.Default())
     }
 }

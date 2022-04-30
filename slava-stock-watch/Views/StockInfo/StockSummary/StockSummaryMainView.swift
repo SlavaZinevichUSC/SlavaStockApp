@@ -9,12 +9,12 @@ import SwiftUI
 
 struct StockSummaryMainView: View {
     private let id : String
-    @EnvironmentObject var factory : ServiceFactory
+    @EnvironmentObject var container : ServiceContainer
 
     var body: some View {
         VStack{
-            StockSummaryView(id, factory)
-            StockSummaryPriceView(id, factory)
+            StockSummaryView(id, container)
+            StockSummaryPriceView(id, container)
         }
     }
     
