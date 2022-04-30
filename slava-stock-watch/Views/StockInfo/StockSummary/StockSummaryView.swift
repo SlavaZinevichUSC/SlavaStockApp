@@ -62,6 +62,6 @@ extension StockSummaryView{
 
 struct StockSummaryView_Previews: PreviewProvider {
     static var previews: some View {
-        StockSummaryView("TSLA", ServiceFactory())
+        StockSummaryView("TSLA", ServiceFactory.Default())
     }
 }

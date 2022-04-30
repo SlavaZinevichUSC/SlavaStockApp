@@ -60,6 +60,6 @@ extension StockStatsView{
 }
 struct StockStatsView_Previews: PreviewProvider {
     static var previews: some View {
-        StockStatsView("AAPL", ServiceFactory())
+        StockStatsView("AAPL", ServiceFactory.Default())
     }
 }

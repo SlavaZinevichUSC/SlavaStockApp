@@ -8,10 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    private let factory: ServiceFactory
     var body: some View {
         Group{
             MainView()
+                .environmentObject(factory)
         }
+    }
+    
+    init(){
+        factory = ServiceFactory(PortfolioManager())
     }
 }
 

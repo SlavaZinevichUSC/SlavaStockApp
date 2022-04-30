@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Cash" representedClassName="Cash" syncable="YES" codeGenerationType="class">
+        <attribute name="cash" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="PortfolioFile" representedClassName="PortfolioFile" syncable="YES" codeGenerationType="class">
+        <attribute name="avgPrice" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="PortfolioFile" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="Cash" positionX="-54" positionY="18" width="128" height="14"/>
+    </elements>
+</model>

@@ -50,6 +50,6 @@ extension StockNewsView{
 
 struct StockNewsView_Previews: PreviewProvider {
     static var previews: some View {
-        StockNewsView("TSLA", ServiceFactory())
+        StockNewsView("TSLA", ServiceFactory.Default())
     }
 }

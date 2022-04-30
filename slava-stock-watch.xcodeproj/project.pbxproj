@@ -34,9 +34,12 @@
 		569018B6281C657E00C76956 /* StockNewsLeadingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569018B5281C657E00C76956 /* StockNewsLeadingItem.swift */; };
 		569018B9281C77A700C76956 /* StockSummaryMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569018B8281C77A700C76956 /* StockSummaryMainView.swift */; };
 		569018BB281C78F100C76956 /* StockSummaryPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569018BA281C78F100C76956 /* StockSummaryPriceView.swift */; };
-		56930CE72810B0870007FC08 /* PortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56930CE62810B0870007FC08 /* PortfolioView.swift */; };
-		56930CEA2810BB0A0007FC08 /* PortfolioItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56930CE92810BB0A0007FC08 /* PortfolioItemView.swift */; };
+		569018BE281C80EF00C76956 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 569018BC281C80EF00C76956 /* DataModel.xcdatamodeld */; };
+		569018C2281C823C00C76956 /* PortfolioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569018C1281C823C00C76956 /* PortfolioManager.swift */; };
 		56930CEE2810BB690007FC08 /* PortfolioItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56930CED2810BB690007FC08 /* PortfolioItem.swift */; };
+		56C6F51F281DBDC600BB15E5 /* IPortfolioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C6F51E281DBDC600BB15E5 /* IPortfolioService.swift */; };
+		56C6F528281DBFFA00BB15E5 /* PortfolioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C6F527281DBFFA00BB15E5 /* PortfolioService.swift */; };
+		56C6F52B281DC06600BB15E5 /* IPortfolioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C6F52A281DC06600BB15E5 /* IPortfolioManager.swift */; };
 		56CD78D62812269800DC050E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56CD78D52812269800DC050E /* RxSwift */; };
 		56CD78DA2812272900DC050E /* IServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CD78D92812272900DC050E /* IServiceFactory.swift */; };
 		56F60FF3280F768100D5BDA1 /* slava_stock_watchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F60FF2280F768100D5BDA1 /* slava_stock_watchApp.swift */; };
@@ -91,9 +94,12 @@
 		569018B5281C657E00C76956 /* StockNewsLeadingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockNewsLeadingItem.swift; sourceTree = "<group>"; };
 		569018B8281C77A700C76956 /* StockSummaryMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSummaryMainView.swift; sourceTree = "<group>"; };
 		569018BA281C78F100C76956 /* StockSummaryPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSummaryPriceView.swift; sourceTree = "<group>"; };
-		56930CE62810B0870007FC08 /* PortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioView.swift; sourceTree = "<group>"; };
-		56930CE92810BB0A0007FC08 /* PortfolioItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioItemView.swift; sourceTree = "<group>"; };
+		569018BD281C80EF00C76956 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		569018C1281C823C00C76956 /* PortfolioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioManager.swift; sourceTree = "<group>"; };
 		56930CED2810BB690007FC08 /* PortfolioItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioItem.swift; sourceTree = "<group>"; };
+		56C6F51E281DBDC600BB15E5 /* IPortfolioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPortfolioService.swift; sourceTree = "<group>"; };
+		56C6F527281DBFFA00BB15E5 /* PortfolioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioService.swift; sourceTree = "<group>"; };
+		56C6F52A281DC06600BB15E5 /* IPortfolioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPortfolioManager.swift; sourceTree = "<group>"; };
 		56CD78D92812272900DC050E /* IServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IServiceFactory.swift; sourceTree = "<group>"; };
 		56F60FEF280F768100D5BDA1 /* slava-stock-watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "slava-stock-watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56F60FF2280F768100D5BDA1 /* slava_stock_watchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = slava_stock_watchApp.swift; sourceTree = "<group>"; };
@@ -155,6 +161,7 @@
 				562C36AD28112E4A004C2E21 /* Protocols */,
 				562C36AB28112E02004C2E21 /* ServiceFactory.swift */,
 				562C36B028112EEE004C2E21 /* HttpService.swift */,
+				56C6F527281DBFFA00BB15E5 /* PortfolioService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -164,6 +171,7 @@
 			children = (
 				562C36B228112F06004C2E21 /* IHttpService.swift */,
 				56CD78D92812272900DC050E /* IServiceFactory.swift */,
+				56C6F51E281DBDC600BB15E5 /* IPortfolioService.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -185,6 +193,7 @@
 		56394285280FACA800FF7BAC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				569018C0281C821E00C76956 /* Portfolio */,
 				562C36A728112875004C2E21 /* StockInfo */,
 				56930CE82810BAE20007FC08 /* Main */,
 			);
@@ -229,13 +238,26 @@
 			path = StockSummary;
 			sourceTree = "<group>";
 		};
+		569018BF281C81E400C76956 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				569018C1281C823C00C76956 /* PortfolioManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		569018C0281C821E00C76956 /* Portfolio */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Portfolio;
+			sourceTree = "<group>";
+		};
 		56930CE82810BAE20007FC08 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				56394289280FAF0300FF7BAC /* SearchView.swift */,
 				56394287280FACCD00FF7BAC /* MainView.swift */,
-				56930CE62810B0870007FC08 /* PortfolioView.swift */,
-				56930CE92810BB0A0007FC08 /* PortfolioItemView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -243,6 +265,8 @@
 		56930CEB2810BB410007FC08 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				56C6F529281DC05500BB15E5 /* Protocols */,
+				569018BF281C81E400C76956 /* Managers */,
 				562C36B8281136E8004C2E21 /* HttpResposes */,
 				56930CEC2810BB460007FC08 /* DataContainers */,
 			);
@@ -255,6 +279,14 @@
 				56930CED2810BB690007FC08 /* PortfolioItem.swift */,
 			);
 			path = DataContainers;
+			sourceTree = "<group>";
+		};
+		56C6F529281DC05500BB15E5 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				56C6F52A281DC06600BB15E5 /* IPortfolioManager.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		56F60FE6280F768100D5BDA1 = {
@@ -290,6 +322,7 @@
 				56F60FF6280F768600D5BDA1 /* Assets.xcassets */,
 				56F60FFB280F768600D5BDA1 /* Info.plist */,
 				56F60FF8280F768600D5BDA1 /* Preview Content */,
+				569018BC281C80EF00C76956 /* DataModel.xcdatamodeld */,
 			);
 			path = "slava-stock-watch";
 			sourceTree = "<group>";
@@ -457,17 +490,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				569018BE281C80EF00C76956 /* DataModel.xcdatamodeld in Sources */,
 				5639428A280FAF0400FF7BAC /* SearchView.swift in Sources */,
 				562C36C0281141C8004C2E21 /* ApiGetTypes.swift in Sources */,
 				562C36B128112EEE004C2E21 /* HttpService.swift in Sources */,
 				56CD78DA2812272900DC050E /* IServiceFactory.swift in Sources */,
-				56930CE72810B0870007FC08 /* PortfolioView.swift in Sources */,
 				569018A3281A2A0400C76956 /* StockInsightsView.swift in Sources */,
 				5690189B281A077900C76956 /* StringFormatExt.swift in Sources */,
 				569018B4281B61A900C76956 /* DateExt.swift in Sources */,
 				562C36A9281128A9004C2E21 /* StockMainView.swift in Sources */,
 				5690189F281A133800C76956 /* ApiProfileDetails.swift in Sources */,
-				56930CEA2810BB0A0007FC08 /* PortfolioItemView.swift in Sources */,
 				562C36C22811452A004C2E21 /* ApiCallable.swift in Sources */,
 				569018962819E7CB00C76956 /* ApiStats.swift in Sources */,
 				569018AD281B269400C76956 /* StockNewsView.swift in Sources */,
@@ -476,14 +508,18 @@
 				569018B6281C657E00C76956 /* StockNewsLeadingItem.swift in Sources */,
 				56F60FF5280F768100D5BDA1 /* ContentView.swift in Sources */,
 				56901899281A074C00C76956 /* DoubleExt.swift in Sources */,
+				569018C2281C823C00C76956 /* PortfolioManager.swift in Sources */,
 				56394288280FACCE00FF7BAC /* MainView.swift in Sources */,
 				569018AB281A683200C76956 /* ApiNews.swift in Sources */,
 				5690189D281A0C0800C76956 /* StockAboutView.swift in Sources */,
+				56C6F52B281DC06600BB15E5 /* IPortfolioManager.swift in Sources */,
+				56C6F528281DBFFA00BB15E5 /* PortfolioService.swift in Sources */,
 				569018BB281C78F100C76956 /* StockSummaryPriceView.swift in Sources */,
 				569018B1281B5AE800C76956 /* StockNewsPopupView.swift in Sources */,
 				56930CEE2810BB690007FC08 /* PortfolioItem.swift in Sources */,
 				569018A5281A2AFC00C76956 /* ApiSentiments.swift in Sources */,
 				562C36BC28113C15004C2E21 /* StockSummaryView.swift in Sources */,
+				56C6F51F281DBDC600BB15E5 /* IPortfolioService.swift in Sources */,
 				56F60FF3280F768100D5BDA1 /* slava_stock_watchApp.swift in Sources */,
 				569018AF281B43CD00C76956 /* StockNewsItemView.swift in Sources */,
 				562C36AC28112E02004C2E21 /* ServiceFactory.swift in Sources */,
@@ -834,6 +870,19 @@
 			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		569018BC281C80EF00C76956 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				569018BD281C80EF00C76956 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 569018BD281C80EF00C76956 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 56F60FE7280F768100D5BDA1 /* Project object */;
 }

@@ -11,10 +11,12 @@ import SwiftUI
 struct PortfolioItem: Identifiable{
     let id : String
     let name : String
+    let avgPrice : Double
     
     
-    init(id: String, name: String){
+    init(id: String, name: String,  avgPrice : Double){
         self.id = id
         self.name = name
+        self.avgPrice = avgPrice
     }
 }
