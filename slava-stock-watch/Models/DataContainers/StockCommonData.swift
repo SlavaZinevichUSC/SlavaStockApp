@@ -9,24 +9,26 @@ import Foundation
 import RxSwift
 
 class StockCommonData : ObservableObject{
-    let stats : SharedStats
+    let stats : SharedApiData<ApiStats>
+    let profile : SharedApiData<ApiProfile>
     let id : String
     
     init(_ id: String, _ http : IHttpService){
         self.id = id
-        stats = SharedStats(id, http)
+        stats = SharedApiData<ApiStats>(id, http)
+        profile = SharedApiData<ApiProfile>(id, http)
     }
 }
 
-class SharedStats{
-    let statsObs : BehaviorSubject<ApiStats>
+class SharedApiData<T : ApiCallable>{
+    let observable : BehaviorSubject<T>
     private let id : String
     private let http : IHttpService
     private var isBusy = false
     
     init(_ id : String, _ http : IHttpService){
         self.id = id
-        statsObs = BehaviorSubject<ApiStats>(value: ApiStats.Default())
+        observable = BehaviorSubject<T>(value: T.Default())
         self.http = http
         Get()
     }
@@ -43,7 +45,7 @@ class SharedStats{
     
     private func Get(){
         http.Get(id: self.id){ stats in
-            self.statsObs.onNext(stats)
+            self.observable.onNext(stats)
         }
     }
 }

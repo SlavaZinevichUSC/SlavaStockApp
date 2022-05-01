@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import RxSwift
 
 struct StockSummaryView: View {
     @ObservedObject private var vm : ViewModel
+    @EnvironmentObject var commonData : StockCommonData
     private let id : String
     var body: some View {
         HStack(){
@@ -17,6 +19,9 @@ struct StockSummaryView: View {
             Image(vm.profile.imgUrl)
         }
         .frame(minHeight: 100)
+        .onAppear(perform: {
+            vm.
+        })
     }
        
     
@@ -50,6 +55,12 @@ extension StockSummaryView{
             http.Get(id: id, completion: { data in
                 self.OnCompletion(profile: data)
             })
+        }
+        
+        func Subscribe(_ obs: Observable<ApiProfile>){
+            _ = obs.subscribe{ data in
+                self.profile = data
+            }
         }
         
         func OnCompletion(profile : ApiProfile){

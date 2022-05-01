@@ -11,7 +11,6 @@ import RxSwift
 struct StockStatsView: View {
     @ObservedObject var vm : StatsVM = StatsVM()
     @EnvironmentObject var commonData : StockCommonData
-    private let id : String
     var body: some View {
         LazyVGrid(columns: [GridItem(), GridItem()], alignment: .leading, spacing: 15){
             AsText("High Price:", vm.stats.high)
@@ -20,12 +19,8 @@ struct StockStatsView: View {
             AsText("Prev. Close:", vm.stats.prevClose)
         }
         .onAppear(perform: {
-            vm.Subscribe(commonData.stats.statsObs)
+            vm.Subscribe(commonData.stats.observable)
         })
-    }
-    
-    init(_ id : String, _ container : ServiceContainer){
-        self.id = id
     }
     
     func AsText(_ text : String, _ value : Double) -> Text{
@@ -37,6 +32,6 @@ struct StockStatsView: View {
 
 struct StockStatsView_Previews: PreviewProvider {
     static var previews: some View {
-        StockStatsView("AAPL", ServiceContainer.Current())
+        StockStatsView()
     }
 }

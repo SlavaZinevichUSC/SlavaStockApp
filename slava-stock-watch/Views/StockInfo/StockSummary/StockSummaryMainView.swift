@@ -10,7 +10,6 @@ import SwiftUI
 struct StockSummaryMainView: View {
     private let id : String
     @EnvironmentObject var container : ServiceContainer
-    @EnvironmentObject var commonData : StockCommonData
 
     var body: some View {
         VStack{

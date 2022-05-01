@@ -20,7 +20,7 @@ struct StockMainView: View {
                         StockSummaryMainView(id).environmentObject(vm.commonData)
                         Spacer()
                     }
-                    AsSection("Stats", StockStatsView(id, container))
+                    AsSection("Stats", StockStatsView().environmentObject(vm.commonData))
                     
                     AsSection("About",StockAboutView(id, container))
                     

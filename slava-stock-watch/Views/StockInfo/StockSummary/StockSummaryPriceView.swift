@@ -16,7 +16,10 @@ struct StockSummaryPriceView: View {
             TextChange(vm.stats.change)
             Spacer()
         }
-        .onAppear(perform: { vm.Subscribe(commonData.stats.statsObs)})
+        .onAppear(perform: {
+            vm.Subscribe(commonData.stats.observable)
+            
+        })
     }
     
 }
