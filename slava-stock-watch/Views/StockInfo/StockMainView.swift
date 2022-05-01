@@ -17,7 +17,7 @@ struct StockMainView: View {
                 LazyVStack(alignment: .leading, spacing: 10){
                     Section(){
                         Header(vm.profile.name)
-                        StockSummaryMainView(id).environmentObject(vm.commonData)
+                        StockSummaryMainView().environmentObject(vm.commonData)
                         Spacer()
                     }
                     AsSection("Stats", StockStatsView().environmentObject(vm.commonData))

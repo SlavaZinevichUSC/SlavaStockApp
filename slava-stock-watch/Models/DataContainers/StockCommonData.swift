@@ -36,7 +36,7 @@ class SharedApiData<T : ApiCallable>{
     func Request(){
         if(isBusy) { return }
         isBusy = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
             self.isBusy = false //very ugly
         }
         Get()
