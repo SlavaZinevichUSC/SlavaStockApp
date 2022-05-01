@@ -17,7 +17,7 @@ struct ContentView: View {
     }
     
     init(){
-        container = ServiceContainer.Production()
+        container = ServiceContainer.Current()
     }
 }
 

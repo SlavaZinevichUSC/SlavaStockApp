@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StockMainView: View {
     private let id : String
-    @ObservedObject private var vm = ViewModel()
+    @ObservedObject private var vm : ViewModel
     @EnvironmentObject var container : ServiceContainer
     var body: some View {
         NavigationView{
@@ -17,23 +17,15 @@ struct StockMainView: View {
                 LazyVStack(alignment: .leading, spacing: 10){
                     Section(){
                         Header(vm.profile.name)
-                        StockSummaryMainView(id)
+                        StockSummaryMainView(id).environmentObject(vm.commonData)
                         Spacer()
                     }
                     AsSection("Stats", StockStatsView(id, container))
                     
-                    Section(){
-                        Header("About")
-                        StockAboutView(id, container)
-                    }
-                    Section(){
-                        Header("Insights")
-                        StockInsightsView(id, container)
-                    }
-                    Section{
-                        Header("News")
-                        StockNewsView(id, container)
-                    }
+                    AsSection("About",StockAboutView(id, container))
+                    
+                    AsSection("Insights", StockInsightsView(id, container))
+                    AsSection("News", StockNewsView(id, container))
                 }
             }
         }.onAppear(perform: {
@@ -42,8 +34,9 @@ struct StockMainView: View {
     }
     
     
-    init(_ id: String){
+    init(_ id: String, _ container : ServiceContainer){
         self.id = id
+        self.vm = ViewModel(id, container)
     }
 }
 
@@ -55,7 +48,7 @@ extension StockMainView{
     func AsSection<T : View>(_ text : String, _ item : T) -> some View{
         return Group{
             Header(text)
-            item
+            item.environmentObject(vm.commonData)
             Spacer()
         }
     }
@@ -64,12 +57,18 @@ extension StockMainView{
 extension StockMainView{
     class ViewModel : ObservableObject{
         @Published var profile : ApiProfile = ApiProfile.Default()
+        let commonData : StockCommonData
         
+        init(_ id : String, _ container : ServiceContainer){
+            commonData = StockCommonData(id, container.GetHttpService())
+        }
         func OnAppear(_ id: String, _ http: IHttpService){
             http.Get(id: id, completion: { data in
                 self.profile = data
             })
         }
+        
+        
     }
 }
 
@@ -77,6 +76,6 @@ extension StockMainView{
 
 struct StockMainView_Previews: PreviewProvider {
     static var previews: some View {
-        StockMainView("TSLA")
+        StockMainView("TSLA", ServiceContainer.Current())
     }
 }

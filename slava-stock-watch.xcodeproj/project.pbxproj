@@ -40,6 +40,8 @@
 		56A5434A281DCF1B006C8D36 /* CashItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A54349281DCF1B006C8D36 /* CashItem.swift */; };
 		56A5434D281DD284006C8D36 /* StockPortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5434C281DD284006C8D36 /* StockPortfolioView.swift */; };
 		56A5434F281DD9D2006C8D36 /* ViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5434E281DD9D2006C8D36 /* ViewExt.swift */; };
+		56A5435E281DFA99006C8D36 /* StatsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5435D281DFA99006C8D36 /* StatsVM.swift */; };
+		56A54360281DFBD7006C8D36 /* StockCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5435F281DFBD7006C8D36 /* StockCommonData.swift */; };
 		56C6F51F281DBDC600BB15E5 /* IPortfolioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C6F51E281DBDC600BB15E5 /* IPortfolioService.swift */; };
 		56C6F528281DBFFA00BB15E5 /* PortfolioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C6F527281DBFFA00BB15E5 /* PortfolioService.swift */; };
 		56C6F52B281DC06600BB15E5 /* IPortfolioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C6F52A281DC06600BB15E5 /* IPortfolioManager.swift */; };
@@ -102,6 +104,8 @@
 		56A54349281DCF1B006C8D36 /* CashItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashItem.swift; sourceTree = "<group>"; };
 		56A5434C281DD284006C8D36 /* StockPortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPortfolioView.swift; sourceTree = "<group>"; };
 		56A5434E281DD9D2006C8D36 /* ViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExt.swift; sourceTree = "<group>"; };
+		56A5435D281DFA99006C8D36 /* StatsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsVM.swift; sourceTree = "<group>"; };
+		56A5435F281DFBD7006C8D36 /* StockCommonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCommonData.swift; sourceTree = "<group>"; };
 		56C6F51E281DBDC600BB15E5 /* IPortfolioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPortfolioService.swift; sourceTree = "<group>"; };
 		56C6F527281DBFFA00BB15E5 /* PortfolioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioService.swift; sourceTree = "<group>"; };
 		56C6F52A281DC06600BB15E5 /* IPortfolioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPortfolioManager.swift; sourceTree = "<group>"; };
@@ -207,6 +211,7 @@
 		56394286280FACB100FF7BAC /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				56A5435D281DFA99006C8D36 /* StatsVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -283,6 +288,7 @@
 			children = (
 				56930CED2810BB690007FC08 /* PortfolioItem.swift */,
 				56A54349281DCF1B006C8D36 /* CashItem.swift */,
+				56A5435F281DFBD7006C8D36 /* StockCommonData.swift */,
 			);
 			path = DataContainers;
 			sourceTree = "<group>";
@@ -528,6 +534,7 @@
 				5690189B281A077900C76956 /* StringFormatExt.swift in Sources */,
 				569018B4281B61A900C76956 /* DateExt.swift in Sources */,
 				562C36A9281128A9004C2E21 /* StockMainView.swift in Sources */,
+				56A5435E281DFA99006C8D36 /* StatsVM.swift in Sources */,
 				5690189F281A133800C76956 /* ApiProfileDetails.swift in Sources */,
 				562C36C22811452A004C2E21 /* ApiCallable.swift in Sources */,
 				569018962819E7CB00C76956 /* ApiStats.swift in Sources */,
@@ -553,6 +560,7 @@
 				56C6F51F281DBDC600BB15E5 /* IPortfolioService.swift in Sources */,
 				56F60FF3280F768100D5BDA1 /* slava_stock_watchApp.swift in Sources */,
 				569018AF281B43CD00C76956 /* StockNewsItemView.swift in Sources */,
+				56A54360281DFBD7006C8D36 /* StockCommonData.swift in Sources */,
 				562C36AC28112E02004C2E21 /* ServiceContainer.swift in Sources */,
 				562C36BA28113707004C2E21 /* ApiProfile.swift in Sources */,
 				56A5434D281DD284006C8D36 /* StockPortfolioView.swift in Sources */,

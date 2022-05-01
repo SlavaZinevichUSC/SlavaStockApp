@@ -9,30 +9,41 @@ import SwiftUI
 
 struct StockPortfolioView: View {
     @ObservedObject var vm : ViewModel
+    @State var containedView : AnyView = AnyView(EmptyView())
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        LazyVGrid(columns: [GridItem(), GridItem()], alignment: .leading, spacing: 15){
+            containedView
+        }
     }
     
     init(_ id : String, _ container : ServiceContainer){
         vm = ViewModel(id, container)
+        if(vm.item.HasShares()){
+            containedView = ExistingPortfolioView()
+        }
+        else {
+            containedView = EmptyPortfolioView()
+        }
     }
 }
 
 extension StockPortfolioView{
     
     private func GetView() -> some View{
-        guard vm.item != nil else {
-            return GetNewView()
-        }
-        return GetNewView()
-    }
-    
-    private func GetNewView() -> some View{
-        return VStack {
-            Text("")
+        return LazyVGrid(columns: [GridItem(), GridItem()], alignment: .leading, spacing: 15){
+            
+            
         }
     }
     
+    private func EmptyPortfolioView() -> AnyView{
+        return AnyView(Text("Empty"))
+    }
+    
+    private func ExistingPortfolioView() -> AnyView{
+        return AnyView(Text("You have \(vm.item.shares)"))
+    }
     
 }
 
@@ -40,11 +51,11 @@ extension StockPortfolioView{
     class ViewModel : ObservableObject{
         let portfolioService : IPortfolioService
         @Published var cash : CashItem
-        @Published var item : PortfolioItem?
+        @Published var item : PortfolioItem
         init(_ id : String, _ container : ServiceContainer){
             portfolioService = container.GetPortfolioService()
             cash = portfolioService.GetCash()
-            item = portfolioService.GetPortfolioFile(id)
+            item = portfolioService.GetPortfolioFile(id) ?? PortfolioItem.Default()
             
         }
     }
@@ -52,6 +63,6 @@ extension StockPortfolioView{
 
 struct StockPortfolioView_Previews: PreviewProvider {
     static var previews: some View {
-        StockPortfolioView("AAPL", ServiceContainer.Production())
+        StockPortfolioView("AAPL", ServiceContainer.Current())
     }
 }

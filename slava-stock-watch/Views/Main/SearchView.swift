@@ -9,12 +9,13 @@ import SwiftUI
 
 struct SearchView: View {
     @ObservedObject private var vm = ViewModel()
+    @EnvironmentObject var container : ServiceContainer
     @State private var searchText = ""
     
     
     var body: some View {
         List(vm.searchList, id: \.self){item in
-            NavigationLink(destination: StockMainView(item)){
+            NavigationLink(destination: StockMainView(item, container)){
                 Text("\(item)")
                 .onTapGesture {
                     self.OnClick(item)

@@ -22,7 +22,13 @@ struct PortfolioItem: Identifiable{
         self.shares = shares
     }
     
+    func HasShares() -> Bool {
+        return shares > 0
+    }
+    
     static func Default() -> PortfolioItem{
         return PortfolioItem(id: "", name: "", avgPrice: 0)
     }
+    
+    
 }

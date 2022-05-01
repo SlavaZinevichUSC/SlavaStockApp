@@ -19,8 +19,6 @@ struct StockSummaryView: View {
         .frame(minHeight: 100)
     }
        
-
-    
     
     init(_ id: String, _ container : ServiceContainer){
         self.id = id
@@ -62,6 +60,6 @@ extension StockSummaryView{
 
 struct StockSummaryView_Previews: PreviewProvider {
     static var previews: some View {
-        StockSummaryView("TSLA", ServiceContainer.Production())
+        StockSummaryView("TSLA", ServiceContainer.Current())
     }
 }

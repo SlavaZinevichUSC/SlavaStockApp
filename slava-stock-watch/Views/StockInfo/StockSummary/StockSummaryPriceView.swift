@@ -8,18 +8,17 @@
 import SwiftUI
 
 struct StockSummaryPriceView: View {
-    @ObservedObject var vm : ViewModel
+    @ObservedObject var vm : StatsVM = StatsVM()
+    @EnvironmentObject var commonData : StockCommonData
     var body: some View {
         HStack(){
-            Text("$").Double(vm.price.current).Space().font(.title).bold()
-            TextChange(vm.price.change)
+            Text("$").Double(vm.stats.current).Space().font(.title).bold()
+            TextChange(vm.stats.change)
             Spacer()
         }
+        .onAppear(perform: { vm.Subscribe(commonData.stats.statsObs)})
     }
     
-    init(_ id : String, _ container : ServiceContainer){
-        vm = ViewModel(id, container.GetHttpService())
-    }
 }
 
 extension StockSummaryPriceView{
@@ -48,6 +47,6 @@ extension StockSummaryPriceView{
 
 struct StockSummaryPriceView_Previews: PreviewProvider {
     static var previews: some View {
-        StockSummaryPriceView("AAPL", ServiceContainer.Production())
+        StockSummaryPriceView()
     }
 }

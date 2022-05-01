@@ -75,4 +75,8 @@ extension ServiceContainer{
     static func Preview() -> ServiceContainer{
         return ServiceContainer(PortfolioManager())
     }
+    
+    static func Current() -> ServiceContainer{
+        return ServiceContainer.Production()
+    }
 }
