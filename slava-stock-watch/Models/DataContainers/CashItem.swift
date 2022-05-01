@@ -10,4 +10,8 @@ import Foundation
 
 struct CashItem {
     let money : Double
+    
+    static func Default() -> CashItem{
+        return CashItem(money: 25000)
+    }
 }

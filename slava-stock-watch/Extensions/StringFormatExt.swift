@@ -29,7 +29,6 @@ extension Text{
         return self + Text.FormatDouble(value)
     }
     
-    
     func Link(_ value : String, _ url : String) -> Text{
         let link = "[\(value)](\(url))"
         return self + Text(.init(link))

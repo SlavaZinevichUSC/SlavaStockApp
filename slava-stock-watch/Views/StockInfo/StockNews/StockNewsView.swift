@@ -12,27 +12,31 @@ struct StockNewsView: View {
     @State private var isPresented = false
     @State private var selectedItem : ApiNewsItem? = nil
     var body: some View {
-        VStack{
-            StockNewsLeadingItem(vm.news.newsItems[0])
+        let primaryNews = vm.news.newsItems[0]
+        return VStack{
+            Buttonify(StockNewsLeadingItem(primaryNews), primaryNews)
             Divider()
             ForEach(vm.news.newsItems[1...].prefix(5), id: \.title){item in
-                StockNewsItemView(item)
-                    .onTapGesture {
-                        self.selectedItem = item
-                    }
+                Buttonify(StockNewsItemView(item), item)
                 Divider()
-
             }
-            .sheet(item: $selectedItem, content: { item in
-                StockNewsPopupView(selectedItem ?? ApiNewsItem.Default())
-            })
-
-            
         }
     }
     
     init(_ id : String, _ container : ServiceContainer){
         vm = ViewModel(id, container.GetHttpService())
+    }
+}
+
+extension StockNewsView{
+    func Buttonify<T : View>(_ view : T, _ item : ApiNewsItem) -> some View{
+        view
+        .onTapGesture {
+            self.selectedItem = item
+        }
+        .sheet(item: $selectedItem, content: { item in
+            StockNewsPopupView(selectedItem ?? ApiNewsItem.Default())
+        })
     }
 }
 

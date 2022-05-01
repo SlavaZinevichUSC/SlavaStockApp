@@ -8,33 +8,35 @@
 import SwiftUI
 
 struct StockInsightsView: View {
-    @ObservedObject var vm : ViewModel
+    @ObservedObject var vm = SingleItemVM<ApiSentiments>()
+    @EnvironmentObject var container : ServiceContainer
+    @EnvironmentObject var commonData : StockCommonData
+    
     var body: some View {
         LazyVGrid(columns: [GridItem(), GridItem(), GridItem()], alignment: .leading, spacing: 15){
             Group{
                 AsLabel("Total")
-                AsCount(vm.sentiments.redditTotal)
-                AsCount(vm.sentiments.twitterTotal)
+                AsCount(vm.data.redditTotal)
+                AsCount(vm.data.twitterTotal)
                 
             }
             Group{
                 AsLabel("Positive Mentions")
-                AsCount(vm.sentiments.redditPos)
-                AsCount(vm.sentiments.twitterPos)
+                AsCount(vm.data.redditPos)
+                AsCount(vm.data.twitterPos)
                
             }
             Group{
                 AsLabel("Negative Mentions")
-                AsCount(vm.sentiments.redditNeg)
-                AsCount(vm.sentiments.redditNeg)
+                AsCount(vm.data.redditNeg)
+                AsCount(vm.data.redditNeg)
             }
         }
+        .onAppear(perform: {
+            vm.Get(commonData.id, container.GetHttpService())
+        })
     }
     
-    
-    init(_ id: String, _ container : ServiceContainer){
-        vm = ViewModel(id, container.GetHttpService())
-    }
     
     private func AsLabel(_ text: String) -> Text{
         return Text.Bold(text)
@@ -45,19 +47,8 @@ struct StockInsightsView: View {
     }
 }
 
-extension StockInsightsView{
-    class ViewModel : ObservableObject{
-        @Published var sentiments : ApiSentiments
-        init(_ id : String, _ http : IHttpService){
-            sentiments = ApiSentiments.Default()
-            http.Get(id: id, completion: { data in
-                self.sentiments = data
-            })
-        }
-    }
-}
 struct StockInsightsView_Previews: PreviewProvider {
     static var previews: some View {
-        StockInsightsView("AAPL", ServiceContainer.Current())
+        StockInsightsView()
     }
 }

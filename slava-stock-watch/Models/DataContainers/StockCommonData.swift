@@ -20,7 +20,7 @@ class StockCommonData : ObservableObject{
     }
 }
 
-class SharedApiData<T : ApiCallable>{
+struct SharedApiData<T : ApiCallable>{
     let observable : BehaviorSubject<T>
     private let id : String
     private let http : IHttpService
@@ -34,11 +34,6 @@ class SharedApiData<T : ApiCallable>{
     }
     
     func Request(){
-        if(isBusy) { return }
-        isBusy = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-            self.isBusy = false //very ugly
-        }
         Get()
         
     }

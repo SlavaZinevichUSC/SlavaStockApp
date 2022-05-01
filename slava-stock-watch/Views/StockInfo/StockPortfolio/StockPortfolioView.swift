@@ -9,22 +9,20 @@ import SwiftUI
 
 struct StockPortfolioView: View {
     @ObservedObject var vm : ViewModel
-    @State var containedView : AnyView = AnyView(EmptyView())
+    @EnvironmentObject var container : ServiceContainer
+    @EnvironmentObject var commonData : StockCommonData
     
     var body: some View {
-        LazyVGrid(columns: [GridItem(), GridItem()], alignment: .leading, spacing: 15){
-            containedView
-        }
+            if(vm.item.HasShares()){
+                StockExistingPortfolioView(vm.cash, vm.item)
+            }
+            else {
+                StockEmptyPortfolioView(vm.cash, vm.item)
+            }
     }
     
     init(_ id : String, _ container : ServiceContainer){
         vm = ViewModel(id, container)
-        if(vm.item.HasShares()){
-            containedView = ExistingPortfolioView()
-        }
-        else {
-            containedView = EmptyPortfolioView()
-        }
     }
 }
 

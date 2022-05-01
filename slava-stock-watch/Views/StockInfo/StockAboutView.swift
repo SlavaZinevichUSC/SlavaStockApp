@@ -8,56 +8,46 @@
 import SwiftUI
 
 struct StockAboutView: View {
-    @ObservedObject var vm : ViewModel
-    private let id : String
+    @ObservedObject var vm : SingleItemVM = SingleItemVM<ApiProfileDetails>()
+    @EnvironmentObject var container : ServiceContainer
+    @EnvironmentObject var commonData : StockCommonData
+    
     private let columns = [GridItem(), GridItem()]
     var body: some View {
         LazyVGrid(columns: columns, alignment: .leading, spacing: 15){
             Text.Bold("IPO Start Date: ").AsInfo()
-            AsText(vm.profile.ipo)
+            AsText(vm.data.ipo)
+            
             Text.Bold("Industry:").AsInfo()
-            AsText(vm.profile.industry)
+            AsText(vm.data.industry)
+            
             Text.Bold("Web Url: ").AsInfo()
-            AsLink(vm.profile.webUrl)
+            AsLink(vm.data.webUrl)
         }
-        
+        .onAppear(perform: {
+            vm.Get(commonData.id, container.GetHttpService())
+        })
     }
     
-    init(_ id : String, _ container : ServiceContainer){
-        self.id = id
-        self.vm = ViewModel(id, container.GetHttpService())
-    }
-    
-    
-    func AsText(_ value : String) -> Text{
-        return Text("\(value)").AsInfo()
-    }
-    
-    func AsLink(_ value : String) -> Text{
-        let link = "[\(value)](\(value))"
-        return Text(.init(link)).AsInfo()
-    }
     
     
 }
 
 extension StockAboutView{
-    class ViewModel : ObservableObject{
-        @Published var profile : ApiProfileDetails
-        
-        init(_ id : String, _ http : IHttpService){
-            profile = ApiProfileDetails.Default()
-            http.Get(id: id) { data in
-                self.profile = data
-            }
-        }
+    
+    private func AsText(_ value : String) -> Text{
+        return Text("\(value)").AsInfo()
+    }
+    
+    private func AsLink(_ value : String) -> Text{
+        let link = "[\(value)](\(value))"
+        return Text(.init(link)).AsInfo()
     }
 }
 
 
-
 struct StockAboutView_Previews: PreviewProvider {
     static var previews: some View {
-        StockAboutView("AAPL", ServiceContainer.Current())
+        StockAboutView()
     }
 }

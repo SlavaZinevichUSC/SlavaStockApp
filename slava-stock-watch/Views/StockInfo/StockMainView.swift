@@ -16,18 +16,23 @@ struct StockMainView: View {
             ScrollView{
                 LazyVStack(alignment: .leading, spacing: 10){
                     Section(){
-                        Header(vm.profile.name)
                         StockSummaryMainView().environmentObject(vm.commonData)
                         Spacer()
                     }
                     AsSection("Stats", StockStatsView().environmentObject(vm.commonData))
                     
-                    AsSection("About",StockAboutView(id, container))
+                    AsSection("About",StockAboutView().environmentObject(vm.commonData))
                     
-                    AsSection("Insights", StockInsightsView(id, container))
+                    AsSection("Portfolio", StockPortfolioView(id, container).environmentObject(vm.commonData))
+                    
+                    AsSection("Insights", StockInsightsView().environmentObject(vm.commonData))
+                    
                     AsSection("News", StockNewsView(id, container))
+                    
                 }
             }
+            .navigationTitle(vm.profile.name)
+            .navigationBarHidden(true)
         }.onAppear(perform: {
             vm.OnAppear(id, container.GetHttpService())
         })
@@ -48,7 +53,7 @@ extension StockMainView{
     func AsSection<T : View>(_ text : String, _ item : T) -> some View{
         return Group{
             Header(text)
-            item.environmentObject(vm.commonData)
+            item
             Spacer()
         }
     }

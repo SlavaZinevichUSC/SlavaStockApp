@@ -13,7 +13,7 @@ struct StockSummaryView: View {
     @EnvironmentObject var commonData : StockCommonData
     var body: some View {
         HStack(){
-            Text("\(vm.profile.id)").font(.footnote).foregroundColor(Color.gray)
+            Text("\(vm.profile.id)").font(.title).foregroundColor(Color.gray)
             Spacer()
             Image(vm.profile.imgUrl)
         }
