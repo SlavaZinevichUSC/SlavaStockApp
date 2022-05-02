@@ -21,12 +21,17 @@ class PortfolioManager : IPortfolioManager{
         }
     }
     
-    func SavePortfolioFile(id : String, name : String, value : Double){
+    func SavePortfolioFile(id : String, name : String, value : Double, shares : Int){
         let file = PortfolioFile(context: container.viewContext)
         file.id = id
         file.name = name
         file.avgPrice = value
+        file.shares = Int64(shares)
         TrySave()
+    }
+    
+    func DeletePortfolioFile(){
+        container.viewContext.delete(<#T##object: NSManagedObject##NSManagedObject#>)
     }
     
     func GetPortfolioFiles() -> [PortfolioFile]{

@@ -29,6 +29,11 @@ class StockCommonData : ObservableObject{
         self.portfolioObs = portfolio.GetPortfolioItemObs(id, name)
         self.cashObs = portfolio.GetCashObs()
     }
+    
+    func Refresh(){
+        stats.Request()
+        profile.Request()
+    }
 }
 
 struct SharedApiData<T : ApiCallable>{

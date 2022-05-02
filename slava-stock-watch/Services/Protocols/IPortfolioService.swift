@@ -8,7 +8,7 @@
 import Foundation
 
 protocol IPortfolioService{
-    func SavePorfolioFile(id : String, name : String, value : Double)
+    func SavePorfolioFile(id : String, name : String, value : Double, shares : Int)
     func SavePortfolioFile(_ item: PortfolioItem)
     func GetPorfolioFiles() -> [PortfolioItem]
     func GetPortfolioFile(_ id : String) -> PortfolioItem?

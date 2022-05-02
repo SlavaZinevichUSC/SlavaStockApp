@@ -7,13 +7,16 @@
 
 import SwiftUI
 import Combine
+import AlertToast
 
 struct StockTradeView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var commonData : StockCommonData
     @EnvironmentObject var containerService : ServiceContainer
-    @State var sharesInput : String = "0"
+    @State var sharesInput : String = ""
     @State var showSuccess : Bool = false
+    @State var showToast : Bool = false
+    @State var validation : ValidatorState = ValidatorState.InvalidInput
     @Binding var showSheet : Bool
     @ObservedObject var vm : ViewModel
 
@@ -31,12 +34,21 @@ struct StockTradeView: View {
                 GetCalculationText()
                 Spacer()
                 Text("$\(String.FormatDouble(vm.cash.money)) available to buy \(commonData.id)")
+                    .font(.caption)
                 GetButtons()
             }
         }
         .onAppear(perform: {
             vm.Activate(commonData)
         })
+        
+        .toast(isPresenting: $showToast, duration: 5, tapToDismiss: true){
+            AlertToast(displayMode: .banner(.pop), type: .regular, title: "\(validation)", style: AlertToast.AlertStyle.style(backgroundColor: Color.gray, titleColor: Color.white))
+        }
+        .sheet(isPresented: $showSuccess){
+            StockTradeSuccessView(sharesInput, $showSuccess)
+                .background(Color.green)
+        }
     }
     
     init(_ cash : CashItem, _ binding : Binding<Bool>){
@@ -63,13 +75,13 @@ extension StockTradeView{
     
     private func GetCalculationText() -> some View{
         let current = commonData.stats.value.current
-        return Text("x ").Double(current).Normal("/share = \(GetTotalValue(current))")
+        return Text("x ").Double(current).Normal("/share = \(String.FormatDouble(GetTotalValue(current)))")
             .frame(alignment: .trailing)
     }
     
-    private func GetTotalValue(_ current : Double) -> String{
+    private func GetTotalValue(_ current : Double) -> Double{
         let shares = Double(self.sharesInput) ?? 0
-        return String.FormatDouble(shares * current)
+        return shares * current
     }
     
     private func SharesInt() -> Int{
@@ -78,21 +90,27 @@ extension StockTradeView{
     
     private func GetButtons() -> some View{
         return HStack{
-            GetSingleButton(false)
+            GetSingleButton(vm.GetButtonMeta(false))
             Spacer()
-            GetSingleButton(true)
+            GetSingleButton(vm.GetButtonMeta(true))
         }
         .padding()
     }
     
-    private func GetSingleButton(_ isSell : Bool) -> some View{ //INCREDIBLY UGLY
-        let text = isSell ? "Sell" : "Buy"
+    private func GetSingleButton(_ meta : ButtonMeta) -> some View{ //INCREDIBLY UGLY
         return Button(action: {
             print("Pressed")
-            self.showSuccess.toggle()
+            validation = meta.Validate(sharesInput, GetTotalValue(commonData.stats.value.current))
+            if(validation != ValidatorState.Valid){
+                showToast.toggle()
+            }
+            else{
+                self.showSuccess.toggle()
+
+            }
             
         }, label: {
-            Text(text)
+            Text(meta.text)
                 .frame(width: UIScreen.dScreenWidth50, height : 50)
                 .foregroundColor(.white)
                 .background(.green)
@@ -102,44 +120,33 @@ extension StockTradeView{
 }
 
 extension StockTradeView{
-    struct BuyBottonMeta{
-        let text = "Sell"
-        
-        func Validate(_ sharesInput: String) -> ValidatorState{
-            let shares = sharesInput.AsInt(-69) //Stupid method that is a bug if the user enters -69 but fuck them anyway
-            if(shares == -69){
-                return ValidatorState.InvalidInput
-            }
-            if(shares <= 0){
-                return ValidatorState.InvalidShareCountBuy
-            }
-            return ValidatorState.Valid
-            
-        }
-    }
-    
-    struct SellButtonMeta{
-        let text = "Buy"
-        
-        func Validate(_ sharesInput: String) -> ValidatorState{
-            let shares = sharesInput.AsInt(-69) //Stupid method that is a bug if the user enters -69 but fuck them anyway
-            if(shares == -69){
-                return ValidatorState.InvalidInput
-            }
-            if(shares <= 0){
-                return ValidatorState.InvalidShareCountSell
-            }
-            return ValidatorState.Valid
+    struct ButtonMeta{
+        let text : String
+        let Validate : (String, Double) -> ValidatorState
+        init(_ text : String, _ validator : @escaping (String, Double) -> ValidatorState){
+            self.text = text
+            self.Validate = validator
         }
     }
 
-    enum ValidatorState{
+    enum ValidatorState : CustomStringConvertible{
         case Valid
         case InsufficientFunds
         case InsufficientShares
         case InvalidShareCountBuy
         case InvalidShareCountSell
         case InvalidInput
+        
+        var description : String {
+            switch self{
+            case .Valid: return "Valid"
+            case .InsufficientShares: return "Not enough shares to sell"
+            case .InsufficientFunds: return "Not enough money to buy"
+            case .InvalidShareCountSell: return "Cannot sell non-positive shares"
+            case .InvalidShareCountBuy: return "Cannot buy non-positive shares"
+            case .InvalidInput: return "Please enter valid amount"
+            }
+        }
     }
 }
 
@@ -164,6 +171,38 @@ extension StockTradeView{
             _ = commonData.portfolioObs.subscribe{data in
                 self.stock = data
             }
+        }
+        
+        func ValidateBuy(_ shareInput : String, _ totalValue : Double) -> ValidatorState{
+            let shares = shareInput.AsInt(-69) //Stupid method that is a bug if the user enters -69 but fuck them anyway
+            if(shares == -69){
+                return ValidatorState.InvalidInput
+            }
+            if(shares <= 0){
+                return ValidatorState.InvalidShareCountBuy
+            }
+            if(totalValue > cash.money){
+                return ValidatorState.InsufficientFunds
+            }
+            return ValidatorState.Valid
+        }
+        
+        func ValidateSell(_ sharesInput: String, _ totalValue : Double) -> ValidatorState{ //suuper ugly
+            let shares = sharesInput.AsInt(-69) //Stupid method that is a bug if the user enters -69 but fuck them anyway
+            if(shares == -69){
+                return ValidatorState.InvalidInput
+            }
+            if(shares <= 0){
+                return ValidatorState.InvalidShareCountSell
+            }
+            if(shares > stock.shares){
+                return ValidatorState.InsufficientShares
+            }
+            return ValidatorState.Valid
+        }
+        
+        func GetButtonMeta(_ isSell : Bool) -> ButtonMeta{
+            return isSell ? ButtonMeta("Sell", ValidateSell) : ButtonMeta("Buy", ValidateBuy)
         }
     }
 }

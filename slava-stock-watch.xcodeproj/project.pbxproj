@@ -51,6 +51,8 @@
 		56A54372281F651A006C8D36 /* PortfolioDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A54371281F6519006C8D36 /* PortfolioDataService.swift */; };
 		56A54374281F6D49006C8D36 /* IPortfolioDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A54373281F6D49006C8D36 /* IPortfolioDataService.swift */; };
 		56A54376281F8D66006C8D36 /* ApiSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A54375281F8D66006C8D36 /* ApiSearch.swift */; };
+		56A5437928207131006C8D36 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 56A5437828207131006C8D36 /* AlertToast */; };
+		56A5437D28207D9E006C8D36 /* StockTradeSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5437C28207D9E006C8D36 /* StockTradeSuccessView.swift */; };
 		56C6F51F281DBDC600BB15E5 /* IPortfolioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C6F51E281DBDC600BB15E5 /* IPortfolioService.swift */; };
 		56C6F528281DBFFA00BB15E5 /* PortfolioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C6F527281DBFFA00BB15E5 /* PortfolioService.swift */; };
 		56C6F52B281DC06600BB15E5 /* IPortfolioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C6F52A281DC06600BB15E5 /* IPortfolioManager.swift */; };
@@ -124,6 +126,7 @@
 		56A54371281F6519006C8D36 /* PortfolioDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDataService.swift; sourceTree = "<group>"; };
 		56A54373281F6D49006C8D36 /* IPortfolioDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPortfolioDataService.swift; sourceTree = "<group>"; };
 		56A54375281F8D66006C8D36 /* ApiSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiSearch.swift; sourceTree = "<group>"; };
+		56A5437C28207D9E006C8D36 /* StockTradeSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTradeSuccessView.swift; sourceTree = "<group>"; };
 		56C6F51E281DBDC600BB15E5 /* IPortfolioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPortfolioService.swift; sourceTree = "<group>"; };
 		56C6F527281DBFFA00BB15E5 /* PortfolioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioService.swift; sourceTree = "<group>"; };
 		56C6F52A281DC06600BB15E5 /* IPortfolioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPortfolioManager.swift; sourceTree = "<group>"; };
@@ -146,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56A5437928207131006C8D36 /* AlertToast in Frameworks */,
 				56CD78D62812269800DC050E /* RxSwift in Frameworks */,
 				562C36B628113554004C2E21 /* Alamofire in Frameworks */,
 			);
@@ -322,6 +326,7 @@
 				56A54365281E18BD006C8D36 /* StockExistingPortfolioView.swift */,
 				56A5436A281E6767006C8D36 /* StockTradeButton.swift */,
 				56A5436C281E68FF006C8D36 /* StockTradeView.swift */,
+				56A5437C28207D9E006C8D36 /* StockTradeSuccessView.swift */,
 			);
 			path = StockPortfolio;
 			sourceTree = "<group>";
@@ -451,6 +456,7 @@
 			packageProductDependencies = (
 				562C36B528113554004C2E21 /* Alamofire */,
 				56CD78D52812269800DC050E /* RxSwift */,
+				56A5437828207131006C8D36 /* AlertToast */,
 			);
 			productName = "slava-stock-watch";
 			productReference = 56F60FEF280F768100D5BDA1 /* slava-stock-watch.app */;
@@ -526,6 +532,7 @@
 			packageReferences = (
 				562C36B428113554004C2E21 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				56CD78D42812269800DC050E /* XCRemoteSwiftPackageReference "RxSwift" */,
+				56A5437728207131006C8D36 /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
 			productRefGroup = 56F60FF0280F768100D5BDA1 /* Products */;
 			projectDirPath = "";
@@ -603,6 +610,7 @@
 				569018BB281C78F100C76956 /* StockSummaryPriceView.swift in Sources */,
 				569018B1281B5AE800C76956 /* StockNewsPopupView.swift in Sources */,
 				56930CEE2810BB690007FC08 /* PortfolioItem.swift in Sources */,
+				56A5437D28207D9E006C8D36 /* StockTradeSuccessView.swift in Sources */,
 				56A54366281E18BE006C8D36 /* StockExistingPortfolioView.swift in Sources */,
 				56A5434F281DD9D2006C8D36 /* ViewExt.swift in Sources */,
 				569018A5281A2AFC00C76956 /* ApiSentiments.swift in Sources */,
@@ -940,6 +948,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		56A5437728207131006C8D36 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		56CD78D42812269800DC050E /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift";
@@ -955,6 +971,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 562C36B428113554004C2E21 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		56A5437828207131006C8D36 /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56A5437728207131006C8D36 /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
 		};
 		56CD78D52812269800DC050E /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;

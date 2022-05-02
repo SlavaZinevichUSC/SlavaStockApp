@@ -14,12 +14,12 @@ class PortfolioService: IPortfolioService{
     init(_ manager : IPortfolioManager){
         self.manager = manager
     }
-    func SavePorfolioFile(id: String, name: String, value: Double) {
-        manager.SavePortfolioFile(id: id, name: name, value: value)
+    func SavePorfolioFile(id: String, name: String, value: Double, shares : Int) {
+        manager.SavePortfolioFile(id: id, name: name, value: value, shares: shares)
     }
     
     func SavePortfolioFile(_ item: PortfolioItem) {
-        SavePorfolioFile(id: item.id, name: item.name, value: item.avgPrice)
+        SavePorfolioFile(id: item.id, name: item.name, value: item.avgPrice, shares: item.shares)
     }
     
     func GetPorfolioFiles() -> [PortfolioItem] {
