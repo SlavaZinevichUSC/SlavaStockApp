@@ -7,11 +7,13 @@
 
 import SwiftUI
 
+//wrong -> Should subscribe.
+//I Fucked up and did not immedately  used observables only
 struct StockTradeButton: View {
-    private let cash : CashItem
-    private let item : PortfolioItem
+    @ObservedObject var vm  : ViewModel = ViewModel()
     @State var showTrade = false
-
+    @EnvironmentObject var serviceContainer : ServiceContainer
+    @EnvironmentObject var commonData : StockCommonData
     var body: some View {
         Button(action: {
             print("Pressed")
@@ -25,31 +27,37 @@ struct StockTradeButton: View {
                 .cornerRadius(10)
         })
         .sheet(isPresented: $showTrade){
-            StockTradeView(cash, $showTrade)
+            StockTradeView(vm.cash, $showTrade)
         }
-    }
-    
-    
-    init(_ cash : CashItem, _ item : PortfolioItem){
-        self.cash = cash
-        self.item = item
+        .onAppear(perform: {
+            vm.Activate(commonData)
+        })
     }
 }
 
 extension StockTradeButton{
     class ViewModel : ObservableObject{
-        private let cash : CashItem
-        private let item : PortfolioItem
+        @Published var cash : CashItem
+        @Published var item : PortfolioItem
         
-        init(_ cash : CashItem, _ item : PortfolioItem){
-            self.cash = cash
-            self.item = item
+        init(){
+            self.cash = CashItem.Default()
+            self.item = PortfolioItem.Default()
+        }
+        
+        func Activate(_ commonData : StockCommonData){
+            _ = commonData.cashObs.subscribe{data in
+                self.cash = data
+            }
+            _ = commonData.portfolioObs.subscribe{data in
+                self.item = data
+            }
         }
     }
 }
 
 struct StockTradeButton_Previews: PreviewProvider {
     static var previews: some View {
-        StockTradeButton(CashItem.Default(), PortfolioItem.Default())
+        StockTradeButton()
     }
 }

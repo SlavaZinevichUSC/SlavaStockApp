@@ -14,11 +14,11 @@ struct SearchView: View {
     
     
     var body: some View {
-        List(vm.searchList, id: \.self){item in
+        List(vm.searchList, id: \.id) {item in
             NavigationLink(destination: StockMainView(item, container)){
-                Text("\(item)")
+                Text("\(item.id)")
                 .onTapGesture {
-                    self.OnClick(item)
+                    self.OnClick(item.id)
                 }
             }
         }
@@ -39,14 +39,14 @@ extension SearchView{
 
 extension SearchView{
     class ViewModel : ObservableObject {
-        @Published var searchList = [String]()
+        @Published var searchList  : [ApiSearchItem]
         
         init() {
-            self.searchList = ["TSLA", "AAPL"]
+            self.searchList = [ApiSearchItem("TSLA", "Tesla"), ApiSearchItem("AAPL", "Apple Inc.")]
         }
         
         func OnTextChanged(_ text : String) -> Void{
-            self.searchList = ["TSLA", "AAPL"]
+            self.searchList = [ApiSearchItem("TSLA", "Tesla"), ApiSearchItem("AAPL", "Apple Inc.")]
         }
     }
 }

@@ -48,6 +48,9 @@
 		56A5436B281E6768006C8D36 /* StockTradeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5436A281E6767006C8D36 /* StockTradeButton.swift */; };
 		56A5436D281E68FF006C8D36 /* StockTradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5436C281E68FF006C8D36 /* StockTradeView.swift */; };
 		56A54370281F5EFA006C8D36 /* MockHttpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5436F281F5EFA006C8D36 /* MockHttpService.swift */; };
+		56A54372281F651A006C8D36 /* PortfolioDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A54371281F6519006C8D36 /* PortfolioDataService.swift */; };
+		56A54374281F6D49006C8D36 /* IPortfolioDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A54373281F6D49006C8D36 /* IPortfolioDataService.swift */; };
+		56A54376281F8D66006C8D36 /* ApiSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A54375281F8D66006C8D36 /* ApiSearch.swift */; };
 		56C6F51F281DBDC600BB15E5 /* IPortfolioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C6F51E281DBDC600BB15E5 /* IPortfolioService.swift */; };
 		56C6F528281DBFFA00BB15E5 /* PortfolioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C6F527281DBFFA00BB15E5 /* PortfolioService.swift */; };
 		56C6F52B281DC06600BB15E5 /* IPortfolioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C6F52A281DC06600BB15E5 /* IPortfolioManager.swift */; };
@@ -118,6 +121,9 @@
 		56A5436A281E6767006C8D36 /* StockTradeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTradeButton.swift; sourceTree = "<group>"; };
 		56A5436C281E68FF006C8D36 /* StockTradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTradeView.swift; sourceTree = "<group>"; };
 		56A5436F281F5EFA006C8D36 /* MockHttpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHttpService.swift; sourceTree = "<group>"; };
+		56A54371281F6519006C8D36 /* PortfolioDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDataService.swift; sourceTree = "<group>"; };
+		56A54373281F6D49006C8D36 /* IPortfolioDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPortfolioDataService.swift; sourceTree = "<group>"; };
+		56A54375281F8D66006C8D36 /* ApiSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiSearch.swift; sourceTree = "<group>"; };
 		56C6F51E281DBDC600BB15E5 /* IPortfolioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPortfolioService.swift; sourceTree = "<group>"; };
 		56C6F527281DBFFA00BB15E5 /* PortfolioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioService.swift; sourceTree = "<group>"; };
 		56C6F52A281DC06600BB15E5 /* IPortfolioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPortfolioManager.swift; sourceTree = "<group>"; };
@@ -193,6 +199,7 @@
 			children = (
 				562C36B228112F06004C2E21 /* IHttpService.swift */,
 				56C6F51E281DBDC600BB15E5 /* IPortfolioService.swift */,
+				56A54373281F6D49006C8D36 /* IPortfolioDataService.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -206,6 +213,7 @@
 				5690189E281A133800C76956 /* ApiProfileDetails.swift */,
 				569018A4281A2AFC00C76956 /* ApiSentiments.swift */,
 				569018AA281A683200C76956 /* ApiNews.swift */,
+				56A54375281F8D66006C8D36 /* ApiSearch.swift */,
 			);
 			path = HttpResposes;
 			sourceTree = "<group>";
@@ -330,6 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				56C6F527281DBFFA00BB15E5 /* PortfolioService.swift */,
+				56A54371281F6519006C8D36 /* PortfolioDataService.swift */,
 			);
 			path = Portfolio;
 			sourceTree = "<group>";
@@ -563,12 +572,14 @@
 				569018BE281C80EF00C76956 /* DataModel.xcdatamodeld in Sources */,
 				5639428A280FAF0400FF7BAC /* SearchView.swift in Sources */,
 				56A54362281E0D93006C8D36 /* SingleApiVM.swift in Sources */,
+				56A54374281F6D49006C8D36 /* IPortfolioDataService.swift in Sources */,
 				562C36B128112EEE004C2E21 /* HttpService.swift in Sources */,
 				56A5436D281E68FF006C8D36 /* StockTradeView.swift in Sources */,
 				56A54364281E14A0006C8D36 /* StockEmptyPortfolioView.swift in Sources */,
 				569018A3281A2A0400C76956 /* StockInsightsView.swift in Sources */,
 				5690189B281A077900C76956 /* StringFormatExt.swift in Sources */,
 				56A54370281F5EFA006C8D36 /* MockHttpService.swift in Sources */,
+				56A54376281F8D66006C8D36 /* ApiSearch.swift in Sources */,
 				569018B4281B61A900C76956 /* DateExt.swift in Sources */,
 				562C36A9281128A9004C2E21 /* StockMainView.swift in Sources */,
 				56A5435E281DFA99006C8D36 /* StatsVM.swift in Sources */,
@@ -600,6 +611,7 @@
 				56F60FF3280F768100D5BDA1 /* slava_stock_watchApp.swift in Sources */,
 				56A5436B281E6768006C8D36 /* StockTradeButton.swift in Sources */,
 				569018AF281B43CD00C76956 /* StockNewsItemView.swift in Sources */,
+				56A54372281F651A006C8D36 /* PortfolioDataService.swift in Sources */,
 				56A54360281DFBD7006C8D36 /* StockCommonData.swift in Sources */,
 				562C36AC28112E02004C2E21 /* ServiceContainer.swift in Sources */,
 				562C36BA28113707004C2E21 /* ApiProfile.swift in Sources */,

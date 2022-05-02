@@ -15,7 +15,7 @@ struct PortfolioItem: Identifiable{
     let shares : Int
     
     
-    init(id: String, name: String,  avgPrice : Double, shares : Int = 0){
+    init(id: String, name: String,  avgPrice : Double, shares : Int){
         self.id = id
         self.name = name
         self.avgPrice = avgPrice
@@ -27,7 +27,7 @@ struct PortfolioItem: Identifiable{
     }
     
     static func Default() -> PortfolioItem{
-        return PortfolioItem(id: "", name: "", avgPrice: 0)
+        return PortfolioItem(id: "", name: "", avgPrice: 0, shares: 0)
     }
     
     

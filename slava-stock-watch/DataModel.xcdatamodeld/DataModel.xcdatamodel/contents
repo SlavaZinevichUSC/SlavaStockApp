@@ -7,9 +7,10 @@
         <attribute name="avgPrice" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="id" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
+        <attribute name="shares" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>
         <element name="PortfolioCashFile" positionX="-54" positionY="18" width="128" height="44"/>
-        <element name="PortfolioFile" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="PortfolioFile" positionX="-63" positionY="-18" width="128" height="89"/>
     </elements>
 </model>

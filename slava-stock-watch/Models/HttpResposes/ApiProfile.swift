@@ -29,7 +29,7 @@ struct ApiProfile : ApiCallable{
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let profile = try container.nestedContainer(keyedBy: EmbeddedCodingKeys.self, forKey: .profile)
         name = try profile.decode(String.self, forKey: .name)
-        id = try profile.decode(String.self, forKey: .id)
+        id = try profile.decode(String.self, forKey: .id).uppercased()
         imgUrl = try profile.decode(String.self, forKey: .imgUrl)
     }
     

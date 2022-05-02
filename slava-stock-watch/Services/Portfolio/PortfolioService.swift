@@ -47,6 +47,6 @@ class PortfolioService: IPortfolioService{
     
     
     private func ToItem(_ file : PortfolioFile) -> PortfolioItem{
-        PortfolioItem(id: file.id ?? "SCB", name: file.name ?? "Booby-Scoobs", avgPrice: file.avgPrice)
+        PortfolioItem(id: file.id ?? "SCB", name: file.name ?? "Booby-Scoobs", avgPrice: file.avgPrice, shares: Int(file.shares))
     }
 }

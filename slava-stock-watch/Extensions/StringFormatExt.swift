@@ -72,5 +72,13 @@ extension String{
     static func FormatDouble(_ value : Double) -> String{
         return String(format: "%.2f", value)
     }
+    
+    func AsDouble(_ fallback : Double = 0.00) -> Double{
+        return Double(self) ?? fallback
+    }
+    
+    func AsInt(_ fallback : Int = 0) -> Int{
+        return Int(self) ?? fallback
+    }
 }
 

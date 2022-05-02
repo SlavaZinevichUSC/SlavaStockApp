@@ -14,10 +14,10 @@ struct StockPortfolioView: View {
     
     var body: some View {
             if(vm.item.HasShares()){
-                StockExistingPortfolioView(vm.cash, vm.item)
+                StockExistingPortfolioView(commonData.id)
             }
             else {
-                StockEmptyPortfolioView(vm.cash, vm.item)
+                StockEmptyPortfolioView()
             }
     }
     
@@ -27,13 +27,6 @@ struct StockPortfolioView: View {
 }
 
 extension StockPortfolioView{
-    
-    private func GetView() -> some View{
-        return LazyVGrid(columns: [GridItem(), GridItem()], alignment: .leading, spacing: 15){
-            
-            
-        }
-    }
     
     private func EmptyPortfolioView() -> AnyView{
         return AnyView(Text("Empty"))
@@ -47,14 +40,12 @@ extension StockPortfolioView{
 
 extension StockPortfolioView{
     class ViewModel : ObservableObject{
-        let portfolioService : IPortfolioService
-        @Published var cash : CashItem
         @Published var item : PortfolioItem
         init(_ id : String, _ container : ServiceContainer){
-            portfolioService = container.GetPortfolioService()
-            cash = portfolioService.GetCash()
-            item = portfolioService.GetPortfolioFile(id) ?? PortfolioItem.Default()
-            
+            item = PortfolioItem.Default()
+            _ = container.GetPortfolioDataService().GetPortfolioItemObs(id, "").subscribe{data in
+                self.item = data
+            }
         }
     }
 }
