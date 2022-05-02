@@ -62,9 +62,9 @@ extension StockTradeView{
             .frame(alignment: .trailing)
     }
     
-    private func GetTotalValue(_ current : Double) -> Text{
+    private func GetTotalValue(_ current : Double) -> String{
         let shares = Double(self.sharesInput) ?? 0
-        return Text.FormatDouble(shares)
+        return String.FormatDouble(shares)
     }
     
     private func GetButtons() -> some View{
@@ -73,6 +73,7 @@ extension StockTradeView{
             Spacer()
             GetSingleButton(true)
         }
+        .padding()
     }
     
     private func GetSingleButton(_ isSell : Bool) -> some View{ //INCREDIBLY UGLY
@@ -83,10 +84,10 @@ extension StockTradeView{
             
         }, label: {
             Text(text)
-                .frame(width: UIScreen.dScreenWidth50, height : 30)
+                .frame(width: UIScreen.dScreenWidth50, height : 50)
                 .foregroundColor(.white)
                 .background(.green)
-                .cornerRadius(10)
+                .cornerRadius(20)
         })
     }
 }

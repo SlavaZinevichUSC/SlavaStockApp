@@ -64,7 +64,13 @@ extension Text{
     }
     
     static func FormatDouble(_ value : Double) -> Text{
-        return Text(String(format: "%.2f", value))
+        return Text(String.FormatDouble(value))
+    }
+}
+
+extension String{
+    static func FormatDouble(_ value : Double) -> String{
+        return String(format: "%.2f", value)
     }
 }
 

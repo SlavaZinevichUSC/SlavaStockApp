@@ -11,8 +11,7 @@ import Foundation
 class MockHttpService : IHttpService{
     
     func Get<T>(id: String, completion: @escaping (T) -> Void) where T : ApiCallable {
-        completion(T.Mock())
+        completion(T.Default())
     }
-    
-    
+   
 }

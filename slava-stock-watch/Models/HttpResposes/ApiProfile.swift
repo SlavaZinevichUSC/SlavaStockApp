@@ -5,7 +5,7 @@
 //  Created by Slava Zinevich on 4/20/22.
 //
 
-struct ApiProfile : ApiCallableDev{
+struct ApiProfile : ApiCallable{
     
     static func GetHttpName() -> String {
         return "profile"
@@ -42,7 +42,5 @@ struct ApiProfile : ApiCallableDev{
         return ApiProfile("", "", "")
     }
     
-    static func Mock() -> Self{
-        return ApiProfile("Slava Inc", "BOOB", "")
-    }
+    
 }
