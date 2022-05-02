@@ -48,6 +48,7 @@
 		56A54369281E57BD006C8D36 /* ScreenConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A54368281E57BC006C8D36 /* ScreenConstants.swift */; };
 		56A5436B281E6768006C8D36 /* StockTradeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5436A281E6767006C8D36 /* StockTradeButton.swift */; };
 		56A5436D281E68FF006C8D36 /* StockTradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5436C281E68FF006C8D36 /* StockTradeView.swift */; };
+		56A54370281F5EFA006C8D36 /* MockHttpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5436F281F5EFA006C8D36 /* MockHttpService.swift */; };
 		56C6F51F281DBDC600BB15E5 /* IPortfolioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C6F51E281DBDC600BB15E5 /* IPortfolioService.swift */; };
 		56C6F528281DBFFA00BB15E5 /* PortfolioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C6F527281DBFFA00BB15E5 /* PortfolioService.swift */; };
 		56C6F52B281DC06600BB15E5 /* IPortfolioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C6F52A281DC06600BB15E5 /* IPortfolioManager.swift */; };
@@ -118,6 +119,7 @@
 		56A54368281E57BC006C8D36 /* ScreenConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenConstants.swift; sourceTree = "<group>"; };
 		56A5436A281E6767006C8D36 /* StockTradeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTradeButton.swift; sourceTree = "<group>"; };
 		56A5436C281E68FF006C8D36 /* StockTradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTradeView.swift; sourceTree = "<group>"; };
+		56A5436F281F5EFA006C8D36 /* MockHttpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHttpService.swift; sourceTree = "<group>"; };
 		56C6F51E281DBDC600BB15E5 /* IPortfolioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPortfolioService.swift; sourceTree = "<group>"; };
 		56C6F527281DBFFA00BB15E5 /* PortfolioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioService.swift; sourceTree = "<group>"; };
 		56C6F52A281DC06600BB15E5 /* IPortfolioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPortfolioManager.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 		562C36AA28112DB5004C2E21 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				56A5436E281F5EB8006C8D36 /* Mock */,
 				56A54351281DDE57006C8D36 /* Portfolio */,
 				56A54350281DDE4B006C8D36 /* Http */,
 				562C36AD28112E4A004C2E21 /* Protocols */,
@@ -340,6 +343,14 @@
 				56A54368281E57BC006C8D36 /* ScreenConstants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		56A5436E281F5EB8006C8D36 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				56A5436F281F5EFA006C8D36 /* MockHttpService.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		56C6F529281DC05500BB15E5 /* Protocols */ = {
@@ -561,6 +572,7 @@
 				56A54364281E14A0006C8D36 /* StockEmptyPortfolioView.swift in Sources */,
 				569018A3281A2A0400C76956 /* StockInsightsView.swift in Sources */,
 				5690189B281A077900C76956 /* StringFormatExt.swift in Sources */,
+				56A54370281F5EFA006C8D36 /* MockHttpService.swift in Sources */,
 				569018B4281B61A900C76956 /* DateExt.swift in Sources */,
 				562C36A9281128A9004C2E21 /* StockMainView.swift in Sources */,
 				56A5435E281DFA99006C8D36 /* StatsVM.swift in Sources */,

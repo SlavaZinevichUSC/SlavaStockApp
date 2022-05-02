@@ -25,6 +25,14 @@ struct SharedApiData<T : ApiCallable>{
     private let id : String
     private let http : IHttpService
     private var isBusy = false
+    var value : T {
+        do{
+            return try observable.value()
+        } catch {
+            Get() //Reeeaaallly shouldn't happen so hope this will rectify 
+            return T.Default()
+        }
+    }
     
     init(_ id : String, _ http : IHttpService){
         self.id = id

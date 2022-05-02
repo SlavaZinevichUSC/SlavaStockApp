@@ -11,4 +11,7 @@ protocol ApiCallable : Decodable{
     static func Default() -> Self
 }
 
+protocol ApiCallableDev : ApiCallable{
+    static func Mock() -> Self
+}
 

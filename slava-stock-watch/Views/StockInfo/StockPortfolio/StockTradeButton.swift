@@ -10,15 +10,23 @@ import SwiftUI
 struct StockTradeButton: View {
     private let cash : CashItem
     private let item : PortfolioItem
-    
+    @State var showTrade = false
+
     var body: some View {
-        Button(action: {print("Pressed")}, label: {
+        Button(action: {
+            print("Pressed")
+            self.showTrade.toggle()
+            
+        }, label: {
             Text("Trade")
-                .foregroundColor(.white)
                 .frame(width: UIScreen.dScreenWidth25, height : 50)
+                .foregroundColor(.white)
                 .background(.green)
                 .cornerRadius(10)
         })
+        .sheet(isPresented: $showTrade){
+            StockTradeView(cash, $showTrade)
+        }
     }
     
     

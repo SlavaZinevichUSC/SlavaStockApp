@@ -43,6 +43,10 @@ extension Text{
         return self.font(.body)
     }
     
+    func AsTitle() -> Text{
+        return self.bold().font(.largeTitle)
+    }
+    
     func Space() -> Text{
         return self + Text(" ")
     }

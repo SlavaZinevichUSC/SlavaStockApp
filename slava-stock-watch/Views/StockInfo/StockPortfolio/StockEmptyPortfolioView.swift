@@ -17,8 +17,8 @@ struct StockEmptyPortfolioView: View {
             VStack(alignment: .leading){
                 Text("You have 0 shares of \(commonData.id). \n").AsInfo()
                 Text("Start trading!").AsInfo()
-                
             }
+            StockTradeButton(cash, item)
         }
     }
     

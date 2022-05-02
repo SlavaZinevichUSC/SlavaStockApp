@@ -6,7 +6,6 @@
 //
 
 
-protocol IHttpService{    
-    func Get<T : ApiCallable>(id : String) -> T
+protocol IHttpService{
     func Get<T : ApiCallable>(id : String, completion: @escaping (_ data : T) -> Void) -> Void
 }
