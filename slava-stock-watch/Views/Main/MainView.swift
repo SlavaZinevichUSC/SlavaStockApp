@@ -21,7 +21,9 @@ struct MainView: View {
                 else{
                     List{
                         MainDateView()
+                        MainPortfolioView()
                     }
+                    .listStyle(GroupedListStyle())
                 }
             }
         }
@@ -46,9 +48,6 @@ extension MainView{
     class ViewModel : ObservableObject{
         @Published var search : ApiSearch = ApiSearch.Default()
         func GetMatches(_ text : String, _ http : IHttpService){
-            /*_ = http.Get(id: text).subscribe{ (result : ApiSearch) in
-                self.searchItems = result.searchResults
-            }*/
             if(text == ""){
                 self.search = ApiSearch.Default()
             }

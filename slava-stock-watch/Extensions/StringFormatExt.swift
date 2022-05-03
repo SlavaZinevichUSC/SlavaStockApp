@@ -17,6 +17,9 @@ extension String{
 }
 
 extension Text{
+    func InParentheses() -> Text{
+        return Text("(") + self + Text(")")
+    }
     func Bold(_ value:String) -> Text{
         return self + Text.Bold(value)
     }
@@ -51,6 +54,15 @@ extension Text{
         return self + Text(" ")
     }
     
+    func WithChangeColor(_ value : Double) -> Text{
+        return self.WithChangeColor(value, relativeTo: 0.00)
+    }
+    
+    func WithChangeColor(_ value : Double, relativeTo: Double) -> Text{
+        let color = value > relativeTo ? Color.green : Color.red
+        return self.foregroundColor(color)
+    }
+    
     static func Bold(_ value:String) -> Text{
         return Text(value).bold()
     }
@@ -67,14 +79,20 @@ extension Text{
         return Text(String.FormatDouble(value))
     }
     
-    static func FormatChange(_ value : Double) -> Text{
+    static func FormatChange(_ value : Double, asDollar : Bool = false) -> Text{
         return FormatRelative(value, 0)
     }
     
-    static func FormatRelative(_ value : Double, _ comparedTo : Double) -> Text{
+    static func FormatRelative(_ value : Double, _ comparedTo : Double, _ asDollar : Bool = false) -> Text{
         let color = value > comparedTo ? Color.green : Color.red
-        return Text.FormatDouble(value).foregroundColor(color)
+        var formatted = Text.FormatDouble(value)
+        if(asDollar){
+            formatted = Text("$") + formatted
+        }
+        return formatted.foregroundColor(color)
     }
+    
+    
 }
 
 extension String{

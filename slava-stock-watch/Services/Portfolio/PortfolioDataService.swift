@@ -19,12 +19,14 @@ class PortfolioDataService : IPortfolioDataService{
     private let repo : IPortfolioService
     private let cashSubject : BehaviorSubject<CashItem>
     private var portfolioItems : Dictionary<String, BehaviorSubject<PortfolioItem>>
+    private let portfolioSubject : BehaviorSubject<Dictionary<String, BehaviorSubject<PortfolioItem>>>
 
     init(_ repo : IPortfolioService){
         self.repo = repo
-        self.repo.Reset()
+        repo.Reset()
         cashSubject = BehaviorSubject<CashItem>(value: repo.GetCash())
         portfolioItems = Dictionary()
+        portfolioSubject = BehaviorSubject(value: portfolioItems)
         ConstructPortfolio()
     }
     
@@ -36,6 +38,21 @@ class PortfolioDataService : IPortfolioDataService{
             return newSubject.asObservable()
         }
         return subject.asObservable()
+    }
+    
+    func GetFullPortfolioObs() -> Observable<[PortfolioItem]> {
+        return portfolioSubject.asObservable().map {
+            return $0.values.map{ subject in
+                do{
+                    return try subject.value()
+                } catch {
+                    return PortfolioItem.Default()
+                }
+            }
+            .filter{
+                $0.id == ""
+            }
+        }
     }
     
     func SavePortfolioItem(_ item : PortfolioItem, _ cash : CashItem){
@@ -71,6 +88,7 @@ class PortfolioDataService : IPortfolioDataService{
                 portfolioItems[file.id] = BehaviorSubject<PortfolioItem>(value: file)
             }
         }
+        portfolioSubject.onNext(portfolioItems)
     }
     
     
