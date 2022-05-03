@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
+    @State var isSearching = false
     var body: some View {
         NavigationView{
             Group{

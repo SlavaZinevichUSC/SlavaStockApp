@@ -106,7 +106,7 @@ extension StockTradeView{
             }
             else{
                 self.showSuccess.toggle()
-
+                vm.PerformTransaction(containerService, commonData, sharesInput, meta)
             }
             
         }, label: {
@@ -122,8 +122,10 @@ extension StockTradeView{
 extension StockTradeView{
     struct ButtonMeta{
         let text : String
+        let mult : Double
         let Validate : (String, Double) -> ValidatorState
-        init(_ text : String, _ validator : @escaping (String, Double) -> ValidatorState){
+        init(_ text : String, _ mult : Double, _ validator : @escaping (String, Double) -> ValidatorState){
+            self.mult = mult
             self.text = text
             self.Validate = validator
         }
@@ -173,6 +175,21 @@ extension StockTradeView{
             }
         }
         
+        func PerformTransaction(_ container : ServiceContainer,
+                                _ commonData : StockCommonData,
+                                _ shareInput : String, _ meta : ButtonMeta){
+            let shares = shareInput.AsInt()
+            let portfolio = container.GetPortfolioDataService()
+            let newShares = stock.shares + Int(meta.mult) * shares
+            let cost = Double(shares) * commonData.stats.value.current
+            let newAvg = meta.mult < 0 ? stock.avgPrice :
+            Double(stock.avgPrice * Double(stock.shares) + cost) / Double(newShares)
+            
+            let newItem = stock.With(avgPrice: newAvg, shares: newShares)
+            let newMoney = cash.Adjust(-meta.mult * cost)
+            portfolio.SavePortfolioItem(newItem, newMoney)
+        }
+        
         func ValidateBuy(_ shareInput : String, _ totalValue : Double) -> ValidatorState{
             let shares = shareInput.AsInt(-69) //Stupid method that is a bug if the user enters -69 but fuck them anyway
             if(shares == -69){
@@ -202,7 +219,7 @@ extension StockTradeView{
         }
         
         func GetButtonMeta(_ isSell : Bool) -> ButtonMeta{
-            return isSell ? ButtonMeta("Sell", ValidateSell) : ButtonMeta("Buy", ValidateBuy)
+            return isSell ? ButtonMeta("Sell", -1, ValidateSell) : ButtonMeta("Buy", 1, ValidateBuy)
         }
     }
 }

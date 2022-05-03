@@ -15,24 +15,44 @@ import RxSwift
 //MAYBE ill change it. As long as the interface is agnostic to implementation this will be easy
 //SO NO UNPROTECTED CALLS TO .VALUE
 class PortfolioDataService : IPortfolioDataService{
+    
     private let repo : IPortfolioService
     private let cashSubject : BehaviorSubject<CashItem>
     private var portfolioItems : Dictionary<String, BehaviorSubject<PortfolioItem>>
 
     init(_ repo : IPortfolioService){
         self.repo = repo
+        self.repo.Reset()
         cashSubject = BehaviorSubject<CashItem>(value: repo.GetCash())
         portfolioItems = Dictionary()
+        ConstructPortfolio()
     }
     
     func GetPortfolioItemObs(_ id : String, _ name : String) -> Observable<PortfolioItem>{
         let subjectOpt = portfolioItems[id]
         guard let subject = subjectOpt else{
-            let newSubject = BehaviorSubject(value: PortfolioItem(id: id, name: name, avgPrice: 0, shares: 0))
+            let newSubject = BehaviorSubject(value: PortfolioItem(id: id, name: name, avgPrice: 0, shares: 0, url: nil))
             portfolioItems[id] = newSubject
             return newSubject.asObservable()
         }
         return subject.asObservable()
+    }
+    
+    func SavePortfolioItem(_ item : PortfolioItem, _ cash : CashItem){
+        let operation = repo.SavePortfolioFile(item)
+        if(!operation){
+            print("Save failed")
+            return
+        }
+        let newCash = repo.UpdateCash(cash)
+        cashSubject.onNext(newCash)
+
+        ConstructPortfolio()
+        if(!item.HasShares()){
+            portfolioItems[item.id]?.onNext(item)
+        }
+        
+        
     }
     
     func GetCashObs() -> Observable<CashItem> {
@@ -43,7 +63,13 @@ class PortfolioDataService : IPortfolioDataService{
     private func ConstructPortfolio(){
         let files = repo.GetPorfolioFiles()
         for file in files{
-            portfolioItems[file.id] = BehaviorSubject<PortfolioItem>(value: file)
+            let itemOpt = portfolioItems[file.id]
+            if let item = itemOpt {
+                item.onNext(file)
+            }
+            else{
+                portfolioItems[file.id] = BehaviorSubject<PortfolioItem>(value: file)
+            }
         }
     }
     

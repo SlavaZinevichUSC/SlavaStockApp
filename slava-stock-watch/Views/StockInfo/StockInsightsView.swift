@@ -8,12 +8,17 @@
 import SwiftUI
 
 struct StockInsightsView: View {
-    @ObservedObject var vm = SingleItemVM<ApiSentiments>()
+    @StateObject var vm = SingleItemVM<ApiSentiments>()
     @EnvironmentObject var container : ServiceContainer
     @EnvironmentObject var commonData : StockCommonData
     
     var body: some View {
         LazyVGrid(columns: [GridItem(), GridItem(), GridItem()], alignment: .leading, spacing: 15){
+            Group{
+                AsLabel(commonData.name)
+                AsLabel("Reddit")
+                AsLabel("Twitter")
+            }
             Group{
                 AsLabel("Total")
                 AsCount(vm.data.redditTotal)
@@ -38,12 +43,16 @@ struct StockInsightsView: View {
     }
     
     
-    private func AsLabel(_ text: String) -> Text{
-        return Text.Bold(text)
+    private func AsLabel(_ text: String) -> some View{
+        return Group{
+            Text.Bold(text)
+        }
     }
     
-    private func AsCount(_ text: Int) -> Text{
-        return Text("\(text)")
+    private func AsCount(_ text: Int) -> some View{
+        return Group{
+            Text("\(text)")
+        }
     }
 }
 

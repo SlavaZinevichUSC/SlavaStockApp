@@ -66,6 +66,15 @@ extension Text{
     static func FormatDouble(_ value : Double) -> Text{
         return Text(String.FormatDouble(value))
     }
+    
+    static func FormatChange(_ value : Double) -> Text{
+        return FormatRelative(value, 0)
+    }
+    
+    static func FormatRelative(_ value : Double, _ comparedTo : Double) -> Text{
+        let color = value > comparedTo ? Color.green : Color.red
+        return Text.FormatDouble(value).foregroundColor(color)
+    }
 }
 
 extension String{

@@ -11,5 +11,6 @@ import RxSwift
 protocol IPortfolioDataService {
     func GetPortfolioItemObs(_ id : String, _ name : String) -> Observable<PortfolioItem>
     func GetCashObs() -> Observable<CashItem>
+    func SavePortfolioItem(_ item : PortfolioItem, _ cash : CashItem)
 
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StockAboutView: View {
-    @ObservedObject var vm : SingleItemVM = SingleItemVM<ApiProfileDetails>()
+    @StateObject var vm : SingleItemVM = SingleItemVM<ApiProfileDetails>()
     @EnvironmentObject var container : ServiceContainer
     @EnvironmentObject var commonData : StockCommonData
     

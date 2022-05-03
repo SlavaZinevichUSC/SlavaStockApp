@@ -37,17 +37,6 @@ extension StockSummaryPriceView{
     }
 }
 
-extension StockSummaryPriceView{
-    class ViewModel : ObservableObject{
-        @Published var price : ApiStats = ApiStats.Default()
-        init(_ id : String, _ http : IHttpService){
-            http.Get(id: id, completion: { data in
-                self.price = data
-            })
-        }
-    }
-}
-
 struct StockSummaryPriceView_Previews: PreviewProvider {
     static var previews: some View {
         StockSummaryPriceView()

@@ -9,14 +9,20 @@ import SwiftUI
 
 struct StockExistingPortfolioView: View {
     @EnvironmentObject var container : ServiceContainer
+    @EnvironmentObject var commonData : StockCommonData
     @ObservedObject var vm : ViewModel
+    private let cols = [GridItem(.fixed(UIScreen.screenWidth60)), GridItem()]
     
     var body: some View {
-        LazyVGrid(columns: [GridItem(), GridItem()], alignment: .leading, spacing: 15){
-            VStack{
-                Text("Shares Owned:   ").bold().Normal("\(vm.stock.shares)")
+        LazyVGrid(columns: cols, alignment: .leading, spacing: 15){
+            VStack(alignment: .leading){
+                Text.Bold("Shares Owned:  ").Normal("\(vm.stock.shares)").padding(.bottom)
+                Text.Bold("Avg cost / share:  ").Normal("\(vm.stock.avgPrice)").padding(.bottom)
+                Text.Bold("Total Cost:  ").Double(vm.stock.totalCost).padding(.bottom)
+                (Text.Bold("Change:  ") + Text.FormatChange(vm.GetChange(commonData))).padding(.bottom)
+                Text.Bold("Market Value:  ") + Text.FormatRelative(vm.stock.totalCost, vm.GetCurrentTotal(commonData))
             }
-            Text("Filler")
+            StockTradeButton()
         }
         .onAppear(perform: {
             vm.Activate(container)
@@ -26,6 +32,9 @@ struct StockExistingPortfolioView: View {
     init(_ id : String){
         vm = ViewModel(id)
     }
+}
+
+extension StockExistingPortfolioView{
 }
 
 extension StockExistingPortfolioView{
@@ -46,6 +55,14 @@ extension StockExistingPortfolioView{
             _ = portfolio.GetCashObs().subscribe{ data in
                 self.cash = data
             }
+        }
+        
+        func GetChange(_ commonData : StockCommonData) -> Double{
+            return stock.avgPrice - commonData.stats.value.current
+        }
+        
+        func GetCurrentTotal(_ commonData : StockCommonData) -> Double {
+            return commonData.stats.value.current * Double(self.stock.shares)
         }
     }
 }

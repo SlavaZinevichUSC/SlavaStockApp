@@ -11,11 +11,19 @@ import Foundation
 extension Date{
     static func FromTimestamp(_ timestamp: Int) -> String{
         let obj = Date(timeIntervalSince1970: Double(timestamp))
+        return FromDateObj(obj)
+    }
+    
+    static func FromDateObj(_ obj : Date) -> String{
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
         let date = formatter.string(from: obj)
         return date
+    }
+    
+    func ToDisplay() -> String{
+        Date.FromDateObj(self)
     }
     
     static func ElapsedFromTimestamp(_ timestamp: Int) -> String{

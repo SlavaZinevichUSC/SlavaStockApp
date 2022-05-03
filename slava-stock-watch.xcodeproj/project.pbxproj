@@ -53,10 +53,14 @@
 		56A54376281F8D66006C8D36 /* ApiSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A54375281F8D66006C8D36 /* ApiSearch.swift */; };
 		56A5437928207131006C8D36 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 56A5437828207131006C8D36 /* AlertToast */; };
 		56A5437D28207D9E006C8D36 /* StockTradeSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5437C28207D9E006C8D36 /* StockTradeSuccessView.swift */; };
+		56BC21622820C53A00C98866 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BC21612820C53A00C98866 /* LoadingView.swift */; };
+		56BC21652820D27900C98866 /* MainPortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BC21642820D27900C98866 /* MainPortfolioView.swift */; };
+		56BC21672820D29800C98866 /* MainDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BC21662820D29800C98866 /* MainDateView.swift */; };
 		56C6F51F281DBDC600BB15E5 /* IPortfolioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C6F51E281DBDC600BB15E5 /* IPortfolioService.swift */; };
 		56C6F528281DBFFA00BB15E5 /* PortfolioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C6F527281DBFFA00BB15E5 /* PortfolioService.swift */; };
 		56C6F52B281DC06600BB15E5 /* IPortfolioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C6F52A281DC06600BB15E5 /* IPortfolioManager.swift */; };
 		56CD78D62812269800DC050E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56CD78D52812269800DC050E /* RxSwift */; };
+		56CDCB6328209188004AF3FF /* IPersistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CDCB6228209188004AF3FF /* IPersistent.swift */; };
 		56F60FF3280F768100D5BDA1 /* slava_stock_watchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F60FF2280F768100D5BDA1 /* slava_stock_watchApp.swift */; };
 		56F60FF5280F768100D5BDA1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F60FF4280F768100D5BDA1 /* ContentView.swift */; };
 		56F60FF7280F768600D5BDA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56F60FF6280F768600D5BDA1 /* Assets.xcassets */; };
@@ -127,9 +131,13 @@
 		56A54373281F6D49006C8D36 /* IPortfolioDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPortfolioDataService.swift; sourceTree = "<group>"; };
 		56A54375281F8D66006C8D36 /* ApiSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiSearch.swift; sourceTree = "<group>"; };
 		56A5437C28207D9E006C8D36 /* StockTradeSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTradeSuccessView.swift; sourceTree = "<group>"; };
+		56BC21612820C53A00C98866 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		56BC21642820D27900C98866 /* MainPortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPortfolioView.swift; sourceTree = "<group>"; };
+		56BC21662820D29800C98866 /* MainDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDateView.swift; sourceTree = "<group>"; };
 		56C6F51E281DBDC600BB15E5 /* IPortfolioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPortfolioService.swift; sourceTree = "<group>"; };
 		56C6F527281DBFFA00BB15E5 /* PortfolioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioService.swift; sourceTree = "<group>"; };
 		56C6F52A281DC06600BB15E5 /* IPortfolioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPortfolioManager.swift; sourceTree = "<group>"; };
+		56CDCB6228209188004AF3FF /* IPersistent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPersistent.swift; sourceTree = "<group>"; };
 		56F60FEF280F768100D5BDA1 /* slava-stock-watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "slava-stock-watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56F60FF2280F768100D5BDA1 /* slava_stock_watchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = slava_stock_watchApp.swift; sourceTree = "<group>"; };
 		56F60FF4280F768100D5BDA1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -182,6 +190,7 @@
 				569018932819E67600C76956 /* StockStatsView.swift */,
 				5690189C281A0C0800C76956 /* StockAboutView.swift */,
 				569018A2281A2A0400C76956 /* StockInsightsView.swift */,
+				56BC21612820C53A00C98866 /* LoadingView.swift */,
 			);
 			path = StockInfo;
 			sourceTree = "<group>";
@@ -291,8 +300,10 @@
 		56930CE82810BAE20007FC08 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				56BC21632820D26000C98866 /* Portfolio */,
 				56394289280FAF0300FF7BAC /* SearchView.swift */,
 				56394287280FACCD00FF7BAC /* MainView.swift */,
+				56BC21662820D29800C98866 /* MainDateView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -364,10 +375,19 @@
 			path = Mock;
 			sourceTree = "<group>";
 		};
+		56BC21632820D26000C98866 /* Portfolio */ = {
+			isa = PBXGroup;
+			children = (
+				56BC21642820D27900C98866 /* MainPortfolioView.swift */,
+			);
+			path = Portfolio;
+			sourceTree = "<group>";
+		};
 		56C6F529281DC05500BB15E5 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
 				56C6F52A281DC06600BB15E5 /* IPortfolioManager.swift */,
+				56CDCB6228209188004AF3FF /* IPersistent.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -580,6 +600,7 @@
 				5639428A280FAF0400FF7BAC /* SearchView.swift in Sources */,
 				56A54362281E0D93006C8D36 /* SingleApiVM.swift in Sources */,
 				56A54374281F6D49006C8D36 /* IPortfolioDataService.swift in Sources */,
+				56BC21652820D27900C98866 /* MainPortfolioView.swift in Sources */,
 				562C36B128112EEE004C2E21 /* HttpService.swift in Sources */,
 				56A5436D281E68FF006C8D36 /* StockTradeView.swift in Sources */,
 				56A54364281E14A0006C8D36 /* StockEmptyPortfolioView.swift in Sources */,
@@ -606,6 +627,8 @@
 				5690189D281A0C0800C76956 /* StockAboutView.swift in Sources */,
 				56C6F52B281DC06600BB15E5 /* IPortfolioManager.swift in Sources */,
 				56A5434A281DCF1B006C8D36 /* CashItem.swift in Sources */,
+				56BC21672820D29800C98866 /* MainDateView.swift in Sources */,
+				56CDCB6328209188004AF3FF /* IPersistent.swift in Sources */,
 				56C6F528281DBFFA00BB15E5 /* PortfolioService.swift in Sources */,
 				569018BB281C78F100C76956 /* StockSummaryPriceView.swift in Sources */,
 				569018B1281B5AE800C76956 /* StockNewsPopupView.swift in Sources */,
@@ -613,6 +636,7 @@
 				56A5437D28207D9E006C8D36 /* StockTradeSuccessView.swift in Sources */,
 				56A54366281E18BE006C8D36 /* StockExistingPortfolioView.swift in Sources */,
 				56A5434F281DD9D2006C8D36 /* ViewExt.swift in Sources */,
+				56BC21622820C53A00C98866 /* LoadingView.swift in Sources */,
 				569018A5281A2AFC00C76956 /* ApiSentiments.swift in Sources */,
 				562C36BC28113C15004C2E21 /* StockSummaryView.swift in Sources */,
 				56C6F51F281DBDC600BB15E5 /* IPortfolioService.swift in Sources */,

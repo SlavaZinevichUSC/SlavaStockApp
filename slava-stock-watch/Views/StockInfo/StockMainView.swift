@@ -12,26 +12,28 @@ struct StockMainView: View {
     @EnvironmentObject var container : ServiceContainer
     var body: some View {
         NavigationView{
-            ScrollView{
-                LazyVStack(alignment: .leading, spacing: 10){
-                    Section(){
-                        StockSummaryMainView().environmentObject(vm.commonData)
-                        Spacer()
+            ZStack{
+                ScrollView{
+                    LazyVStack(alignment: .leading, spacing: 10){
+                        Section(){
+                            StockSummaryMainView().environmentObject(vm.commonData)
+                            Spacer()
+                        }
+                        AsSection("Stats", StockStatsView().environmentObject(vm.commonData))
+                        AsSection("About",StockAboutView().environmentObject(vm.commonData))
+                        AsSection("Portfolio", StockPortfolioView(vm.id, container).environmentObject(vm.commonData))
+                        AsSection("Insights", StockInsightsView().environmentObject(vm.commonData))
+                        AsSection("News", StockNewsView(vm.id, container))
+                        
                     }
-                    AsSection("Stats", StockStatsView().environmentObject(vm.commonData))
-                    
-                    AsSection("About",StockAboutView().environmentObject(vm.commonData))
-                    
-                    AsSection("Portfolio", StockPortfolioView(vm.id, container).environmentObject(vm.commonData))
-                    
-                    AsSection("Insights", StockInsightsView().environmentObject(vm.commonData))
-                    
-                    AsSection("News", StockNewsView(vm.id, container))
-                    
+                }
+                .navigationTitle(vm.profile.name)
+                .navigationBarHidden(true)
+                
+                if(vm.isLoading){
+                    LoadingView()
                 }
             }
-            .navigationTitle(vm.profile.name)
-            .navigationBarHidden(true)
         }.onAppear(perform: {
             vm.OnAppear(container.GetHttpService())
         })
@@ -60,6 +62,7 @@ extension StockMainView{
 extension StockMainView{
     class ViewModel : ObservableObject{
         @Published var profile : ApiProfile = ApiProfile.Default()
+        @Published var isLoading : Bool = true
         let id : String
         let commonData : StockCommonData
         
@@ -68,9 +71,15 @@ extension StockMainView{
             commonData = StockCommonData(search.id, search.name, container)
         }
         func OnAppear(_ http: IHttpService){
+            isLoading = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                self.isLoading = false
+            }
             http.Get(id: id, completion: { data in
                 self.profile = data
             })
+            
+            commonData.Refresh()
         }
         
         

@@ -41,6 +41,23 @@ final class HttpService : IHttpService{
         }
     }
     
+    func Get<T : ApiCallable>(id : String) -> Observable<T>{
+        let callType = T.GetHttpName()
+        let url = "\(url)/\(callType)/\(id)"
+        let req = AF.request(url, method: .get)
+        let subject = PublishSubject<T>()
+        req
+        .responseDecodable(of: T.self) { response in
+            guard let res = response.value else {
+                print(response.debugDescription)
+                return
+                
+            }
+            subject.onNext(res)
+        }
+        return subject.asObservable()
+    }
+    
     
     
     

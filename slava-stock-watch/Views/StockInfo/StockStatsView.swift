@@ -9,7 +9,7 @@ import SwiftUI
 import RxSwift
 
 struct StockStatsView: View {
-    @ObservedObject var vm : StatsVM = StatsVM()
+    @StateObject var vm : StatsVM = StatsVM()
     @EnvironmentObject var commonData : StockCommonData
     var body: some View {
         LazyVGrid(columns: [GridItem(), GridItem()], alignment: .leading, spacing: 15){
