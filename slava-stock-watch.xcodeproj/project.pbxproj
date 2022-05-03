@@ -16,7 +16,6 @@
 		562C36BC28113C15004C2E21 /* StockSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562C36BB28113C15004C2E21 /* StockSummaryView.swift */; };
 		562C36C22811452A004C2E21 /* ApiCallable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562C36C12811452A004C2E21 /* ApiCallable.swift */; };
 		56394288280FACCE00FF7BAC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56394287280FACCD00FF7BAC /* MainView.swift */; };
-		5639428A280FAF0400FF7BAC /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56394289280FAF0300FF7BAC /* SearchView.swift */; };
 		569018942819E67600C76956 /* StockStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569018932819E67600C76956 /* StockStatsView.swift */; };
 		569018962819E7CB00C76956 /* ApiStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569018952819E7CB00C76956 /* ApiStats.swift */; };
 		56901899281A074C00C76956 /* DoubleExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56901898281A074C00C76956 /* DoubleExt.swift */; };
@@ -56,6 +55,7 @@
 		56BC21622820C53A00C98866 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BC21612820C53A00C98866 /* LoadingView.swift */; };
 		56BC21652820D27900C98866 /* MainPortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BC21642820D27900C98866 /* MainPortfolioView.swift */; };
 		56BC21672820D29800C98866 /* MainDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BC21662820D29800C98866 /* MainDateView.swift */; };
+		56BC216A2821BF6100C98866 /* MainSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BC21692821BF6100C98866 /* MainSearchView.swift */; };
 		56C6F51F281DBDC600BB15E5 /* IPortfolioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C6F51E281DBDC600BB15E5 /* IPortfolioService.swift */; };
 		56C6F528281DBFFA00BB15E5 /* PortfolioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C6F527281DBFFA00BB15E5 /* PortfolioService.swift */; };
 		56C6F52B281DC06600BB15E5 /* IPortfolioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C6F52A281DC06600BB15E5 /* IPortfolioManager.swift */; };
@@ -95,7 +95,6 @@
 		562C36BB28113C15004C2E21 /* StockSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSummaryView.swift; sourceTree = "<group>"; };
 		562C36C12811452A004C2E21 /* ApiCallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCallable.swift; sourceTree = "<group>"; };
 		56394287280FACCD00FF7BAC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		56394289280FAF0300FF7BAC /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		569018932819E67600C76956 /* StockStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockStatsView.swift; sourceTree = "<group>"; };
 		569018952819E7CB00C76956 /* ApiStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiStats.swift; sourceTree = "<group>"; };
 		56901898281A074C00C76956 /* DoubleExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExt.swift; sourceTree = "<group>"; };
@@ -134,6 +133,7 @@
 		56BC21612820C53A00C98866 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		56BC21642820D27900C98866 /* MainPortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPortfolioView.swift; sourceTree = "<group>"; };
 		56BC21662820D29800C98866 /* MainDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDateView.swift; sourceTree = "<group>"; };
+		56BC21692821BF6100C98866 /* MainSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchView.swift; sourceTree = "<group>"; };
 		56C6F51E281DBDC600BB15E5 /* IPortfolioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPortfolioService.swift; sourceTree = "<group>"; };
 		56C6F527281DBFFA00BB15E5 /* PortfolioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioService.swift; sourceTree = "<group>"; };
 		56C6F52A281DC06600BB15E5 /* IPortfolioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPortfolioManager.swift; sourceTree = "<group>"; };
@@ -300,8 +300,8 @@
 		56930CE82810BAE20007FC08 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				56BC21682821BF4C00C98866 /* Search */,
 				56BC21632820D26000C98866 /* Portfolio */,
-				56394289280FAF0300FF7BAC /* SearchView.swift */,
 				56394287280FACCD00FF7BAC /* MainView.swift */,
 				56BC21662820D29800C98866 /* MainDateView.swift */,
 			);
@@ -381,6 +381,14 @@
 				56BC21642820D27900C98866 /* MainPortfolioView.swift */,
 			);
 			path = Portfolio;
+			sourceTree = "<group>";
+		};
+		56BC21682821BF4C00C98866 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				56BC21692821BF6100C98866 /* MainSearchView.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		56C6F529281DC05500BB15E5 /* Protocols */ = {
@@ -597,7 +605,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				569018BE281C80EF00C76956 /* DataModel.xcdatamodeld in Sources */,
-				5639428A280FAF0400FF7BAC /* SearchView.swift in Sources */,
 				56A54362281E0D93006C8D36 /* SingleApiVM.swift in Sources */,
 				56A54374281F6D49006C8D36 /* IPortfolioDataService.swift in Sources */,
 				56BC21652820D27900C98866 /* MainPortfolioView.swift in Sources */,
@@ -641,6 +648,7 @@
 				562C36BC28113C15004C2E21 /* StockSummaryView.swift in Sources */,
 				56C6F51F281DBDC600BB15E5 /* IPortfolioService.swift in Sources */,
 				56F60FF3280F768100D5BDA1 /* slava_stock_watchApp.swift in Sources */,
+				56BC216A2821BF6100C98866 /* MainSearchView.swift in Sources */,
 				56A5436B281E6768006C8D36 /* StockTradeButton.swift in Sources */,
 				569018AF281B43CD00C76956 /* StockNewsItemView.swift in Sources */,
 				56A54372281F651A006C8D36 /* PortfolioDataService.swift in Sources */,

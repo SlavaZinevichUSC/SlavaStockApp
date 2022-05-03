@@ -19,6 +19,7 @@ extension UIScreen{
     static let dScreenWidth25 = screenWidth25 * 0.95
     static let dScreenWidth50 = screenWidth50 * 0.95
     static let dScreenWidth75 = screenWidth75 * 0.95
+    static let dScreenWidth = screenWidth * 0.95
 
 
 }
