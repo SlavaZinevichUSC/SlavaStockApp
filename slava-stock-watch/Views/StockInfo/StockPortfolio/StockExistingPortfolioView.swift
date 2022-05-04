@@ -29,8 +29,8 @@ struct StockExistingPortfolioView: View {
         })
     }
     
-    init(_ id : String){
-        vm = ViewModel(id)
+    init(_ stock : PortfolioItem){
+        vm = ViewModel(stock)
     }
 }
 
@@ -39,17 +39,16 @@ extension StockExistingPortfolioView{
 
 extension StockExistingPortfolioView{
     class ViewModel : ObservableObject{
-        let id : String
-        @Published var stock : PortfolioItem = PortfolioItem.Default()
+        @Published var stock : PortfolioItem
         @Published var cash : CashItem = CashItem.Default()
-        init(_ id : String){
-            self.id = id
+        init(_ stock : PortfolioItem){
+            self.stock = stock
         }
         
         func Activate(_ container : ServiceContainer){
             let portfolio = container.GetPortfolioDataService()
             
-            _ = portfolio.GetPortfolioItemObs(id, "").subscribe{data in
+            _ = portfolio.GetPortfolioItemObs(stock.id, "").subscribe{data in
                 self.stock = data
             }
             _ = portfolio.GetCashObs().subscribe{ data in
@@ -69,6 +68,6 @@ extension StockExistingPortfolioView{
 
 struct StockExistingPortfolioView_Previews: PreviewProvider {
     static var previews: some View {
-        StockExistingPortfolioView("AAPL")
+        StockExistingPortfolioView(PortfolioItem.Default())
     }
 }

@@ -14,7 +14,7 @@ struct StockPortfolioView: View {
     
     var body: some View {
             if(vm.item.HasShares()){
-                StockExistingPortfolioView(commonData.id)
+                StockExistingPortfolioView(vm.item)
             }
             else {
                 StockEmptyPortfolioView()

@@ -23,7 +23,6 @@ class PortfolioDataService : IPortfolioDataService{
 
     init(_ repo : IPortfolioService){
         self.repo = repo
-        repo.Reset()
         cashSubject = BehaviorSubject<CashItem>(value: repo.GetCash())
         portfolioItems = Dictionary()
         portfolioSubject = BehaviorSubject(value: portfolioItems)
@@ -50,7 +49,7 @@ class PortfolioDataService : IPortfolioDataService{
                 }
             }
             .filter{
-                $0.id == ""
+                $0.HasShares()
             }
         }
     }

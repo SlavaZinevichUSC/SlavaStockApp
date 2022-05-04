@@ -15,10 +15,10 @@ struct MainPortfolioItemView: View {
             VStack{
                 Text.Bold(vm.displayItem.item.id)
                 Text("\(vm.displayItem.item.shares) shares").font(.caption)
-            }
+            }.padding(.horizontal, 40)
             VStack{
-                Text.Bold("$\(vm.displayItem.item.totalCost)")
-                Text("$\(vm.displayItem.change) (\(vm.displayItem.changePercent)%)").WithChangeColor(vm.displayItem.change)
+                Text.Bold("$\(vm.displayItem.item.totalCost.Format())")
+                Text("$\(vm.displayItem.change.Format()) (\(vm.displayItem.changePercent.Format())%)").WithChangeColor(vm.displayItem.change)
             }
             
         }.onAppear(perform: {

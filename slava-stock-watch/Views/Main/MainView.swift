@@ -23,7 +23,7 @@ struct MainView: View {
                         MainDateView()
                         MainPortfolioView()
                     }
-                    .listStyle(GroupedListStyle())
+                    .listStyle(InsetGroupedListStyle())
                 }
             }
         }

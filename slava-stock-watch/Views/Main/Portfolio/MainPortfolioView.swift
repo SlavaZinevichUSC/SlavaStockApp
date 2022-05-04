@@ -25,8 +25,9 @@ struct MainPortfolioView: View {
 extension MainPortfolioView{
     
     private func GetBreakdown() -> some View{
-        return HStack(spacing: 30){
+        return HStack(spacing: 10){
             GetBreakDownItem("Net Worth:", vm.cash.money + vm.totalPortfolioValue)
+            Spacer()
             GetBreakDownItem("Cash Balance:", vm.cash.money)
         }
     }
@@ -36,7 +37,6 @@ extension MainPortfolioView{
             Text(text).font(.body)
             Text("$\(String.FormatDouble(value))").bold().font(.body)
         }
-        .frame(minWidth: UIScreen.dScreenWidth50)
     }
 }
 extension MainPortfolioView{

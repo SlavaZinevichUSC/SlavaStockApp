@@ -14,6 +14,7 @@ extension String{
     func AsText() -> Text{
         return Text(self)
     }
+    
 }
 
 extension Text{
