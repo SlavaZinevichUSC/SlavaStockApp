@@ -19,9 +19,12 @@ struct MainView: View {
                     MainSearchView(vm.search)
                 }
                 else{
+                    
                     List{
-                        MainDateView()
+                        MainDateView().AsSection()
                         MainPortfolioView()
+                        WatchlistView()
+                        FinhubView().AsSection()
                     }
                     .listStyle(InsetGroupedListStyle())
                 }
@@ -75,7 +78,7 @@ extension MainView{
         var body: some View{
             Section{
                 ForEach(searchList.searchResults, id: \.id){item in
-                    NavigationLink(destination: StockMainView(item, container)){
+                    NavigationLink(destination: StockMainView(item)){
                         VStack{
                             Text.Bold(item.name)
                             Text("\(item.id)")

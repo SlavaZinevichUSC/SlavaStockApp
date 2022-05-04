@@ -57,6 +57,16 @@
 		56BC21672820D29800C98866 /* MainDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BC21662820D29800C98866 /* MainDateView.swift */; };
 		56BC216A2821BF6100C98866 /* MainSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BC21692821BF6100C98866 /* MainSearchView.swift */; };
 		56BC216C2821D17300C98866 /* MainPortfolioItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BC216B2821D17300C98866 /* MainPortfolioItemView.swift */; };
+		56BC216F2821FAE400C98866 /* FinhubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BC216E2821FAE400C98866 /* FinhubView.swift */; };
+		56BC21722821FDD300C98866 /* IWatchListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BC21712821FDD300C98866 /* IWatchListManager.swift */; };
+		56BC21742821FE5200C98866 /* WatchlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BC21732821FE5200C98866 /* WatchlistManager.swift */; };
+		56BC21762821FEF600C98866 /* ManagerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BC21752821FEF600C98866 /* ManagerContainer.swift */; };
+		56BC2178282200D400C98866 /* ManagerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BC2177282200D400C98866 /* ManagerBase.swift */; };
+		56BC217A282203FF00C98866 /* WatchlistService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BC2179282203FF00C98866 /* WatchlistService.swift */; };
+		56BC217C2822041800C98866 /* IWatchlistService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BC217B2822041800C98866 /* IWatchlistService.swift */; };
+		56BC217E2822049300C98866 /* WatchlistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BC217D2822049300C98866 /* WatchlistItem.swift */; };
+		56BC21812822472200C98866 /* WatchlistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BC21802822472100C98866 /* WatchlistView.swift */; };
+		56BC2183282247D100C98866 /* WatchlistItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BC2182282247D100C98866 /* WatchlistItemView.swift */; };
 		56C6F51F281DBDC600BB15E5 /* IPortfolioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C6F51E281DBDC600BB15E5 /* IPortfolioService.swift */; };
 		56C6F528281DBFFA00BB15E5 /* PortfolioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C6F527281DBFFA00BB15E5 /* PortfolioService.swift */; };
 		56C6F52B281DC06600BB15E5 /* IPortfolioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C6F52A281DC06600BB15E5 /* IPortfolioManager.swift */; };
@@ -136,6 +146,16 @@
 		56BC21662820D29800C98866 /* MainDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDateView.swift; sourceTree = "<group>"; };
 		56BC21692821BF6100C98866 /* MainSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchView.swift; sourceTree = "<group>"; };
 		56BC216B2821D17300C98866 /* MainPortfolioItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPortfolioItemView.swift; sourceTree = "<group>"; };
+		56BC216E2821FAE400C98866 /* FinhubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinhubView.swift; sourceTree = "<group>"; };
+		56BC21712821FDD300C98866 /* IWatchListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IWatchListManager.swift; sourceTree = "<group>"; };
+		56BC21732821FE5200C98866 /* WatchlistManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistManager.swift; sourceTree = "<group>"; };
+		56BC21752821FEF600C98866 /* ManagerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerContainer.swift; sourceTree = "<group>"; };
+		56BC2177282200D400C98866 /* ManagerBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerBase.swift; sourceTree = "<group>"; };
+		56BC2179282203FF00C98866 /* WatchlistService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistService.swift; sourceTree = "<group>"; };
+		56BC217B2822041800C98866 /* IWatchlistService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IWatchlistService.swift; sourceTree = "<group>"; };
+		56BC217D2822049300C98866 /* WatchlistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistItem.swift; sourceTree = "<group>"; };
+		56BC21802822472100C98866 /* WatchlistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistView.swift; sourceTree = "<group>"; };
+		56BC2182282247D100C98866 /* WatchlistItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistItemView.swift; sourceTree = "<group>"; };
 		56C6F51E281DBDC600BB15E5 /* IPortfolioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPortfolioService.swift; sourceTree = "<group>"; };
 		56C6F527281DBFFA00BB15E5 /* PortfolioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioService.swift; sourceTree = "<group>"; };
 		56C6F52A281DC06600BB15E5 /* IPortfolioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPortfolioManager.swift; sourceTree = "<group>"; };
@@ -215,6 +235,7 @@
 				562C36B228112F06004C2E21 /* IHttpService.swift */,
 				56C6F51E281DBDC600BB15E5 /* IPortfolioService.swift */,
 				56A54373281F6D49006C8D36 /* IPortfolioDataService.swift */,
+				56BC217B2822041800C98866 /* IWatchlistService.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -288,6 +309,8 @@
 			isa = PBXGroup;
 			children = (
 				569018C1281C823C00C76956 /* PortfolioManager.swift */,
+				56BC21732821FE5200C98866 /* WatchlistManager.swift */,
+				56BC2177282200D400C98866 /* ManagerBase.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -302,10 +325,11 @@
 		56930CE82810BAE20007FC08 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				56BC217F2822470E00C98866 /* Watchlist */,
+				56BC21702821FD1D00C98866 /* Misc */,
 				56BC21682821BF4C00C98866 /* Search */,
 				56BC21632820D26000C98866 /* Portfolio */,
 				56394287280FACCD00FF7BAC /* MainView.swift */,
-				56BC21662820D29800C98866 /* MainDateView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -317,6 +341,7 @@
 				569018BF281C81E400C76956 /* Managers */,
 				562C36B8281136E8004C2E21 /* HttpResposes */,
 				56930CEC2810BB460007FC08 /* DataContainers */,
+				56BC21752821FEF600C98866 /* ManagerContainer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -327,6 +352,7 @@
 				56930CED2810BB690007FC08 /* PortfolioItem.swift */,
 				56A54349281DCF1B006C8D36 /* CashItem.swift */,
 				56A5435F281DFBD7006C8D36 /* StockCommonData.swift */,
+				56BC217D2822049300C98866 /* WatchlistItem.swift */,
 			);
 			path = DataContainers;
 			sourceTree = "<group>";
@@ -357,6 +383,7 @@
 			children = (
 				56C6F527281DBFFA00BB15E5 /* PortfolioService.swift */,
 				56A54371281F6519006C8D36 /* PortfolioDataService.swift */,
+				56BC2179282203FF00C98866 /* WatchlistService.swift */,
 			);
 			path = Portfolio;
 			sourceTree = "<group>";
@@ -394,11 +421,30 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		56BC21702821FD1D00C98866 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				56BC216E2821FAE400C98866 /* FinhubView.swift */,
+				56BC21662820D29800C98866 /* MainDateView.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		56BC217F2822470E00C98866 /* Watchlist */ = {
+			isa = PBXGroup;
+			children = (
+				56BC21802822472100C98866 /* WatchlistView.swift */,
+				56BC2182282247D100C98866 /* WatchlistItemView.swift */,
+			);
+			path = Watchlist;
+			sourceTree = "<group>";
+		};
 		56C6F529281DC05500BB15E5 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
 				56C6F52A281DC06600BB15E5 /* IPortfolioManager.swift */,
 				56CDCB6228209188004AF3FF /* IPersistent.swift */,
+				56BC21712821FDD300C98866 /* IWatchListManager.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -608,6 +654,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				569018BE281C80EF00C76956 /* DataModel.xcdatamodeld in Sources */,
+				56BC2178282200D400C98866 /* ManagerBase.swift in Sources */,
 				56A54362281E0D93006C8D36 /* SingleApiVM.swift in Sources */,
 				56A54374281F6D49006C8D36 /* IPortfolioDataService.swift in Sources */,
 				56BC21652820D27900C98866 /* MainPortfolioView.swift in Sources */,
@@ -621,15 +668,18 @@
 				569018B4281B61A900C76956 /* DateExt.swift in Sources */,
 				562C36A9281128A9004C2E21 /* StockMainView.swift in Sources */,
 				56A5435E281DFA99006C8D36 /* StatsVM.swift in Sources */,
+				56BC2183282247D100C98866 /* WatchlistItemView.swift in Sources */,
 				5690189F281A133800C76956 /* ApiProfileDetails.swift in Sources */,
 				562C36C22811452A004C2E21 /* ApiCallable.swift in Sources */,
 				569018962819E7CB00C76956 /* ApiStats.swift in Sources */,
 				569018AD281B269400C76956 /* StockNewsView.swift in Sources */,
 				56A54369281E57BD006C8D36 /* ScreenConstants.swift in Sources */,
 				569018B9281C77A700C76956 /* StockSummaryMainView.swift in Sources */,
+				56BC217A282203FF00C98866 /* WatchlistService.swift in Sources */,
 				569018942819E67600C76956 /* StockStatsView.swift in Sources */,
 				569018B6281C657E00C76956 /* StockNewsLeadingItem.swift in Sources */,
 				56F60FF5280F768100D5BDA1 /* ContentView.swift in Sources */,
+				56BC21762821FEF600C98866 /* ManagerContainer.swift in Sources */,
 				56901899281A074C00C76956 /* DoubleExt.swift in Sources */,
 				569018C2281C823C00C76956 /* PortfolioManager.swift in Sources */,
 				56394288280FACCE00FF7BAC /* MainView.swift in Sources */,
@@ -638,10 +688,12 @@
 				56C6F52B281DC06600BB15E5 /* IPortfolioManager.swift in Sources */,
 				56A5434A281DCF1B006C8D36 /* CashItem.swift in Sources */,
 				56BC21672820D29800C98866 /* MainDateView.swift in Sources */,
+				56BC216F2821FAE400C98866 /* FinhubView.swift in Sources */,
 				56CDCB6328209188004AF3FF /* IPersistent.swift in Sources */,
 				56C6F528281DBFFA00BB15E5 /* PortfolioService.swift in Sources */,
 				569018BB281C78F100C76956 /* StockSummaryPriceView.swift in Sources */,
 				569018B1281B5AE800C76956 /* StockNewsPopupView.swift in Sources */,
+				56BC217C2822041800C98866 /* IWatchlistService.swift in Sources */,
 				56930CEE2810BB690007FC08 /* PortfolioItem.swift in Sources */,
 				56A5437D28207D9E006C8D36 /* StockTradeSuccessView.swift in Sources */,
 				56A54366281E18BE006C8D36 /* StockExistingPortfolioView.swift in Sources */,
@@ -654,11 +706,15 @@
 				56BC216A2821BF6100C98866 /* MainSearchView.swift in Sources */,
 				56A5436B281E6768006C8D36 /* StockTradeButton.swift in Sources */,
 				569018AF281B43CD00C76956 /* StockNewsItemView.swift in Sources */,
+				56BC21812822472200C98866 /* WatchlistView.swift in Sources */,
 				56A54372281F651A006C8D36 /* PortfolioDataService.swift in Sources */,
+				56BC21722821FDD300C98866 /* IWatchListManager.swift in Sources */,
 				56A54360281DFBD7006C8D36 /* StockCommonData.swift in Sources */,
 				562C36AC28112E02004C2E21 /* ServiceContainer.swift in Sources */,
 				562C36BA28113707004C2E21 /* ApiProfile.swift in Sources */,
 				56A5434D281DD284006C8D36 /* StockPortfolioView.swift in Sources */,
+				56BC217E2822049300C98866 /* WatchlistItem.swift in Sources */,
+				56BC21742821FE5200C98866 /* WatchlistManager.swift in Sources */,
 				562C36B328112F06004C2E21 /* IHttpService.swift in Sources */,
 				56BC216C2821D17300C98866 /* MainPortfolioItemView.swift in Sources */,
 			);

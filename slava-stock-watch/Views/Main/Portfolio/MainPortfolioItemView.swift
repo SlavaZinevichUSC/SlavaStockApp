@@ -11,14 +11,18 @@ struct MainPortfolioItemView: View {
     @ObservedObject var vm : ViewModel
     @EnvironmentObject var container : ServiceContainer
     var body: some View {
-        HStack(spacing: 25){
-            VStack{
-                Text.Bold(vm.displayItem.item.id)
-                Text("\(vm.displayItem.item.shares) shares").font(.caption)
-            }.padding(.horizontal, 40)
-            VStack{
-                Text.Bold("$\(vm.displayItem.item.totalCost.Format())")
-                Text("$\(vm.displayItem.change.Format()) (\(vm.displayItem.changePercent.Format())%)").WithChangeColor(vm.displayItem.change)
+        NavigationLink(destination: StockMainView(vm.searchItem)){
+            
+            HStack(spacing: 25){
+                VStack{
+                    Text.Bold(vm.displayItem.item.id)
+                    Text("\(vm.displayItem.item.shares) shares").font(.caption)
+                }.padding(.horizontal, 40)
+                VStack{
+                    Text.Bold("$\(vm.displayItem.item.totalCost.Format())")
+                    Text("$\(vm.displayItem.change.Format()) (\(vm.displayItem.changePercent.Format())%)").WithChangeColor(vm.displayItem.change)
+                }
+                
             }
             
         }.onAppear(perform: {
@@ -34,6 +38,9 @@ struct MainPortfolioItemView: View {
 extension MainPortfolioItemView{
     class ViewModel : ObservableObject{
         private let item : PortfolioItem
+        var searchItem : ApiSearchItem {
+            return ApiSearchItem(item.id, item.name)
+        }
         @Published var displayItem : DisplayItem
         init(_ item : PortfolioItem){
             self.item = item

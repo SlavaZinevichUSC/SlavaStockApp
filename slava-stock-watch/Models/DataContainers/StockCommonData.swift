@@ -30,9 +30,20 @@ class StockCommonData : ObservableObject{
         self.cashObs = portfolio.GetCashObs()
     }
     
+    private init(){
+        stats = SharedApiData<ApiStats>.CreateMock()
+        profile = SharedApiData<ApiProfile>.CreateMock()
+        portfolioObs = Observable.empty()
+        cashObs = Observable.empty()
+    }
+    
     func Refresh(){
         stats.Request()
         profile.Request()
+    }
+    
+    static func Empty() -> StockCommonData{ //Very Ugly hack to get around lifetime issues
+        return StockCommonData()
     }
 }
 
@@ -60,6 +71,12 @@ struct SharedApiData<T : ApiCallable>{
         Get()
     }
     
+    private init(){
+        self.id = ""
+        subject = BehaviorSubject<T>(value: T.Default())
+        self.http = MockHttpService()
+    }
+    
     func Request(){
         Get()
         
@@ -69,5 +86,9 @@ struct SharedApiData<T : ApiCallable>{
         http.Get(id: self.id){ stats in
             self.subject.onNext(stats)
         }
+    }
+    
+    static func CreateMock() -> Self{
+        return SharedApiData<T>()
     }
 }

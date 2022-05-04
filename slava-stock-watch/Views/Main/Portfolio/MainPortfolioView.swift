@@ -13,6 +13,7 @@ struct MainPortfolioView: View {
     var body: some View {
         Section("portfolio"){
             GetBreakdown()
+            
             ForEach(vm.portfolio, id: \.id){item in
                 MainPortfolioItemView(item)
             }

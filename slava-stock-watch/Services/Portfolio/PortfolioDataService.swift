@@ -39,7 +39,7 @@ class PortfolioDataService : IPortfolioDataService{
         return subject.asObservable()
     }
     
-    func GetFullPortfolioObs() -> Observable<[PortfolioItem]> {
+    func GetFullPortfolioObs() -> RxSwift.Observable<[PortfolioItem]> {
         return portfolioSubject.asObservable().map {
             return $0.values.map{ subject in
                 do{

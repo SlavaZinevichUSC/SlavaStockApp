@@ -21,9 +21,9 @@ struct StockMainView: View {
                         }
                         AsSection("Stats", StockStatsView().environmentObject(vm.commonData))
                         AsSection("About",StockAboutView().environmentObject(vm.commonData))
-                        AsSection("Portfolio", StockPortfolioView(vm.id, container).environmentObject(vm.commonData))
+                        AsSection("Portfolio", StockPortfolioView(vm.search.id, container).environmentObject(vm.commonData))
                         AsSection("Insights", StockInsightsView().environmentObject(vm.commonData))
-                        AsSection("News", StockNewsView(vm.id, container))
+                        AsSection("News", StockNewsView(vm.search.id, container))
                         
                     }
                 }
@@ -35,13 +35,25 @@ struct StockMainView: View {
                 }
             }
         }.onAppear(perform: {
-            vm.OnAppear(container.GetHttpService())
+            vm.OnAppear(container)
         })
+        .toolbar {
+            Button(action: {
+                vm.ToggleWatchlist(container)
+            }, label: {
+                if(vm.watchlistItem.IsOnWatchlist()){
+                    Image(systemName: "plus.circle.fill")
+                }
+                else {
+                    Image(systemName: "plus.circle")
+                }
+            })
+        }
     }
     
     
-    init(_ result: ApiSearchItem, _ container : ServiceContainer){
-        self.vm = ViewModel(result, container)
+    init(_ result: ApiSearchItem){
+        self.vm = ViewModel(result)
     }
 }
 
@@ -63,25 +75,41 @@ extension StockMainView{
     class ViewModel : ObservableObject{
         @Published var profile : ApiProfile = ApiProfile.Default()
         @Published var isLoading : Bool = true
-        let id : String
-        let commonData : StockCommonData
+        @Published var watchlistItem : WatchlistItem = WatchlistItem.Default()
         
-        init(_ search : ApiSearchItem, _ container : ServiceContainer){
-            id = search.id
-            commonData = StockCommonData(search.id, search.name, container)
+        let search : ApiSearchItem
+        var commonData : StockCommonData
+        
+        init(_ search : ApiSearchItem){
+
+            self.search = search
+            commonData = StockCommonData.Empty()
         }
-        func OnAppear(_ http: IHttpService){
+        func OnAppear(_ container: ServiceContainer){
+            commonData = StockCommonData(search.id, search.name, container)
             isLoading = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
                 self.isLoading = false
             }
-            http.Get(id: id, completion: { data in
+            _ = commonData.profile.observable.subscribe{data in
                 self.profile = data
-            })
-            
+            }
+            let itemObs = container.GetWatchlistService().GetWatchlistItem(search.id, name: profile.name)
+            _ = itemObs.asObservable().subscribe{data in
+                self.watchlistItem = data
+            }
             commonData.Refresh()
         }
         
+        func ToggleWatchlist(_ container : ServiceContainer){
+            let watchlist = container.GetWatchlistService()
+            if(watchlistItem.IsOnWatchlist()) {
+                watchlist.DeleteFile(self.watchlistItem)
+            }
+            else{
+                watchlist.SaveFile(self.watchlistItem)
+            }
+        }
         
     }
 }
@@ -90,6 +118,6 @@ extension StockMainView{
 
 struct StockMainView_Previews: PreviewProvider {
     static var previews: some View {
-        StockMainView(ApiSearchItem.Default(), ServiceContainer.Current())
+        StockMainView(ApiSearchItem.Default())
     }
 }

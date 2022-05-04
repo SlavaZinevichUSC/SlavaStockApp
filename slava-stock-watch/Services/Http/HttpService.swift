@@ -42,6 +42,10 @@ final class HttpService : IHttpService{
     }
     
     func Get<T : ApiCallable>(id : String) -> Observable<T>{
+        if(id == ""){
+            print("Attempted to get on an empty id for \(T.self)")
+            return Observable.empty()
+        }
         let callType = T.GetHttpName()
         let url = "\(url)/\(callType)/\(id)"
         let req = AF.request(url, method: .get)

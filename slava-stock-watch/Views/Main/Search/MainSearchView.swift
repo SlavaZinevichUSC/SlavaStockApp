@@ -14,7 +14,7 @@ struct MainSearchView: View {
         Section{
             List{
                 ForEach(searchList.searchResults.prefix(5), id: \.id){item in
-                    NavigationLink(destination: StockMainView(item, container)){
+                    NavigationLink(destination: StockMainView(item)){
                         SearchItemView(item)
                     }
                 }

@@ -6,3 +6,18 @@
 //
 
 import Foundation
+import SwiftUI
+
+extension View{
+    func AsSection() -> some View{
+        return Section{
+            self
+        }
+    }
+    
+    func AsSection(_ title: String) -> some View{
+        return Section(title){
+            self
+        }
+    }
+}

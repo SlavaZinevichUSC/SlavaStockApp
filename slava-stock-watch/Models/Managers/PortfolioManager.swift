@@ -8,18 +8,7 @@
 import Foundation
 import CoreData
 
-class PortfolioManager : IPortfolioManager{
-    
-    let container : NSPersistentContainer
-    
-    init(){
-        container = NSPersistentContainer(name: "DataModel")
-        container.loadPersistentStores{ (description, error) in
-            if let e = error {
-                fatalError("Failed to load Data Model: \(e.localizedDescription)")
-            }
-        }
-    }
+class PortfolioManager : ManagerBase, IPortfolioManager{
     
     func SavePortfolioFile(id : String, name : String, value : Double, shares : Int, url : URL?) -> Bool{
         let fileOpt = TryGetPortfolioFileByUrl(url)
@@ -32,37 +21,14 @@ class PortfolioManager : IPortfolioManager{
     }
     
     func DeletePortfolioFile(url : URL?) -> Bool{
-        let fileOpt = TryGetFileByUrl(url)
-        guard let file = fileOpt else{
-            return false
-        }
-        container.viewContext.delete(file)
-        return true
+        return ExecuteDelete(url: url)
     }
     
     func GetPortfolioFiles() -> [PortfolioFile]{
         let req : NSFetchRequest<PortfolioFile> = PortfolioFile.fetchRequest()
-        do{
-            return try container.viewContext.fetch(req)
-        } catch{
-            return []
-        }
+        return ExecuteFetch(req)
     }
     
-    private func TryGetFileByUrl(_ urlOpt : URL?) -> NSManagedObject? {
-        guard let url = urlOpt else{
-            return nil
-        }
-        let objIDOpt = container.persistentStoreCoordinator.managedObjectID(forURIRepresentation: url)
-        guard let objID = objIDOpt else{
-            return nil
-        }
-        do{
-            return try container.viewContext.existingObject(with: objID)
-        } catch{
-            return nil
-        }
-    }
     func TryGetPortfolioFileByUrl(_ urlOpt : URL?) -> PortfolioFile?{
         return TryGetFileByUrl(urlOpt) as? PortfolioFile
     }
@@ -115,17 +81,6 @@ class PortfolioManager : IPortfolioManager{
             try container.viewContext.execute(deleteRequest)
         } catch{
             print("Failed to reset for \(name) entity : \(error)")
-        }
-    }
-    
-    
-    private func TrySave() -> Bool{
-        do{
-            try container.viewContext.save()
-            return true
-        } catch {
-            print("Failed to save with error: \(error)")
-            return false
         }
     }
 }

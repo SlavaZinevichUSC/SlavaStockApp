@@ -10,9 +10,7 @@ import SwiftUI
 struct MainDateView: View {
     @ObservedObject var vm : ViewModel = ViewModel()
     var body: some View {
-        Section{
-            Text(vm.date.ToDisplay()).font(.headline).foregroundColor(.gray).padding()
-        }
+        Text(vm.date.ToDisplay()).font(.headline).foregroundColor(.gray).padding()
     }
 }
 
