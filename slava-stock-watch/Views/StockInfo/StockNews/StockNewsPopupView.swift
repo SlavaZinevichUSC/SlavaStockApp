@@ -22,6 +22,10 @@ struct StockNewsPopupView: View {
                 Text(newsItem.title).font(.system(size: 18, weight: .bold)).padding(.bottom)
                 Text(newsItem.summary).font(.body)
                 Text("For more information, click ").Link("here", newsItem.url).font(.system(size: 8, weight: .light))
+                HStack{
+                    MakeButton("https://twitter.com/intent/tweet?url=", "Twitter")
+                    MakeButton("https://www.facebook.com/sharer/sharer.php?u=", "Facebook")
+                }
                 Spacer()
             }
             .toolbar{
@@ -31,11 +35,24 @@ struct StockNewsPopupView: View {
                     Image(systemName: "xmark").foregroundColor(.black)
                 })
             }
-    }
+        }
     }
     
     init(_ newsItem : ApiNewsItem){
         self.newsItem = newsItem
+    }
+    
+    func MakeButton(_ url: String, _ imgName : String) -> some View{
+        return Button(action: {
+            if let url = URL(string: "\(url)\(newsItem.url)") {
+                UIApplication.shared.open(url)
+            }
+        }, label: {
+            Image(imgName)
+                .resizable()
+                .scaledToFit()
+                
+        }).frame(width: 50, height: 50)
     }
 }
 

@@ -9,9 +9,10 @@ import SwiftUI
 
 struct StockInsightsMainView: View {
     var body: some View {
-        Group{
+        VStack{
             StockInsightsView()
             StockTrendsView()
+            StockEpsView()
         }
     }
 }

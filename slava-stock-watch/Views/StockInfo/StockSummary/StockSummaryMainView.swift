@@ -13,6 +13,7 @@ struct StockSummaryMainView: View {
         VStack{
             StockSummaryView()
             StockSummaryPriceView()
+            StockGraphView()
         }
     }
     

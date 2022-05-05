@@ -13,10 +13,11 @@ struct StockSummaryView: View {
     @EnvironmentObject var commonData : StockCommonData
     var body: some View {
         HStack(){
-            Text("\(vm.profile.id)").font(.title).foregroundColor(Color.gray)
+            Text("\(vm.profile.id)").font(.title).foregroundColor(Color.gray).font(.caption).padding()
             Spacer()
-            Image(vm.profile.imgUrl)
+            Image(vm.profile.imgUrl).padding()
         }
+        .offset(x: -50) //DIRTY DIRTY
         .frame(minHeight: 100)
         .onAppear(perform: {
             vm.Subscribe(commonData.profile.observable)

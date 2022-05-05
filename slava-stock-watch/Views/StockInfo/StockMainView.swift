@@ -27,7 +27,6 @@ struct StockMainView: View {
                         
                     }
                 }
-                .navigationTitle(vm.profile.name)
                 .navigationBarHidden(true)
                 
                 if(vm.isLoading){
@@ -37,6 +36,7 @@ struct StockMainView: View {
         }.onAppear(perform: {
             vm.OnAppear(container)
         })
+        .navigationTitle(vm.profile.name)
         .toolbar {
             Button(action: {
                 vm.ToggleWatchlist(container)
@@ -88,7 +88,7 @@ extension StockMainView{
         func OnAppear(_ container: ServiceContainer){
             commonData = StockCommonData(search.id, search.name, container)
             isLoading = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
                 self.isLoading = false
             }
             _ = commonData.profile.observable.subscribe{data in

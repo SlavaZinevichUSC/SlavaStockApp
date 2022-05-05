@@ -13,12 +13,23 @@ struct StockTrendsView: View {
     @EnvironmentObject var commonData : StockCommonData
     
     var body: some View {
-        let script = GetScript()
-        return HighchartsWebView(script)
-            .frame(width: UIScreen.screenWidth, height: 400, alignment: .leading)
-            .onAppear(perform: {
-                vm.Activate(commonData, container.GetHttpService())
-            })
+        if(vm.data.recs.count > 1){ //Im a diry cheater
+            HighchartsWebView(GetScript())
+                .frame(width: UIScreen.screenWidth, height: 400, alignment: .leading)
+                .onAppear(perform: {
+                    vm.Activate(commonData, container.GetHttpService())
+                    UITableView.appearance().isScrollEnabled = false
+                })
+        }
+        else {
+            HighchartsWebView(GetScript())
+                .frame(width: UIScreen.screenWidth, height: 400, alignment: .leading)
+                .onAppear(perform: {
+                    vm.Activate(commonData, container.GetHttpService())
+                    UITableView.appearance().isScrollEnabled = false
+
+                })
+        }
 }
 }
 
@@ -49,6 +60,9 @@ extension StockTrendsView{
         
         func HttpGet(_ id : String, _ http : IHttpService) {
             _ = http.Get(id: id).subscribe{ (data : ApiRecommendations) in
+                if(data.recs.count == self.data.recs.count){
+                    return //im a cheater what are you gonna do about it
+                }
                 self.data = data
                 self.hasLoaded = true
             }
@@ -56,7 +70,7 @@ extension StockTrendsView{
         
         func GetXAxis() -> String {
             return "[" + data.recs.reduce("", { (res, val) in
-                return res + val.period + ", "
+                return res + " '\(val.period)', "
             }) + "]"
         }
         

@@ -20,7 +20,7 @@ struct ApiRecommendations : ApiCallable{
     
     init(from decoder:Decoder) throws{
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        recs = try container.decode([ApiSingleRec].self, forKey: .recommendations)
+        recs = try container.decode([ApiSingleRec].self, forKey: .recommendations).reversed()
     }
     
     init(_ recs : [ApiSingleRec]){
@@ -28,7 +28,7 @@ struct ApiRecommendations : ApiCallable{
     }
     
     static func Default() -> ApiRecommendations {
-        return ApiRecommendations([ApiSingleRec(strongBuy: 1, buy: 1, hold: 1, sell: 1, strongSell: 1, period: "01-01-2001")])
+        return ApiRecommendations([])
     }
 }
 
