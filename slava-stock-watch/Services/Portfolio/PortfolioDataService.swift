@@ -23,6 +23,7 @@ class PortfolioDataService : IPortfolioDataService{
 
     init(_ repo : IPortfolioService){
         self.repo = repo
+        //repo.Reset()
         cashSubject = BehaviorSubject<CashItem>(value: repo.GetCash())
         portfolioItems = Dictionary()
         portfolioSubject = BehaviorSubject(value: portfolioItems)
@@ -62,11 +63,11 @@ class PortfolioDataService : IPortfolioDataService{
         }
         let newCash = repo.UpdateCash(cash)
         cashSubject.onNext(newCash)
-
-        ConstructPortfolio()
         if(!item.HasShares()){
-            portfolioItems[item.id]?.onNext(item)
+            portfolioItems[item.id]?.onNext(PortfolioItem(id: item.id, name: item.name, avgPrice: 0, shares: 0, url: nil))
         }
+        ConstructPortfolio()
+       
         
         
     }

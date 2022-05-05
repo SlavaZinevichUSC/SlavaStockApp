@@ -39,7 +39,6 @@ class StockCommonData : ObservableObject{
     
     func Refresh(){
         stats.Request()
-        profile.Request()
     }
     
     static func Empty() -> StockCommonData{ //Very Ugly hack to get around lifetime issues

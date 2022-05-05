@@ -16,6 +16,7 @@ class WatchlistService : IWatchlistService{
     
     init(_ manager : IWatchlistManager){
         self.manager = manager
+        //manager.Reset()
         self.watchlist = Dictionary()
         watchlistSubject = BehaviorSubject(value: watchlist)
         ConstructWatchlist()

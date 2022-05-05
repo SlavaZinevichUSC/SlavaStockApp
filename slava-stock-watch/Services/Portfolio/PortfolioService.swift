@@ -8,7 +8,7 @@
 import Foundation
 
 class PortfolioService: IPortfolioService{
-    private let initValue : Double = 10000
+    private let initValue : Double = 25000
     private let manager : IPortfolioManager
     
     init(_ manager : IPortfolioManager){

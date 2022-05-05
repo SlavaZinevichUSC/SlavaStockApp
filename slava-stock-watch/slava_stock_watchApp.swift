@@ -15,3 +15,4 @@ struct slava_stock_watchApp: App {
         }
     }
 }
+

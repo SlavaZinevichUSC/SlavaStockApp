@@ -13,7 +13,7 @@ struct StockGraphView: View {
     @EnvironmentObject var commonData : StockCommonData
     var body: some View {
         if(vm.data.o.count > 1){
-            HighchartsWebView(vm.GetMinScript())
+            HighchartsWebView(vm.GetScript())
                 .frame(width: UIScreen.screenWidth * 1.22, height: 400, alignment: .leading)
                 .offset(x: -55)
                 .onAppear(perform: {
@@ -33,8 +33,15 @@ struct StockGraphView: View {
 }
 
 extension StockGraphView{
+    func GetWebView(_ script : String) -> some View{
+        return vm.data.o.count > 1 ? HighchartsWebView(script) : HighchartsWebView(script)
+    }
+}
+
+extension StockGraphView{
     class ViewModel : ObservableObject{
         @Published var data  : ApiChart = ApiChart.Default()
+        @Published var trend : ApiTrend = ApiTrend.Default()
         @Published var hasLoaded : Bool = false;
         
         func Activate(_ commonData : StockCommonData, _ http : IHttpService){
@@ -55,6 +62,13 @@ extension StockGraphView{
                 }
                 self.data = data
                 self.hasLoaded = true
+            }
+            
+            _ = http.Get(id : id).subscribe { (data : ApiTrend) in
+                if(data.trend.count == self.trend.trend.count){
+                    return
+                }
+                self.trend = data
             }
         }
         

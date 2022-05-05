@@ -73,14 +73,4 @@ class PortfolioManager : ManagerBase, IPortfolioManager{
         TryDelete("PortfolioCashFile")
         TryDelete("PortfolioFile")
     }
-    
-    func TryDelete(_ name : String){
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: name)
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        do{
-            try container.viewContext.execute(deleteRequest)
-        } catch{
-            print("Failed to reset for \(name) entity : \(error)")
-        }
-    }
 }

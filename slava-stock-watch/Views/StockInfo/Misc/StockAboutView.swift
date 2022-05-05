@@ -13,7 +13,7 @@ struct StockAboutView: View {
     @EnvironmentObject var container : ServiceContainer
     @EnvironmentObject var commonData : StockCommonData
     
-    private let columns = [GridItem(), GridItem()]
+    private let columns = [GridItem(.fixed(UIScreen.screenWidth25)), GridItem()]
     var body: some View {
         LazyVGrid(columns: columns, alignment: .leading, spacing: 15){
             Text.Bold("IPO Start Date: ").AsInfo()
@@ -31,6 +31,7 @@ struct StockAboutView: View {
         }
         .onAppear(perform: {
             vm.Get(commonData, container.GetHttpService())
+            trendVm.Get(commonData, container.GetHttpService())
         })
     }
     
@@ -51,8 +52,8 @@ extension StockAboutView{
     
     private func AsNavLinkList() -> some View{
         return HStack{
-            ForEach(trendVm.data.peers, id: \.self){peer in
-                NavigationLink("\(peer)", destination: StockMainView(ApiSearchItem(peer, peer)))
+            ForEach(trendVm.data.peers.prefix(4), id: \.self){peer in
+                NavigationLink("\(peer)", destination: StockMainView(ApiSearchItem(peer, "Dell Technologies Inc.")))
             }
         }
     }

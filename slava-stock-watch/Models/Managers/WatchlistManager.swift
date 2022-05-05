@@ -24,11 +24,18 @@ class WatchlistManager : ManagerBase, IWatchlistManager{
     }
     
     func DeleteFile(url : URL?) -> Bool{
-        return ExecuteDelete(url: url)
+        let result = ExecuteDelete(url: url)
+        _ = TrySave()
+        return result
     }
     
     func DeleteFiles(urls : [URL?]) {
         ExecuteDeletes(urls: urls)
+        _ = TrySave()
+    }
+    
+    func Reset(){
+        TryDelete("WatchlistFile")
     }
     
 }

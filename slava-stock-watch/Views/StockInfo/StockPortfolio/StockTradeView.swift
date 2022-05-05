@@ -52,8 +52,8 @@ struct StockTradeView: View {
         }
     }
     
-    init(_ cash : CashItem, _ binding : Binding<Bool>){
-        vm = ViewModel(cash)
+    init(_ stock : PortfolioItem, _ cash : CashItem, _ binding : Binding<Bool>){
+        vm = ViewModel(stock, cash)
         _showSheet = binding
     }
 }
@@ -158,9 +158,9 @@ extension StockTradeView{
         @Published var cash : CashItem
         @Published var stock : PortfolioItem
         
-        init(_ cash : CashItem){
-            self.cash = CashItem.Default()
-            self.stock = PortfolioItem.Default()
+        init(_ stock : PortfolioItem, _ cash : CashItem){
+            self.cash = cash
+            self.stock = stock
         }
         
         func Validate(_ newValue : Character) -> Bool{
@@ -228,6 +228,6 @@ extension StockTradeView{
 
 struct StockTradeView_Previews: PreviewProvider {
     static var previews: some View {
-        StockTradeView(CashItem.Default(), .constant(false))
+        StockTradeView(PortfolioItem.Default(), CashItem.Default(), .constant(false))
     }
 }

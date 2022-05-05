@@ -13,16 +13,20 @@ struct StockPortfolioView: View {
     @EnvironmentObject var commonData : StockCommonData
     
     var body: some View {
-            if(vm.item.HasShares()){
-                StockExistingPortfolioView(vm.item)
-            }
-            else {
-                StockEmptyPortfolioView()
-            }
+        Group{
+                if(vm.item.HasShares()){
+                    StockExistingPortfolioView(vm.item)
+                }
+                else {
+                    StockEmptyPortfolioView()
+                }
+        }.onAppear(perform: {
+            vm.Activate(commonData, container)
+        })
     }
     
-    init(_ id : String, _ container : ServiceContainer){
-        vm = ViewModel(id, container)
+    init(_ commonData : StockCommonData, _ container : ServiceContainer){
+        vm = ViewModel(commonData, container)
     }
 }
 
@@ -41,9 +45,13 @@ extension StockPortfolioView{
 extension StockPortfolioView{
     class ViewModel : ObservableObject{
         @Published var item : PortfolioItem
-        init(_ id : String, _ container : ServiceContainer){
+        init(_ commonData : StockCommonData, _ container : ServiceContainer){
             item = PortfolioItem.Default()
-            _ = container.GetPortfolioDataService().GetPortfolioItemObs(id, "").subscribe{data in
+            Activate(commonData, container)
+        }
+        
+        func Activate(_ commonData : StockCommonData, _ container : ServiceContainer){
+            _ = container.GetPortfolioDataService().GetPortfolioItemObs(commonData.id, commonData.name).subscribe{data in
                 self.item = data
             }
         }
@@ -52,6 +60,6 @@ extension StockPortfolioView{
 
 struct StockPortfolioView_Previews: PreviewProvider {
     static var previews: some View {
-        StockPortfolioView("AAPL", ServiceContainer.Current())
+        StockPortfolioView(StockCommonData.Empty(), ServiceContainer.Current())
     }
 }

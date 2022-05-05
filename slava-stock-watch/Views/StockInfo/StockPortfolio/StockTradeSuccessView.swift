@@ -19,7 +19,7 @@ struct StockTradeSuccessView: View {
             VStack{
                 Spacer()
                 Text("Congratulations!").font(.headline).foregroundColor(Color.white).padding()
-                Text("You successfully bought \(shareInput) shares of \(commonData.id)").foregroundColor(Color.green)
+                Text("You successfully traded \(shareInput) shares of \(commonData.id)").foregroundColor(Color.white)
                 Spacer()
                 Button(action: {
                     binding.toggle()

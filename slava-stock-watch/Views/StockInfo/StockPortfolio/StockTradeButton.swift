@@ -27,7 +27,7 @@ struct StockTradeButton: View {
                 .cornerRadius(10)
         })
         .sheet(isPresented: $showTrade){
-            StockTradeView(vm.cash, $showTrade)
+            StockTradeView(vm.item, vm.cash, $showTrade)
         }
         .onAppear(perform: {
             vm.Activate(commonData)

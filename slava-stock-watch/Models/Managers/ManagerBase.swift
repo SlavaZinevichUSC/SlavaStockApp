@@ -29,6 +29,7 @@ class ManagerBase{
             return false
         }
         container.viewContext.delete(file)
+        _ = TrySave()
         return true
     }
     
@@ -60,6 +61,17 @@ class ManagerBase{
         } catch {
             print("Failed to save with error: \(error)")
             return false
+        }
+    }
+    
+    func TryDelete(_ name : String){
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: name)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do{
+            try container.viewContext.execute(deleteRequest)
+            _ = TrySave()
+        } catch{
+            print("Failed to reset for \(name) entity : \(error)")
         }
     }
 }

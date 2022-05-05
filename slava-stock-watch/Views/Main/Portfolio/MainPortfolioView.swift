@@ -17,6 +17,7 @@ struct MainPortfolioView: View {
             ForEach(vm.portfolio, id: \.id){item in
                 MainPortfolioItemView(item, vm.stats[item.id] ?? ApiStats.Default())
             }
+            .onMove(perform: vm.OnMove)
         }
         .onAppear(perform: {
             vm.OnAppear(container)
@@ -51,6 +52,10 @@ extension MainPortfolioView{
             })
         }
         
+        func OnMove(from source: IndexSet, to destination: Int){
+            portfolio.move(fromOffsets: source, toOffset: destination)
+        }
+        
         func  OnAppear(_ container : ServiceContainer){
             let portfolio = container.GetPortfolioDataService()
             _ = portfolio.GetCashObs().subscribe{ cashItem in
@@ -63,11 +68,18 @@ extension MainPortfolioView{
         }
         
         private func ConstructPortfolio(_ portfolio : [PortfolioItem], _ container : ServiceContainer){
-            self.portfolio = portfolio
-            for item in portfolio{
+            let myPortfolio = portfolio.filter({
+                $0.HasShares()
+            })
+            self.portfolio = myPortfolio
+            for item in myPortfolio{
+                _ = Timer.scheduledTimer(withTimeInterval: 15, repeats: true, block: { _ in
+                    _ = container.GetHttpService().Get(id: item.id).subscribe{(data : ApiStats) in
+                        self.stats[item.id] = data
+                    }
+                })
                 _ = container.GetHttpService().Get(id: item.id).subscribe{(data : ApiStats) in
                     self.stats[item.id] = data
-                    self.portfolio = portfolio
                 }
             }
         }

@@ -31,7 +31,7 @@ extension WatchlistView{
         func Activate(_ container : ServiceContainer){
             self.container = container
             _ = container.GetWatchlistService().GetWatchlist().subscribe{data in
-                self.watchlist = data
+            self.watchlist = data
             }
             
         }

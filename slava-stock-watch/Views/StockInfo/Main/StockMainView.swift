@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import AlertToast
 
 struct StockMainView: View {
     @ObservedObject private var vm : ViewModel
     @EnvironmentObject var container : ServiceContainer
+    @State var isPresentingToast : Bool = false
     var body: some View {
         NavigationView{
             ZStack{
@@ -21,7 +23,7 @@ struct StockMainView: View {
                         }
                         AsSection("Stats", StockStatsView().environmentObject(vm.commonData))
                         AsSection("About",StockAboutView().environmentObject(vm.commonData))
-                        AsSection("Portfolio", StockPortfolioView(vm.search.id, container).environmentObject(vm.commonData))
+                        AsSection("Portfolio", StockPortfolioView(vm.commonData,  container).environmentObject(vm.commonData))
                         AsSection("Insights", StockInsightsMainView().environmentObject(vm.commonData))
                         AsSection("News", StockNewsView(vm.search.id, container))
                         
@@ -40,6 +42,10 @@ struct StockMainView: View {
         .toolbar {
             Button(action: {
                 vm.ToggleWatchlist(container)
+                isPresentingToast = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+                    isPresentingToast = false
+                })
             }, label: {
                 if(vm.watchlistItem.IsOnWatchlist()){
                     Image(systemName: "plus.circle.fill")
@@ -48,6 +54,9 @@ struct StockMainView: View {
                     Image(systemName: "plus.circle")
                 }
             })
+        }
+        .toast(isPresenting: $isPresentingToast, duration: 3, tapToDismiss: true){
+            AlertToast(displayMode: .banner(.pop), type: .regular, title: "\(vm.toastText)", style: AlertToast.AlertStyle.style(backgroundColor: Color.gray, titleColor: Color.white))
         }
     }
     
@@ -75,31 +84,35 @@ extension StockMainView{
     class ViewModel : ObservableObject{
         @Published var profile : ApiProfile = ApiProfile.Default()
         @Published var isLoading : Bool = true
-        @Published var watchlistItem : WatchlistItem = WatchlistItem.Default()
-        
+        @Published var watchlistItem : WatchlistItem
         let search : ApiSearchItem
-        let id : String
         var commonData : StockCommonData
+        var toastText : String{
+            return watchlistItem.IsOnWatchlist() ? "Added to favorites" : "Removed from favorites"
+        }
         
         init(_ search : ApiSearchItem){
-            self.id = search.id
             self.search = search
+            watchlistItem = WatchlistItem(search.id, search.name, nil)
             commonData = StockCommonData.Empty()
+            isLoading = true
+            
         }
         func OnAppear(_ container: ServiceContainer){
             commonData = StockCommonData(search.id, search.name, container)
-            isLoading = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
-                self.isLoading = false
-            }
+            
             _ = commonData.profile.observable.subscribe{data in
                 self.profile = data
             }
-            let itemObs = container.GetWatchlistService().GetWatchlistItem(search.id, name: profile.name)
-            _ = itemObs.asObservable().subscribe{data in
-                self.watchlistItem = data
+            if(isLoading){
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
+                    self.isLoading = false
+                }
             }
-            commonData.Refresh()
+            let itemObs = container.GetWatchlistService().GetWatchlistItem(search.id, name: profile.name)
+            _ = itemObs.asObservable().subscribe{(data : WatchlistItem) in
+                self.watchlistItem = WatchlistItem(self.watchlistItem.id, self.watchlistItem.name, data.url)
+            }
         }
         
         func ToggleWatchlist(_ container : ServiceContainer){

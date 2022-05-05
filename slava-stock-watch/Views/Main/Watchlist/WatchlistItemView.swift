@@ -62,6 +62,11 @@ extension WatchlistItemView{
         }
         
         func Activate(_ container : ServiceContainer){
+            _ = Timer.scheduledTimer(withTimeInterval: 15, repeats: true, block: { _ in
+                _ = container.GetHttpService().Get(id: self.item.id).subscribe{data in
+                    self.stats = data
+                }
+            })
             _ = container.GetHttpService().Get(id: item.id).subscribe{data in
                 self.stats = data
             }

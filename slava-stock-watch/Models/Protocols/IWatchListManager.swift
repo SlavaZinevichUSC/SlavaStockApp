@@ -13,4 +13,5 @@ protocol IWatchlistManager{
     func SaveFile(id : String, name : String, url: URL?) -> Bool
     func DeleteFile(url : URL?) -> Bool
     func DeleteFiles(urls : [URL?])
+    func Reset()
 }
