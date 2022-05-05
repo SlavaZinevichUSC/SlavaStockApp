@@ -35,7 +35,7 @@ extension StockNewsView{
             self.selectedItem = item
         }
         .sheet(item: $selectedItem, content: { item in
-            StockNewsPopupView(selectedItem ?? ApiNewsItem.Default())
+            StockNewsPopupView(item)
         })
     }
 }

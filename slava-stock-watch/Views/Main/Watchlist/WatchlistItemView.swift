@@ -12,11 +12,12 @@ struct WatchlistItemView: View {
     @EnvironmentObject var container : ServiceContainer
     var body: some View {
         NavigationLink(destination: StockMainView(vm.destination)){
-            HStack(spacing: 25){
+            HStack(spacing: 2){
                 VStack{
                     Text.Bold(vm.item.id)
                     Text("\(vm.item.name)").font(.caption)
                 }.padding(.horizontal, 40)
+                GetArrow()
                 VStack{
                     Text.Bold("$\(vm.stats.current.Format())")
                     Text("$\(vm.change.Format()) (\(vm.changePercent.Format())%)").WithChangeColor(vm.change)
@@ -31,6 +32,14 @@ struct WatchlistItemView: View {
     
     init(_ item : WatchlistItem){
         self.vm = ViewModel(item)
+    }
+}
+
+extension WatchlistItemView{
+    func GetArrow() -> some View {
+        let isUp = vm.change > 0
+        let arrow = isUp ? "arrow.up.right" : "arrow.down.right"
+        return Image(systemName: arrow).foregroundColor(isUp ? Color.green : Color.red)
     }
 }
 

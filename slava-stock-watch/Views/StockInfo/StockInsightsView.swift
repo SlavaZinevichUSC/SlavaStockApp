@@ -38,7 +38,7 @@ struct StockInsightsView: View {
             }
         }
         .onAppear(perform: {
-            vm.Get(commonData.id, container.GetHttpService())
+            vm.Get(commonData, container.GetHttpService())
         })
     }
     

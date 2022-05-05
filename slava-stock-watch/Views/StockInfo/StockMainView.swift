@@ -22,7 +22,7 @@ struct StockMainView: View {
                         AsSection("Stats", StockStatsView().environmentObject(vm.commonData))
                         AsSection("About",StockAboutView().environmentObject(vm.commonData))
                         AsSection("Portfolio", StockPortfolioView(vm.search.id, container).environmentObject(vm.commonData))
-                        AsSection("Insights", StockInsightsView().environmentObject(vm.commonData))
+                        AsSection("Insights", StockInsightsMainView().environmentObject(vm.commonData))
                         AsSection("News", StockNewsView(vm.search.id, container))
                         
                     }

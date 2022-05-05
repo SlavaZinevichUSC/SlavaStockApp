@@ -25,7 +25,7 @@ struct StockAboutView: View {
             AsLink(vm.data.webUrl)
         }
         .onAppear(perform: {
-            vm.Get(commonData.id, container.GetHttpService())
+            vm.Get(commonData, container.GetHttpService())
         })
     }
     

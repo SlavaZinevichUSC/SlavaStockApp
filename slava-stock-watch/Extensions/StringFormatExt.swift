@@ -85,7 +85,7 @@ extension Text{
     }
     
     static func FormatRelative(_ value : Double, _ comparedTo : Double, _ asDollar : Bool = false) -> Text{
-        let color = value > comparedTo ? Color.green : Color.red
+        let color = value >= comparedTo ? Color.green : Color.red
         var formatted = Text.FormatDouble(value)
         if(asDollar){
             formatted = Text("$") + formatted

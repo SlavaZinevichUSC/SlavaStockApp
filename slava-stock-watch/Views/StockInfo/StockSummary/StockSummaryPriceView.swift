@@ -26,9 +26,11 @@ struct StockSummaryPriceView: View {
 
 extension StockSummaryPriceView{
     func TextChange(_ value : Double) -> some View{
-        let color = value > 0 ? Color.green : Color.red
+        let isUp = value > 0
+        let color = isUp ? Color.green : Color.red
+        let arrow = isUp ? "arrow.up.right" : "arrow.down.right"
         return Group {
-                Image(systemName: "arrow.up.right")
+                Image(systemName: arrow)
                 Text(" ").Double(value)
             }
             .foregroundColor(color)

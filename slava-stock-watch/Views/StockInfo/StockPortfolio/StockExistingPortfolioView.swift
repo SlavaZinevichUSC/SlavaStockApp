@@ -57,7 +57,7 @@ extension StockExistingPortfolioView{
         }
         
         func GetChange(_ commonData : StockCommonData) -> Double{
-            return stock.avgPrice - commonData.stats.value.current
+            return  commonData.stats.value.current - stock.avgPrice
         }
         
         func GetCurrentTotal(_ commonData : StockCommonData) -> Double {

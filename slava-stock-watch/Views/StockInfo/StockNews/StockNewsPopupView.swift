@@ -11,21 +11,27 @@ struct StockNewsPopupView: View {
     @Environment(\.presentationMode) var presentationMode
     private var newsItem : ApiNewsItem
     var body: some View {
-        VStack(alignment: .leading){
-            HStack{
-                Text.Header(newsItem.source)
-                /*Spacer()
-                Image(systemName: "xmark")
-                    .foregroundColor(.white)
-                    .font(.system(size: 14))
-                    .clipShape(Circle())*/
+        NavigationView{
+            
+            VStack(alignment: .leading){
+                HStack{
+                    Text.Header(newsItem.source)
+                }
+                Text.ToDate(newsItem.publishDate).font(.caption)
+                Divider()
+                Text(newsItem.title).font(.system(size: 18, weight: .bold)).padding(.bottom)
+                Text(newsItem.summary).font(.body)
+                Text("For more information, click ").Link("here", newsItem.url).font(.system(size: 8, weight: .light))
+                Spacer()
             }
-            Text.ToDate(newsItem.publishDate).font(.caption)
-            Divider()
-            Text(newsItem.title).font(.system(size: 18, weight: .bold)).padding(.bottom)
-            Text(newsItem.summary).font(.body)
-            Text("For more information, click ").Link("here", newsItem.url).font(.system(size: 8, weight: .light))
-        }.padding()
+            .toolbar{
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    Image(systemName: "xmark").foregroundColor(.black)
+                })
+            }
+    }
     }
     
     init(_ newsItem : ApiNewsItem){

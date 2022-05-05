@@ -19,8 +19,8 @@ struct StockTradeView: View {
     @State var validation : ValidatorState = ValidatorState.InvalidInput
     @Binding var showSheet : Bool
     @ObservedObject var vm : ViewModel
-
     private var name :  String { commonData.profile.value.name }
+    
     var body: some View {
         NavigationView{
             VStack{
@@ -37,6 +37,7 @@ struct StockTradeView: View {
                     .font(.caption)
                 GetButtons()
             }
+            
         }
         .onAppear(perform: {
             vm.Activate(commonData)

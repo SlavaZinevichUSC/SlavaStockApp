@@ -15,7 +15,7 @@ struct MainPortfolioView: View {
             GetBreakdown()
             
             ForEach(vm.portfolio, id: \.id){item in
-                MainPortfolioItemView(item)
+                MainPortfolioItemView(item, vm.stats[item.id] ?? ApiStats.Default())
             }
         }
         .onAppear(perform: {
@@ -44,7 +44,12 @@ extension MainPortfolioView{
     class ViewModel : ObservableObject{
         @Published var cash : CashItem = CashItem.Default()
         @Published var portfolio : [PortfolioItem] = []
-        @Published var totalPortfolioValue : Double = 0
+        var stats  : Dictionary<String, ApiStats> = Dictionary()
+        var totalPortfolioValue : Double {
+            portfolio.reduce(0, { (val, item) in
+                return val + Double(item.shares) * (stats[item.id]?.current ?? 0)
+            })
+        }
         
         func  OnAppear(_ container : ServiceContainer){
             let portfolio = container.GetPortfolioDataService()
@@ -52,15 +57,19 @@ extension MainPortfolioView{
                 self.cash = cashItem
             }
             _ = portfolio.GetFullPortfolioObs().subscribe{
-                self.ConstructPortfolio($0)
+                self.ConstructPortfolio($0, container)
             }
+            
         }
         
-        private func ConstructPortfolio(_ portfolio : [PortfolioItem]){
+        private func ConstructPortfolio(_ portfolio : [PortfolioItem], _ container : ServiceContainer){
             self.portfolio = portfolio
-            totalPortfolioValue = portfolio.reduce(0,{ (tot, item) in
-                return tot + item.totalCost
-            })
+            for item in portfolio{
+                _ = container.GetHttpService().Get(id: item.id).subscribe{(data : ApiStats) in
+                    self.stats[item.id] = data
+                    self.portfolio = portfolio
+                }
+            }
         }
     }
 }
