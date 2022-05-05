@@ -78,10 +78,11 @@ extension StockMainView{
         @Published var watchlistItem : WatchlistItem = WatchlistItem.Default()
         
         let search : ApiSearchItem
+        let id : String
         var commonData : StockCommonData
         
         init(_ search : ApiSearchItem){
-
+            self.id = search.id
             self.search = search
             commonData = StockCommonData.Empty()
         }

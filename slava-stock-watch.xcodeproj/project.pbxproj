@@ -17,6 +17,7 @@
 		560224CD28238B7B00C136B3 /* StockGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560224CC28238B7A00C136B3 /* StockGraphView.swift */; };
 		560224CF2823909400C136B3 /* ApiChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560224CE2823909400C136B3 /* ApiChart.swift */; };
 		560224D12823A0CF00C136B3 /* ApiPeers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560224D02823A0CF00C136B3 /* ApiPeers.swift */; };
+		560224D32823A58400C136B3 /* ApiTrend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560224D22823A58400C136B3 /* ApiTrend.swift */; };
 		562C36A9281128A9004C2E21 /* StockMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562C36A8281128A9004C2E21 /* StockMainView.swift */; };
 		562C36AC28112E02004C2E21 /* ServiceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562C36AB28112E02004C2E21 /* ServiceContainer.swift */; };
 		562C36B128112EEE004C2E21 /* HttpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562C36B028112EEE004C2E21 /* HttpService.swift */; };
@@ -118,6 +119,7 @@
 		560224CC28238B7A00C136B3 /* StockGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockGraphView.swift; sourceTree = "<group>"; };
 		560224CE2823909400C136B3 /* ApiChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiChart.swift; sourceTree = "<group>"; };
 		560224D02823A0CF00C136B3 /* ApiPeers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiPeers.swift; sourceTree = "<group>"; };
+		560224D22823A58400C136B3 /* ApiTrend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiTrend.swift; sourceTree = "<group>"; };
 		562C36A8281128A9004C2E21 /* StockMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockMainView.swift; sourceTree = "<group>"; };
 		562C36AB28112E02004C2E21 /* ServiceContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceContainer.swift; sourceTree = "<group>"; };
 		562C36B028112EEE004C2E21 /* HttpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpService.swift; sourceTree = "<group>"; };
@@ -249,16 +251,32 @@
 			path = Insights;
 			sourceTree = "<group>";
 		};
-		562C36A728112875004C2E21 /* StockInfo */ = {
+		560224D4282445BD00C136B3 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				56A5434B281DD267006C8D36 /* StockPortfolio */,
-				569018B7281C778500C76956 /* StockSummary */,
-				569018B2281B5B0B00C76956 /* StockNews */,
 				562C36A8281128A9004C2E21 /* StockMainView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		560224D5282445CA00C136B3 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
 				569018932819E67600C76956 /* StockStatsView.swift */,
 				5690189C281A0C0800C76956 /* StockAboutView.swift */,
 				56BC21612820C53A00C98866 /* LoadingView.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		562C36A728112875004C2E21 /* StockInfo */ = {
+			isa = PBXGroup;
+			children = (
+				560224D5282445CA00C136B3 /* Misc */,
+				560224D4282445BD00C136B3 /* Main */,
+				56A5434B281DD267006C8D36 /* StockPortfolio */,
+				569018B7281C778500C76956 /* StockSummary */,
+				569018B2281B5B0B00C76956 /* StockNews */,
 			);
 			path = StockInfo;
 			sourceTree = "<group>";
@@ -300,6 +318,7 @@
 				560224CA282373BC00C136B3 /* ApiEarnings.swift */,
 				560224CE2823909400C136B3 /* ApiChart.swift */,
 				560224D02823A0CF00C136B3 /* ApiPeers.swift */,
+				560224D22823A58400C136B3 /* ApiTrend.swift */,
 			);
 			path = HttpResposes;
 			sourceTree = "<group>";
@@ -754,6 +773,7 @@
 				56CDCB6328209188004AF3FF /* IPersistent.swift in Sources */,
 				56C6F528281DBFFA00BB15E5 /* PortfolioService.swift in Sources */,
 				569018BB281C78F100C76956 /* StockSummaryPriceView.swift in Sources */,
+				560224D32823A58400C136B3 /* ApiTrend.swift in Sources */,
 				569018B1281B5AE800C76956 /* StockNewsPopupView.swift in Sources */,
 				56BC217C2822041800C98866 /* IWatchlistService.swift in Sources */,
 				56930CEE2810BB690007FC08 /* PortfolioItem.swift in Sources */,

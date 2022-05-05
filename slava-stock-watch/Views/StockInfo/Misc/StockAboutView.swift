@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StockAboutView: View {
     @StateObject var vm : SingleItemVM = SingleItemVM<ApiProfileDetails>()
+    @StateObject var trendVm = SingleItemVM<ApiPeers>()
     @EnvironmentObject var container : ServiceContainer
     @EnvironmentObject var commonData : StockCommonData
     
@@ -23,6 +24,10 @@ struct StockAboutView: View {
             
             Text.Bold("Web Url: ").AsInfo()
             AsLink(vm.data.webUrl)
+            
+            Text.Bold("Peers: ").AsInfo()
+            AsNavLinkList()
+            
         }
         .onAppear(perform: {
             vm.Get(commonData, container.GetHttpService())
@@ -42,6 +47,14 @@ extension StockAboutView{
     private func AsLink(_ value : String) -> Text{
         let link = "[\(value)](\(value))"
         return Text(.init(link)).AsInfo()
+    }
+    
+    private func AsNavLinkList() -> some View{
+        return HStack{
+            ForEach(trendVm.data.peers, id: \.self){peer in
+                NavigationLink("\(peer)", destination: StockMainView(ApiSearchItem(peer, peer)))
+            }
+        }
     }
 }
 
